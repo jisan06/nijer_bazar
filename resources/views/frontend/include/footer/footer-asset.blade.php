@@ -1,0 +1,1 @@
+<script type="text/javascript" src="{{ asset('public/frontend') }}/assets/js/bottom-5aecd714.js" ></script>
