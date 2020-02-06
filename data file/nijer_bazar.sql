@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2020 at 11:39 AM
+-- Generation Time: Feb 06, 2020 at 12:42 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -857,7 +857,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `dob`, `address`, `gender`, `password`, `confirmPassword`, `clientGroup`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '0186289588', NULL, 'Badda', NULL, NULL, NULL, NULL, NULL, '2020-02-05 01:07:26', '2020-02-05 01:07:26'),
+(4, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '0186289588', NULL, 'Badda', NULL, 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, NULL, '2020-02-05 01:07:26', '2020-02-05 01:07:26'),
 (5, 'M Hasan', NULL, '01832967276', NULL, 'Barisal', NULL, NULL, NULL, NULL, NULL, '2020-02-05 06:17:37', '2020-02-05 06:17:37');
 
 -- --------------------------------------------------------
@@ -1626,16 +1626,27 @@ CREATE TABLE `refund_policies` (
 
 CREATE TABLE `reviews` (
   `id` int(10) UNSIGNED NOT NULL,
-  `customerId` int(11) NOT NULL,
-  `productId` int(11) NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `summary` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `review` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `star` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customerId` int(11) DEFAULT NULL,
+  `productId` int(11) DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci,
+  `summary` text COLLATE utf8mb4_unicode_ci,
+  `review` text COLLATE utf8mb4_unicode_ci,
+  `star` text COLLATE utf8mb4_unicode_ci,
+  `status` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `customerId`, `productId`, `name`, `summary`, `review`, `star`, `status`, `created_at`, `updated_at`) VALUES
+(1, 21, 5, 'Anwar Zahed', 'Best Phone', 'Support Digital Network', '5', 1, '2020-01-09 15:12:09', '2020-01-09 15:14:07'),
+(2, 21, 5, 'Anwar Zahed', 'New Featured Phone', 'সাম্প্রতিক বাংলা সাহিত্যের গৌরবময় একটি নাম হাসান আজিজুল হক। ১৯৩৯ সালের ২ ফেব্রুয়ারি বর্ধমান জেলার যবগ্রামে তার জন্ম । নিজের গ্রাম থেকে স্কুলের পড়া সাঙ্গ করে ওপার-বাংলায় চলে যান। তিনি, দর্শনশাস্ত্রের পড়াশোনার পর অধ্যাপনা করেন সেখানকার কয়েকটি কলেজে। ১৯৭৩ সাল থেকে রাজশাহী বিশ্ববিদ্যালয়ে দর্শনের অধ্যাপক, এখন অবসরপ্রাপ্ত। অধ্যাপনার সঙ্গে সঙ্গে দীর্ঘকাল অনেক গল্পের স্ৰষ্টা তিনি। গল্প অনেক লিখেছেন, কিন্তু, রহস্যময় কোনো কারণে, উপন্যাস-লেখায় বিশেষ আগ্ৰহ দেখান নি প্ৰতিভাবান এই কথাসাহিত্যিক । এ-বইটি প্ৰকাশিত হবার সঙ্গে সঙ্গে পাঠকসমাজের উৎসুক প্রতীক্ষার যেন অবসান হলো, আমাদের হাতে এসে পৌঁছল হাসান আজিজুল হকের হৃদয়স্পশী এই উপন্যাস : ’আগুনপাখি’ ।', '5', 1, '2020-01-09 17:04:12', '2020-01-09 17:04:51'),
+(3, 21, 59, 'Anwar Zahed', NULL, 'Late Delivery', '1', 1, '2020-01-09 17:07:52', '2020-01-09 17:08:02'),
+(4, 4, 5, 'M Hasan', 'New Test', 'best one', '1', 0, '2020-02-06 05:35:44', '2020-02-06 05:35:44'),
+(5, 4, 5, 'M Hasan', 'New Test', 'best one', '1', 0, '2020-02-06 05:35:55', '2020-02-06 05:35:55');
 
 -- --------------------------------------------------------
 
@@ -2267,7 +2278,8 @@ INSERT INTO `user_menu_actions` (`id`, `parentmenuId`, `menuType`, `actionName`,
 (138, 73, 11, 'Print Stock Valuation Report', 'stockValuationReport.print', 101, 1, '2019-11-14 22:44:37', '2019-11-14 22:44:37'),
 (139, 74, 11, 'Print Out Of Stock', 'outOfStockReport.print', 102, 1, '2019-11-17 12:57:14', '2019-11-17 12:57:14'),
 (140, 75, 11, 'Print Collection History', 'collectionHistory.print', 103, 1, '2019-11-17 16:30:37', '2019-11-17 16:30:37'),
-(141, 76, 11, 'Print Product Wise Profit', 'productWiseProfit.print', 104, 1, '2019-11-19 01:13:47', '2019-11-19 01:13:47');
+(141, 76, 11, 'Print Product Wise Profit', 'productWiseProfit.print', 104, 1, '2019-11-19 01:13:47', '2019-11-19 01:13:47'),
+(142, 28, 8, 'View Details', 'review.reviewDetails', 1, 1, '2020-02-06 05:41:12', '2020-02-06 05:41:12');
 
 -- --------------------------------------------------------
 
@@ -2290,9 +2302,8 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `name`, `status`, `permission`, `actionPermission`, `created_at`, `updated_at`) VALUES
-(2, 'Super User', 1, '0,3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141', '2019-04-17 00:50:05', '2019-11-26 23:56:21'),
-(3, 'Admin', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35', NULL, '2019-04-17 00:52:54', '2019-08-30 23:02:44'),
-(4, 'vendor', 1, '', '', '2019-09-02 11:16:08', '2019-09-02 11:22:08');
+(2, 'Super User', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,142,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141', '2019-04-17 00:50:05', '2020-02-06 05:41:38'),
+(3, 'Admin', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35', NULL, '2019-04-17 00:52:54', '2019-08-30 23:02:44');
 
 -- --------------------------------------------------------
 
@@ -3055,7 +3066,7 @@ ALTER TABLE `refund_policies`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -3139,7 +3150,7 @@ ALTER TABLE `user_menus`
 -- AUTO_INCREMENT for table `user_menu_actions`
 --
 ALTER TABLE `user_menu_actions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
