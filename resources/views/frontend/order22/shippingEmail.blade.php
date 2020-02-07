@@ -1,10 +1,16 @@
 @extends('frontend.master')
 
-@section('mainContent')    
-    <section id="wrapper">
-        <div class="container">
-            <section id="content" class="page-content card card-block">
-                <section class="login-form">
+
+@section('mainContent')
+    
+    <div class="container" style="background-color: #F0F2F5; border:.5px; border-radius: 50px; text-align: center; height: 350px ">
+        <div class="sign-in-page">
+            <div class="row"style="margin-top: 50px">
+                <div class="col-md-4 col-sm-6">
+                    
+                </div>
+                <!-- Sign-in -->            
+                <div class="col-md-5 col-sm-6" id="content">
                     <?php
                     $message = Session::get('message');
                       if (isset($message)) {
@@ -21,11 +27,13 @@
                         </div>
 
                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">GO</button>
-                    </form>
-                </section>
-            </section>
-        </div>
-    </section>
+                    </form>                 
+                </div>
+                <!-- Sign-in -->
+
+            </div><!-- /.container -->
+        </div><!-- /.body-content -->
+    </div>
 
 @endsection
 

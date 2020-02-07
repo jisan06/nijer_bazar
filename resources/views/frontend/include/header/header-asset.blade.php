@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{ asset('public/frontend') }}/assets/css/theme-16443415.css" type="text/css" media="all">
 <link rel="stylesheet" href="{{ asset('public/frontend') }}/assets/css/theme-7e7a8c15.css" type="text/css" media="all">
 <link rel="stylesheet" href="{{ asset('public/frontend') }}/assets/css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="{{ asset('public/admin-elite') }}/assets/icons/font-awesome/css/font-awesome.min.css" type="text/css" media="all">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <!-- script(43) <script type="text/javascript"> -->
 	<script type="text/javascript">
