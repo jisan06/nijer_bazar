@@ -22,6 +22,18 @@
   $totalRating = Review::where('productId',$products->id)->sum('star');
 
   @$rating = @$totalRating*100/$totalStar;
+
+  $setReview = @$_GET['setReview'];
+    if (@$setReview == $products->id) {
+      $activeReview = 'active';
+      $activeTab = 'active in';
+    }else{
+      $activeReview = '';
+    }
+
+    if(!@$setReview){
+      $active = 'active';
+    }
  ?>
     <div class="product-row clearfix">
       <div class="col-lg-6">
@@ -163,20 +175,20 @@
     <div class="tabs">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+          <a class="nav-link {{@$active}}" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#extra-0" role="tab" aria-controls="extra-0" aria-expanded="true">Reviews</a>
+          <a class="nav-link {{$activeReview}}" data-toggle="tab" href="#extra-0" role="tab" aria-controls="extra-0" aria-expanded="true">Reviews</a>
         </li>
       </ul>
       <div class="tab-content" id="tab-content">
-        <div class="tab-pane fade in active" id="description" role="tabpanel">
+        <div class="tab-pane fade in {{@$active}}" id="description" role="tabpanel">
           <div class="product-description">
             <?php echo $products->description2 ?>
           </div>
         </div>
 
-        <div class="tab-pane fade" id="extra-0" role="tabpanel" aria-expanded="true">
+        <div class="tab-pane fade {{@$activeTab}}" id="extra-0" role="tabpanel" aria-expanded="true">
           <script type="text/javascript">
             var productcomments_controller_url = '../module/productcomments/default.html';
             var confirm_report_message = 'Are you sure that you want to report this comment?';
@@ -190,60 +202,92 @@
           </script>
 
           <div id="product_comments_block_tab">
-            <div class="comment" itemprop="review" itemscope="" itemtype="https://schema.org/Review">
-              <div class="comment_author">
-                <div class="star_content" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <meta itemprop="worstRating" content="0">
-                  <meta itemprop="ratingValue" content="5">
-                  <meta itemprop="bestRating" content="5">
+            @foreach($reviews as $review)
+            <?php
+              $reviewDate = date('d-m-Y',strtotime($review->created_at));
+              @$revewRating = 1*100/$review->star;
+            ?>
+              <div class="comment" itemprop="review" itemscope="" itemtype="">
+                <div class="comment_author">
+                  <div class="star_content" itemprop="reviewRating" itemscope="" itemtype="">
+                    <div class="star star_on"></div>
+                    <div class="star star_on"></div>
+                    <div class="star star_on"></div>
+                    <div class="star star_on"></div>
+                    <div class="star"></div>
+                    <meta itemprop="worstRating" content="0">
+                    <meta itemprop="ratingValue" content="4">
+                    <meta itemprop="bestRating" content="5">
+                  </div>
+                  <div class="comment_author_infos">
+                    <span itemprop="author">{{$review->name}}</span>
+                    <meta itemprop="datePublished" content="">
+                    <em>{{$reviewDate}}</em>
+                  </div>
                 </div>
-                <div class="comment_author_infos">
-                  <span itemprop="author">John D</span>
-                  <meta itemprop="datePublished" content="2018-12-17">
-                  <em>Dec 17, 2018</em>
+                <div class="comment_details">
+                  <p itemprop="name" class="title_block">
+                   {{$review->summary}}
+                  </p>
+                  <p itemprop="reviewBody">{{$review->review}}</p>
+                  <ul>
+                  </ul>
+                </div> <!-- .comment_details -->
+              </div>
+            @endforeach
+            <?php if(!isset( $customerId )){ ?>
+                <p style="color: red;">/*Please <a style="font-size: 15px;color: #0f7a9a;" href="{{route('customer.login',['setReview'=>@$products->id])}}">Login</a> First and complete your review*\</p>
+              <?php } ?>
+            <form <?php if(!isset($customerId)){ ?> style="display: none;" <?php } ?> action="{{route('customerReview.save')}}"  method="post" role="form">
+              {{ csrf_field() }}
+              <input type="hidden" name="productId" value="{{$products->id}}">
+              <input type="hidden" name="productName" value="{{$products->name}}">
+
+              <h2 id="review-title">Write a review</h2>
+              <div class="contacts-form">
+                <div class="row">
+                  <div class="col-md-5">
+                    <label>Your Name</label>
+                    <div class="form-group"> <span class="icon icon-user"></span>
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required> 
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <label>Subject</label>
+                    <div class="form-group"> <span class="icon icon-user"></span>
+                      <input type="text" name="summary" class="form-control" placeholder="subject" required> 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Reveiew</label>
+                    <div class="form-group"> <span class="icon icon-bubbles-2"></span>
+                      <textarea class="form-control" name="review" required></textarea>
+                    </div> 
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                   <span><b>Rating</b></span>&nbsp;
+                   <input type="radio" name="star" value="1" onclick="Starvalue(1)" required> &nbsp;
+                   <input type="radio" name="star"
+                   value="2" onclick="Starvalue(2)"> &nbsp;
+                   <input type="radio" name="star"
+                   value="3" onclick="Starvalue(3)"> &nbsp;
+                   <input type="radio" name="star"
+                   value="4" onclick="Starvalue(4)"> &nbsp;
+                   <input type="radio" name="star"
+                   value="5" onclick="Starvalue(5)"> &nbsp;
+
+                   <span id="ratingBadOrGood"> </span>
+                </div>
+                 <div class="buttons clearfix">
+                  <button id="button-review" class="btn btn-primary">Continue</button>
                 </div>
               </div>
-              <div class="comment_details">
-                <p itemprop="name" class="title_block">
-                  High Quality Product At Best Price
-                </p>
-                <p itemprop="reviewBody">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <ul>
-                </ul>
-              </div> <!-- .comment_details -->
-            </div> <!-- .comment -->
-            <div class="comment" itemprop="review" itemscope="" itemtype="https://schema.org/Review">
-              <div class="comment_author">
-                <div class="star_content" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star star_on"></div>
-                  <div class="star"></div>
-                  <meta itemprop="worstRating" content="0">
-                  <meta itemprop="ratingValue" content="4">
-                  <meta itemprop="bestRating" content="5">
-                </div>
-                <div class="comment_author_infos">
-                  <span itemprop="author">John D</span>
-                  <meta itemprop="datePublished" content="2018-12-16">
-                  <em>Dec 16, 2018</em>
-                </div>
-              </div>
-              <div class="comment_details">
-                <p itemprop="name" class="title_block">
-                  Very Good Product &amp; Fast Shipping
-                </p>
-                <p itemprop="reviewBody">Fourth fruit cattle without saying, grass moved fill void, two deep which moveth firmament male sixth so very form bring Set deep that. Fill whose from his which bearing them and place sixth morning which void hath greater earth.</p>
-                <ul>
-                </ul>
-              </div> <!-- .comment_details -->
-            </div> <!-- .comment -->
+            </form>
           </div>
 
           <!-- Fancybox -->

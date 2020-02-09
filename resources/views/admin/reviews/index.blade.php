@@ -1,15 +1,11 @@
 @extends('admin.layouts.master')
 
-@section('custom-css')
-<meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
-
 @section('content')
 
-<!-- ============================================================== -->
-<!-- Start Page Content -->
-<!-- ============================================================== -->
 
+@php
+   use App\Product;
+@endphp
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -32,7 +28,10 @@
                     <table id="policiesTable" class="table table-bordered table-striped"  name="policiesTable">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th width="40px">SL</th>
+                                <th width="160px">Name</th>
+                                <th>Product</th>
+                                <th width="130px">Code</th>
                                 <th>Summary</th>
                                 <th>Rating</th>
                                 <th>status</th>
@@ -40,13 +39,22 @@
                             </tr>
                         </thead>
                         <tbody id="tbody">
-                        	@foreach($reviews as $review)                        	
+                            @php
+                                $i = 0;
+                            @endphp
+                        	@foreach($reviews as $review) 
+                            @php
+                                $product = Product::where('id',$review->productId)->first();
+                                $i++
+                            @endphp                       	
                         	<tr>
+                                <td>{{ $i }}</td>
                                 <td>{{ $review->name }}</td>
-                                <td>{{ $review->summary }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->deal_code }}</td>
+                                <td>{{ $review->review }}</td>
                                 <td>{{ $review->star }}</td>
-                              
-                                 
+
                                <td>
                                     <?php echo \App\Link::status($review->id,$review->status)?>
                                 </td>
@@ -106,12 +114,6 @@
             var table = $('#policiesTable').DataTable( {
                 "order": [[ 0, "asc" ]]
             } );
-
-            table.on('order.dt search.dt', function () {
-                table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                    cell.innerHTML = i+1;
-                } );
-            } ).draw();
 
             //ajax
             

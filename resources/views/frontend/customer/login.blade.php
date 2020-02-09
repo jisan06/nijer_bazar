@@ -1,6 +1,5 @@
 @extends('frontend.master')
 
-
 @section('mainContent')
 <section id="wrapper">
     <div class="container">          
@@ -30,6 +29,7 @@
                         ?>
                         <form id="login-form" action="{{route('customer.dologin')}}" method="post">
                             {{ csrf_field() }}
+                            <input type="hidden" name="setReview" value="{{@$setReview}}">
                             <section>
                                 <input type="hidden" name="back" value="">                                         
                                 <div class="form-group row ">

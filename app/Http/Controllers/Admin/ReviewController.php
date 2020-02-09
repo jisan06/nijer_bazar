@@ -36,7 +36,7 @@ class ReviewController extends Controller
             'summary' => $request->summary,                     
             'review' => $request->review, 
             'star' => $request->star,            
-            'status' => '0',            
+            'status' => '1',            
               
         ]);
 

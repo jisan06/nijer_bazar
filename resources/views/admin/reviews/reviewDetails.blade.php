@@ -1,11 +1,22 @@
 @extends('admin.layouts.master')
 
+@section('title')
+Admin
+@endsection
+
 @section('custom-css')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
-@section('content')
+@section('page-name')
+View Customer Details
+@endsection
 
+@section('content')
+@php
+   use App\Product;
+    $product = Product::where('id',$reviews->productId)->first();
+@endphp
 <!-- ============================================================== -->
 <!-- Start Page Content -->
 <!-- ============================================================== -->
@@ -55,12 +66,23 @@
                     </div>
                 </div>
 
+                <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+                    <label for="inputHorizontalDnger" class="col-sm-3 col-form-label">Product</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control form-control-danger"  name="name" value="{{ $product->name}}" readonly>
+                        @if ($errors->has('name'))
+                        @foreach($errors->get('name') as $error)
+                        <div class="form-control-feedback">{{ $error }}</div>
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
              
 
-                 <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
-                    <label for="inputHorizontalDnger" class="col-sm-3 col-form-label">Summary</label>
+                <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+                    <label for="inputHorizontalDnger" class="col-sm-3 col-form-label">Product Code</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control form-control-danger"  name="name" value="{{ $reviews->summary }}" readonly>
+                        <input type="text" class="form-control form-control-danger"  name="name" value="{{ $product->deal_code}}" readonly>
                         @if ($errors->has('name'))
                         @foreach($errors->get('name') as $error)
                         <div class="form-control-feedback">{{ $error }}</div>

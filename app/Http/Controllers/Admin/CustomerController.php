@@ -8,6 +8,7 @@ use App\Customer;
 use App\Order;
 use App\VerifyCustomer;
 use App\CustomerGroup;
+use App\Product;
 use DB;
 use Session;
 
@@ -140,53 +141,55 @@ class CustomerController extends Controller
 
     public function showLoginForm()
     {
-        return view('frontend.customer.login');
+        $setReview = @$_GET['setReview'];
+        return view('frontend.customer.login')->with(compact('setReview'));
     }
 
     public function login(Request $request)
     {
-        if ($request)
-        {
+        $setReview = $request->setReview;
+        if ($request) {
             $email = $request->input('custemail');
-            $password = $request->input('password');
-            $hasPassword = md5($request->input('password'));
+          $password = $request->input('password');
+          $hasPassword = md5($request->input('password'));
 
-            @$getEmail= DB::table('customers')->where(['email'=>$email])->first();
+          @$getEmail= DB::table('customers')->where(['email'=>$email])->first();
 
-            @$countEmail= DB::table('customers')->where(['email'=>$email])->count();
+          @$countEmail= DB::table('customers')->where(['email'=>$email])->count();
 
-            @$countPassword = DB::table('customers')->where(['password'=>$hasPassword])->count();
+          @$countPassword = DB::table('customers')->where(['password'=>$hasPassword])->count();
 
-            @$customerId = $getEmail->id;
-            @$customername = $getEmail->name;
+          @$customerId = $getEmail->id;
+          @$customername = $getEmail->name;
 
-            if ($email == "" || $password == "")
-            {
-                $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Field must not be empty</h5>"; 
-                Session::put('message',$message); 
-                return redirect('/customer/login')->withInput();
+          if ($email == "" || $password == "") {
+          $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Field must not be empty</h5>"; 
+          Session::put('message',$message); 
+          return redirect('/customer/login')->withInput();
+          }elseif ($countEmail < 1) {
+            $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Your Email Address Not Matched</h5>"; 
+            Session::put('message',$message); 
+            return redirect(route('customer.login', ['setReview'=>@$setReview]))->withInput();
+          }elseif($countPassword < 1){
+            $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Sorry, Password Not Matched</h5>"; 
+              Session::put('message',$message); 
+              return redirect(route('customer.login',['setReview'=>$setReview]))->withInput();
+          }else{
+            if ($countEmail > 0) {
+              Session::put('customerId',$customerId);
+              Session::put('customerName',$customername);
+
+              if(@$setReview){
+                $products = Product::where('id',$setReview)->first();
+                $name = str_replace(' ', '-', $products->name);
+                return redirect(url('product/'.@$products->id.'/'.@$name.'?setReview='.$setReview));
+              }else{
+
+              }
+              return redirect(route('customer.order'));
+
             }
-            elseif ($countEmail < 1)
-            {
-                $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Your Email Address Not Matched</h5>"; 
-                Session::put('message',$message); 
-                return redirect('/customer/login')->withInput();
-            }
-            elseif($countPassword < 1)
-            {
-                $message = "<h5 style='display:inline-block;width:auto;' class='alert alert-danger'>Sorry, Password Not Matched</h5>"; 
-                Session::put('message',$message); 
-                return redirect('/customer/login')->withInput();
-            }
-            else
-            {
-                if ($countEmail > 0)
-                {
-                    Session::put('customerId',$customerId);
-                    Session::put('customerName',$customername);
-                    return redirect(route('customer.order'));
-                }
-            }
+          }
         }
     }
 
