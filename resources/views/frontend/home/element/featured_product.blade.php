@@ -3,8 +3,8 @@
   use App\ProductImage;
   use App\Product;
 ?>
-
-<section class="tptnprodtabs clearfix"> 
+@if(count(@$featuredProductList) > 0)
+    <section class="tptnprodtabs clearfix"> 
   <div class="crsl-title">
     <h4>Featured Products</h4>
     <div class="crsl-link">
@@ -65,3 +65,4 @@
     @endforeach         
   </div>
 </section>
+@endif

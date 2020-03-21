@@ -38,7 +38,7 @@ class FrontendController extends Controller
             ->join('products','products.root_category','=','categories.id')
             ->groupBy('products.root_category','categories.id','categories.categoryName','categories.orderBy')
             ->orderBy('categories.orderBy','ASC')
-            ->take('2')
+           /* ->take('2')*/
            ->get();
 
          Category::where('categoryStatus',1)
@@ -51,7 +51,7 @@ class FrontendController extends Controller
          $banners = Banner::where('bannerStatus','1')->orderBy('orderBy','ASC')->get();
          $policies = Policy::where('policiesStatus','1')->orderBy('orderBy','ASC')->get();
          $blogs = Blog::where('status','1')->orderBy('orderBy','ASC')->get();
-
+        $title = $metaInfo->siteTitle;
          $metaTag =[
             'meta_keyword'=>$metaInfo->metaKeyword,
             'meta_title' =>$metaInfo->metaTitle,
@@ -60,18 +60,21 @@ class FrontendController extends Controller
 
          $featuredProductList = Product::where('status','1')
                                 ->whereRaw('FIND_IN_SET(?,productSection)',['2'])
+                                ->take(9)
                                 ->orderBy('orderBy','ASC')
                                 ->orderBy('name','ASC')
                                 ->get();
 
         $newProductList = Product::where('status','1')
                               ->whereRaw('FIND_IN_SET(?,productSection)',['1'])
+                              ->take(9)
                               ->orderBy('orderBy','ASC')
                               ->orderBy('name','ASC')
                               ->get();
 
         $bestSellProductList = Product::where('status','1')
                               ->whereRaw('FIND_IN_SET(?,productSection)',['4'])
+                              ->take(9)
                               ->orderBy('orderBy','ASC')
                               ->orderBy('name','ASC')
                               ->get();

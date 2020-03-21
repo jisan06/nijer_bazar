@@ -66,6 +66,7 @@
                     <label for="inputHorizontalDnger" class="col-sm-3 col-form-label">Slider Image</label>
                     <div class="col-sm-7">
                         <input type="file" class="form-control form-control-danger" placeholder="Category Image" name="sliderImage" value="{{ old('sliderImage') }}" required>
+                        <span style="color:red">/* Standard Image Size : 1110*450 */ <br></span>
                         @if ($errors->has('sliderImage'))
                         @foreach($errors->get('sliderImage') as $error)
                         <div class="form-control-feedback">{{ $error }}</div>

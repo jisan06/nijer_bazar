@@ -12,6 +12,7 @@
     $viewAllLink = url('/categories/'.@$category->categoryId.'/'.@$categoryName);
      $homeCategory++;
 @endphp
+@if(count(@$categoryProducts) > 0)
   <section class="tptncarousel tptnprods">
     <div class="crsl-title">
       <h4>{{$category->categoryName}}</h4>
@@ -67,4 +68,5 @@
         <?php } ?>        
     </div>
   </section>
+@endif
 <?php } ?> 

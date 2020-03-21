@@ -1539,6 +1539,11 @@ pre {
   background-color: #212529;
   border-color: #32383e; }
 
+.table .thead-green th {
+  color: #fff;
+  background-color: #198206 ;
+  border-color: #dee2e6; }
+
 .table .thead-light th {
   color: #4F5467;
   background-color: #e9ecef;
@@ -11269,7 +11274,7 @@ table.dataTable thead .sorting_desc_disabled {
   background: #00c292;
   font-weight: bold;
   padding: 5px;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 table.dataTable tbody {

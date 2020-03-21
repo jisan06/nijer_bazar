@@ -40,6 +40,13 @@
 <script src="{{ asset('/public/admin-elite/assets/node_modules/summernote/dist/summernote.min.js') }}"></script>	
 <!-- tagsinput  -->
 <script src="{{ asset('/public/admin-elite/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+
+<!-- This is data table -->
+<script src="{{ asset('/public/admin-elite/assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>
+
+<!-- This is Tree Menu JS  -->
+<script src="{{ asset('/public/tree-menu/TreeMenu.js') }}"></script>
+
 <!-- <script src="{{ asset('/public/js/tinymce/tinymce.min.js') }}"></script>
  <script>
     $(document).ready(function () {

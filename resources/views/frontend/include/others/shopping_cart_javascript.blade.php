@@ -16,11 +16,11 @@ function addCart(productId){
         url: '<?php echo url('/cart/addItem');?>/'+ productId,
         dataType: "JSON",
         success: function(response) {
-          $("#blockcart-modal").modal();
+          /*$("#blockcart-modal").modal();
           var product = response.product;
           $('#product').html(product);
           $('#popup_productSubtotal').text("৳ " + response.total);
-          $('#pop_cart_count').text(response.cartCount);
+          $('#pop_cart_count').text(response.cartCount);*/
 
           itemcount();
           minicartProduct();
@@ -37,11 +37,11 @@ function addCart(productId){
       url: '<?php echo url('/cart/addItemFromSingleProduct');?>/'+ productId+'/'+quantity,
       dataType: "JSON",
       success: function(response) {
-        $("#blockcart-modal").modal();
+        /*$("#blockcart-modal").modal();
         var product = response.product;
         $('#product').html(product);
         $('#popup_productSubtotal').text("৳ " + response.total);
-        $('#pop_cart_count').text(response.cartCount);
+        $('#pop_cart_count').text(response.cartCount);*/
         
         itemcount();
         minicartProduct();

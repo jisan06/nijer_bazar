@@ -2,6 +2,7 @@
 <!-- chartist CSS -->
 <link href="{{ asset('/public/admin-elite/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
 <link href="{{ asset('/public/admin-elite/assets/node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/admin-elite/assets/node_modules/bootstrap/dist/css/bootstrap-theme.min.css') }}" rel="stylesheet">
 
 <link href="{{ asset('/public/admin-elite/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')  }}" rel="stylesheet">
 
@@ -25,3 +26,6 @@
 
 <!-- tagsinput CSS -->
 <link href="{{ asset('/public/admin-elite/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet">
+
+<!-- Tree Menu CSS -->
+<link href="{{ asset('/public/tree-menu/TreeMenu.css') }}" rel="stylesheet">

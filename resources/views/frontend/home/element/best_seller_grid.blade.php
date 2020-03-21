@@ -3,7 +3,7 @@
   use App\ProductImage;
   use App\Product;
 ?>
-
+@if(count(@$bestSellProductList) > 0)
 <section class="tptnprodtabs clearfix"> 
   <div class="crsl-title">
     <h4>Best Sellers</h4>
@@ -65,3 +65,4 @@
     @endforeach         
   </div>
 </section>
+@endif

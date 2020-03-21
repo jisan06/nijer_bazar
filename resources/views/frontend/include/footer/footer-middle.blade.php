@@ -130,8 +130,8 @@
       <?php echo @$information->siteAddress2;  ?>
     </ul>
     <ul>
-      <?php echo @$information->siteEmail1;  ?> <br>
-      <?php echo @$information->siteEmail2;  ?>
+      Email: &nbsp;<a href="mailto:<?php echo @$information->siteEmail1;  ?>"><?php echo @$information->siteEmail1;  ?></a> <br>
+      Hotline: <a href="tel:<?php echo @$information->mobile1;  ?>"><?php echo @$information->mobile1;  ?></a>
     </ul>
     <?php
       if (@$socialLink->status == '1') {
