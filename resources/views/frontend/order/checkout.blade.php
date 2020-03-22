@@ -3,6 +3,7 @@
 @section('mainContent')
 <?php
  use App\ProductSections;
+ use App\ShippingCharges;
 ?>
   <section id="content">
     <div class="row">
@@ -223,6 +224,29 @@
                     }else{
                       $image = $noImage;
                     }
+
+                    $total = str_replace(',', '', $total);
+                    $shipping_charges = ShippingCharges::where('shippingStatus',1)->get();
+                    foreach($shipping_charges as $k ){ 
+                        $diff[abs($k->shippingAmount - $total)] = $k;
+                         }
+
+                    if (@$k && $total) {
+                        ksort($diff, SORT_NUMERIC);
+                        $charge = current($diff);
+                        if (@$free_shipping) {
+                            
+                            $shippingCharge = 0;
+                        }else{
+                            $shippingCharge = $charge->shippingCharge;
+                        }
+                        
+                    }else{
+                        $shippingCharge = 0; 
+                    } 
+
+                    $grandTotal = $total + $shippingCharge;
+
                   @endphp
                     <li class="media">
                       <div class="media-left">
@@ -260,16 +284,21 @@
                 <span class="label">
                   Shipping
                 </span>
-                <span class="value">৳ </span>
+                <span class="value">৳ {{$shippingCharge}}</span>
               </div>
+
+              <div class="totalTop"></div>
+
+              <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-shipping">
+                <span class="label">
+                  Total
+                </span>
+                <span class="value">৳ {{$grandTotal}}</span>
+              </div>
+
             </div>
           </div>
-          <div class="card-block cart-summary-totals">
-            <div class="cart-summary-line">
-              <span class="label">Total</span>
-              <span class="value">৳ {{$total}}</span>
-            </div>
-          </div>
+          
 
           {{-- <div class="block-promo">
             <div class="cart-voucher">

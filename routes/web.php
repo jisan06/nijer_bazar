@@ -687,8 +687,8 @@ Route::get('/search', 'FrontendController@searchProduct')->name('product.search'
 //view product
 /*Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product.single');*/
 Route::get('/product/{id}/{name}', 'FrontendController@singleProduct')->name('product.singles');
-Route::get('/categories/{id}/{name}', 'FrontendController@categoryLanding');
-Route::get('/subcategories/{id}/{name}', 'FrontendController@productByCategory');
+Route::get('/categories/{id}/{name}', 'FrontendController@productByCategory');
+/*Route::get('/subcategories/{id}/{name}', 'FrontendController@productByCategory');*/
 Route::get('/subcategories/{categoryId}/sort/{sortId}', 'FrontendController@productSort');
 /*Route::get('/categories/{id}', 'FrontendController@productByCategory')->name('category.single');*/
 

@@ -9,7 +9,7 @@
 	    <meta name="author" content="">
 	    <meta name="csrf-token" content="{{ csrf_token() }}">
 	    <!-- Favicon icon -->
-	    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/')}}public/uploads/admin_logo/logo_small.png">
+	    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/').@$information->adminfavIcon }}">
 
 	    <title>Admin || {{ $title }}</title>
 

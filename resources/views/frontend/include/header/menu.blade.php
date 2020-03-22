@@ -38,7 +38,7 @@
                           foreach ($subcategory as $subcat) {
                             if ($subcat->parent == $category->id) { 
                               $subCategoryName = str_replace(' ', '-', $subcat->categoryName);
-                              $secondMenuLink = url('/subcategories/'.@$subcat->id.'/'.@$subCategoryName);
+                              $secondMenuLink = url('/categories/'.@$subcat->id.'/'.@$subCategoryName);
                         ?>
                           <li data-depth="1">
                             <a href="{{$secondMenuLink}}" >
@@ -62,8 +62,65 @@
         </div>
         <div class="mobilemenu">
           <div class="mobilemenu-title">Categories<i class="material-icons">&#xE5CD;</i></div>
+          <ul data-depth="0">
+            @foreach($publishedCategories as $category)
+              <?php  if ($category->parent == '') { 
+                $categoryName = str_replace(' ', '-', $category->categoryName);
+                $firstMenuLink = url('/categories/'.@$category->id.'/'.@$categoryName);
+                $subcategory = Category::where('parent',$category->id)->where('categoryStatus',1)->get(); 
+              ?> 
+              <li {{-- id="category-3" --}}>
+                <a href="{{$firstMenuLink}}" data-depth="0"> 
+                  @if(count(@$subcategory) > 0)
+                    <span class="float-xs-right hidden-xl-up">
+                      <span data-target="#mobile_menu_{{$category->id}}" data-toggle="collapse" class="navbar-toggler collapse-icons">
+                          <i class="material-icons add">&#xE145;</i>
+                          <i class="material-icons remove">&#xE15B;</i>
+                      </span>
+                    </span>
+                  @endif
 
+                  {{$category->categoryName}}
+                </a>
+                @if(count(@$subcategory) > 0)
+                  <div class="collapse" id="mobile_menu_{{$category->id}}">
+                    <ul data-depth="0">
+                      <?php
+                          foreach ($subcategory as $subcat) {
+                            if ($subcat->parent == $category->id) { 
+                              $subCategoryName = str_replace(' ', '-', $subcat->categoryName);
+                              $secondMenuLink = url('/subcategories/'.@$subcat->id.'/'.@$subCategoryName);
+                      ?>
+                      <li>
+                        <a href="{{$secondMenuLink}}" data-depth="0"> 
+                          <span class="float-xs-right hidden-xl-up">
+                            <span data-target="#mobile_menu_61066" data-toggle="collapse" class="navbar-toggler collapse-icons">
+                                <i class="material-icons add">&#xE145;</i>
+                                <i class="material-icons remove">&#xE15B;</i>
+                            </span>
+                          </span>
+                          {{$subcat->categoryName}}
+                        </a>
 
+                        {{-- <div class="collapse" id="mobile_menu_61066">
+                          <ul data-depth="2">
+                            <li id="category-17">
+                              <a href="17-high-definition-tv.html" data-depth="2">
+                                High-Definition TV
+                              </a>
+                            </li>
+                          </ul>
+                        </div> --}}
+
+                      </li>
+                      <?php } } ?>
+                    </ul>
+                  </div>
+                @endif
+              </li>
+            <?php } ?>
+            @endforeach
+          </ul>
         </div>
       </div>
 

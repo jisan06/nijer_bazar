@@ -59,7 +59,7 @@
             <div class="js-qv-mask mask tptncarousel">
               <ul class="product-images js-qv-product-images thumbcrsl">
                 @foreach($allImage as $miniImage)
-                  <li class="thumb-container">
+                  <li class="thumb-container" style="text-align: left;">
                     <img
                       class="thumb js-thumb  selected"
                       data-image-medium-src="{{ asset('/').$miniImage->images }}"
@@ -351,15 +351,15 @@
           class="js-modal-product-cover product-cover-modal" 
           width="800" src="{{ asset('/').$image->images }}" alt="" title="" 
           itemprop="image">
-          <figcaption class="image-caption">
-
-            <div id="product-description-short" itemprop="description">
-              @php
-               echo $products->description1;
-              @endphp
-            </div>
-
-          </figcaption>
+          @if($products->description1)
+            <figcaption class="image-caption">
+              <div id="product-description-short" itemprop="description">
+                @php
+                 echo $products->description1;
+                @endphp
+              </div>
+            </figcaption>
+          @endif
         </figure>
         <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
           <div class="js-modal-mask mask  nomargin ">

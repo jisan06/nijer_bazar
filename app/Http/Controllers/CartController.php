@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductImage;
+use App\ShippingCharges;
 
 use Cart;
 
@@ -221,13 +222,47 @@ class CartController extends Controller
 
                 $total += $carts->subtotal;
             }
+
+            $total = str_replace(',', '', $total);
+            $shipping_charges = ShippingCharges::where('shippingStatus',1)->get();
+            foreach($shipping_charges as $k ){ 
+                $diff[abs($k->shippingAmount - $total)] = $k;
+                 }
+
+            if (@$k && $total) {
+                ksort($diff, SORT_NUMERIC);
+                $charge = current($diff);
+                if (@$free_shipping) {
+                    
+                    $shippingCharge = 0;
+                }else{
+                    $shippingCharge = $charge->shippingCharge;
+                }
+                
+            }else{
+                $shippingCharge = 0; 
+            } 
+
+            $grandTotal = $total + $shippingCharge;
+
             $data .='</ul>';
             $data .='<div class="cart-totals table table-bordered">';
+
+            $data .='<div class="products">';
+            $data .='<span class="label text-left">SubTotal</span>';
+            $data .='<span class="value items_carts total-value miniTotal">৳ '.@$total.'</span>';
+            $data .='</div>';
+
+            $data .='<div class="products">';
+            $data .='<span class="label text-left">Shipping Charge</span>';
+            $data .='<span class="value items_carts total-value miniTotal">৳ '.@$shippingCharge.'</span>';
+            $data .='</div>';
+
+            $data .='<div class="total totalTop">';
+            $data .='</div>';
             $data .='<div class="products">';
             $data .='<span class="label text-left">Total</span>';
-             $data .='<span class="value items_carts total-value miniTotal">৳ '.@$total.'</span>';
-            $data .='</div>';
-            $data .='<div class="total">';
+            $data .='<span class="value items_carts total-value miniTotal">৳ '.@$grandTotal.'</span>';
             $data .='</div>';
             $data .='</div>';
             $data .='<div class="cart-action">';
@@ -245,6 +280,7 @@ class CartController extends Controller
     public function MainCartProduct(Request $request){
         $data = "";
         $totalSummary = "";
+        $total = 0;
         if(Cart::count() < 1){
             $disabled = "disabled";
         }else{
@@ -320,8 +356,32 @@ class CartController extends Controller
                     $data .='<div class="clearfix"></div>';
                     $data .='</div>';
                     $data .='</li>';
+
+                    $total += $cart->subtotal;
                 }
                 $data .='</ul>';
+
+                $total = str_replace(',', '', $total);
+                $shipping_charges = ShippingCharges::where('shippingStatus',1)->get();
+                foreach($shipping_charges as $k ){ 
+                    $diff[abs($k->shippingAmount - $total)] = $k;
+                     }
+
+                if (@$k && $total) {
+                    ksort($diff, SORT_NUMERIC);
+                    $charge = current($diff);
+                    if (@$free_shipping) {
+                        
+                        $shippingCharge = 0;
+                    }else{
+                        $shippingCharge = $charge->shippingCharge;
+                    }
+                    
+                }else{
+                    $shippingCharge = 0; 
+                } 
+
+                $grandTotal = $total + $shippingCharge;
                 
             }else{
                 $data .='<span class="no-items">There are no more items in your cart</span>';
@@ -339,10 +399,24 @@ class CartController extends Controller
             $totalSummary .= '</div>';
             $totalSummary .= '</div>';
             $totalSummary .= '<div class="card-block cart-summary-totals">';
+
+            $totalSummary .= '<div class="cart-summary-line">';
+            $totalSummary .= '<span class="label">Sub Total&nbsp;</span>';
+            $totalSummary .= '<span class="value"> ৳ '.$total.'</span>';
+            $totalSummary .= '</div>';
+
+            $totalSummary .= '<div class="cart-summary-line">';
+            $totalSummary .= '<span class="label">Shipping Charge&nbsp;</span>';
+            $totalSummary .= '<span class="value"> ৳ '.$shippingCharge.'</span>';
+            $totalSummary .= '</div>';
+
+            $totalSummary .= '<div class="totalTop"></div>';
+
             $totalSummary .= '<div class="cart-summary-line">';
             $totalSummary .= '<span class="label">Total&nbsp;</span>';
-            $totalSummary .= '<span class="value"> ৳ '.Cart::subtotal().'</span>';
+            $totalSummary .= '<span class="value"> ৳ '.$grandTotal.'</span>';
             $totalSummary .= '</div>';
+
             $totalSummary .= '</div>';
             $totalSummary .= '</div>';
             $totalSummary .= '<div class="checkout cart-detailed-actions card-block">';
@@ -351,11 +425,10 @@ class CartController extends Controller
             $totalSummary .= '</div>';
             $totalSummary .= '</div>';
 
-            return response()->json([
-                    'cartProduct'=>$data,
-                    'cartSummary'=>$totalSummary
-                ]);
-
-        }
+        return response()->json([
+                'cartProduct'=>$data,
+                'cartSummary'=>$totalSummary
+            ]);
+    }
         
 }

@@ -60,21 +60,21 @@ class FrontendController extends Controller
 
          $featuredProductList = Product::where('status','1')
                                 ->whereRaw('FIND_IN_SET(?,productSection)',['2'])
-                                ->take(9)
+                                ->take(6)
                                 ->orderBy('orderBy','ASC')
                                 ->orderBy('name','ASC')
                                 ->get();
 
         $newProductList = Product::where('status','1')
                               ->whereRaw('FIND_IN_SET(?,productSection)',['1'])
-                              ->take(9)
+                              ->take(6)
                               ->orderBy('orderBy','ASC')
                               ->orderBy('name','ASC')
                               ->get();
 
         $bestSellProductList = Product::where('status','1')
                               ->whereRaw('FIND_IN_SET(?,productSection)',['4'])
-                              ->take(9)
+                              ->take(6)
                               ->orderBy('orderBy','ASC')
                               ->orderBy('name','ASC')
                               ->get();
@@ -129,13 +129,18 @@ class FrontendController extends Controller
 
       public function productByCategory($id){
 
-        $rootCategory = Product::where('root_category',$id)->first();
+        $catProducts = Product::whereRaw('FIND_IN_SET(?,category_id)',[$id])
+                      ->where('status',1)
+                      ->orderBy('orderBy','ASC')
+                      ->paginate(40);
 
-        if ($rootCategory) {
-         @$products = Product::whereRaw('FIND_IN_SET(?,root_category)',[$rootCategory->root_category])->where('status',1)->orderBy('orderBy','ASC')->paginate(40);
+        $rootCatProducts = Product::whereRaw('FIND_IN_SET(?,root_category)',[$id])->where('status',1)->orderBy('orderBy','ASC')->paginate(40);
+
+        if (@$catProducts) {
+         @$products = $catProducts;
 
         }else{
-          @$products = Product::whereRaw('FIND_IN_SET(?,category_id)',[$id])->where('status',1)->orderBy('orderBy','ASC')->paginate(40);
+          @$products = $rootCatProducts;
         }
          
          $category = Category::where('id',$id)->first();
