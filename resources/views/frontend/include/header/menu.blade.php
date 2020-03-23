@@ -15,6 +15,21 @@
      }
 ?>
 
+<style type="text/css">
+  .uploadListButton{
+    background: #2ac97a;
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 26px;
+  }
+</style>
+
 <div class="header-bottom hidden-lg-down">
   <div class="container">
     <div class="row">
@@ -124,20 +139,21 @@
         </div>
       </div>
 
-      <div id="_desktop_tptnheaderlinks" class="tptnheaderlinks col-xl-7">
+      <div id="_desktop_tptnheaderlinks" class="tptnheaderlinks col-xl-6">
         <div class="m-toggle">
           <i class="material-icons">more_horiz</i>
-          <span class="m-toggle-title hidden-xl-up">Links</span>
+          <span class=" hidden-xl-up">
+            <a href="{{ route('upload.itemList') }}" style="color: #fff">Upload Item</a>
+          </span>
         </div>
-        <ul>
-          <li><a href="<?php echo url('/') ?>">Home</a></li>
-          <li><a href="{{url('/about-us')}}">About Us</a></li>
-          <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
-        </ul>
-      </div>
 
-      <div id="_desktop_blockcart-wrapper" class="tptncart col-xs-2">
+      </div>
+    
+      <div id="_desktop_blockcart-wrapper" class="tptncart col-xs-3">
+        
         <div class="blockcart cart-preview">
+
+          <a href="{{ route('upload.itemList') }}" class="uploadListButton">Upload Item List</a>
           <div class="m-toggle">
             <span>
               <i class="material-icons">shopping_cart</i>

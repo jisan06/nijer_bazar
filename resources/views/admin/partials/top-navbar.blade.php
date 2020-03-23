@@ -8,7 +8,7 @@
 <nav class="navbar top-navbar navbar-expand-md navbar-dark">
     
     <div class="navbar-header">
-        <a class="navbar-brand logo-link" href="{{url('/admin')}}">
+        <a class="navbar-brand logo-link" target="_blank" href="{{url('/')}}">
             <span class="small-logo">
                 <img src="{{ asset('/').@$information->adminsmalLogo }}" alt="mini" />
             </span>

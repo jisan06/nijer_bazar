@@ -29,3 +29,5 @@
 
 <!-- Tree Menu CSS -->
 <link href="{{ asset('/public/tree-menu/TreeMenu.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/admin-elite/dist/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+

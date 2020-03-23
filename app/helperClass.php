@@ -279,8 +279,9 @@ class helperClass
         $filename = $file->getClientOriginalName(); 
         $name = pathinfo($filename, PATHINFO_FILENAME);
         $logoExtension = $file->getClientOriginalExtension();
-        if(!file_exists ($directory))
-        mkdir($directory);
+       if (!File::exists($directory)) {
+            File::makeDirectory($directory, 0775, true, true);
+        }
         $logoUrl = $directory.($name.'_'.$maxId.'.'.$logoExtension);
         if(@$width == null && @$height == null){
             move_uploaded_file($file, "$directory$name".'_'.$maxId.'.'."$logoExtension");

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 21, 2020 at 08:04 AM
--- Server version: 10.3.22-MariaDB-log-cll-lve
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: Mar 23, 2020 at 07:05 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nijerbazarcom_ecommerce`
+-- Database: `nijer_bazar`
 --
 
 -- --------------------------------------------------------
@@ -32,9 +32,9 @@ CREATE TABLE `abouts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `aboutDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -57,7 +57,7 @@ CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` text COLLATE utf8mb4_unicode_ci,
   `role` int(11) DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) DEFAULT NULL,
@@ -83,12 +83,12 @@ INSERT INTO `admins` (`id`, `name`, `email`, `username`, `role`, `password`, `st
 
 CREATE TABLE `banners` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bannerImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `bannerImage` text COLLATE utf8mb4_unicode_ci,
   `bannerStatus` tinyint(1) NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -103,12 +103,12 @@ CREATE TABLE `banners` (
 CREATE TABLE `blogs` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `blogImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blogImage` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -233,14 +233,14 @@ CREATE TABLE `cash_sale_items` (
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `categoryName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `categoryCoverImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `categoryImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `categoryStatus` tinyint(1) NOT NULL DEFAULT 1,
-  `parent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categoryCoverImage` text COLLATE utf8mb4_unicode_ci,
+  `categoryImage` text COLLATE utf8mb4_unicode_ci,
+  `categoryStatus` tinyint(1) NOT NULL DEFAULT '1',
+  `parent` text COLLATE utf8mb4_unicode_ci,
   `showInHomepage` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -326,8 +326,8 @@ CREATE TABLE `client_statement_report` (
 ,`type` varchar(255)
 ,`date` datetime
 ,`sales` varchar(255)
-,`collection` int(11)
-,`others` int(1)
+,`collection` bigint(11)
+,`others` bigint(20)
 );
 
 -- --------------------------------------------------------
@@ -338,12 +338,12 @@ CREATE TABLE `client_statement_report` (
 
 CREATE TABLE `contacts` (
   `id` int(10) UNSIGNED NOT NULL,
-  `contactName` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contactPhone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contactEmail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contactAddress` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contactTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contactMessage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactName` text COLLATE utf8mb4_unicode_ci,
+  `contactPhone` text COLLATE utf8mb4_unicode_ci,
+  `contactEmail` text COLLATE utf8mb4_unicode_ci,
+  `contactAddress` text COLLATE utf8mb4_unicode_ci,
+  `contactTitle` text COLLATE utf8mb4_unicode_ci,
+  `contactMessage` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -713,9 +713,9 @@ CREATE TABLE `contactuses` (
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new-message',
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -736,7 +736,7 @@ CREATE TABLE `credit_collections` (
   `money_receipt_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `money_receipt_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_amount` int(11) NOT NULL,
-  `remarks` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -845,13 +845,13 @@ CREATE TABLE `customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` text COLLATE utf8mb4_unicode_ci,
   `dob` date DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `confirmPassword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `clientGroup` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `gender` text COLLATE utf8mb4_unicode_ci,
+  `password` text COLLATE utf8mb4_unicode_ci,
+  `confirmPassword` text COLLATE utf8mb4_unicode_ci,
+  `clientGroup` text COLLATE utf8mb4_unicode_ci,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -874,10 +874,10 @@ INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `dob`, `address`, `gen
 CREATE TABLE `customer_groups` (
   `id` int(10) UNSIGNED NOT NULL,
   `groupName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `groupCode` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `groupCode` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `groupStatus` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -900,8 +900,8 @@ INSERT INTO `customer_groups` (`id`, `groupName`, `groupCode`, `metaTitle`, `met
 CREATE TABLE `customer_group_sections` (
   `id` int(10) UNSIGNED NOT NULL,
   `productId` int(11) DEFAULT NULL,
-  `customerGroupId` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `customerGroupPrice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customerGroupId` text COLLATE utf8mb4_unicode_ci,
+  `customerGroupPrice` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -943,6 +943,31 @@ INSERT INTO `customer_group_sections` (`id`, `productId`, `customerGroupId`, `cu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customer_request_item_list`
+--
+
+CREATE TABLE `customer_request_item_list` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `itemList` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customer_request_item_list`
+--
+
+INSERT INTO `customer_request_item_list` (`id`, `name`, `email`, `mobile`, `address`, `itemList`, `created_at`, `updated_at`) VALUES
+(1, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '01834838457', 'dhaka', 'public/uploads/item_list/WhatsApp Image 2020-02-17 at 1.26.17 PM_194315519452.jpeg', '2020-03-22 22:42:22', '2020-03-22 22:42:22'),
+(2, 'M Hasan', 'info@bis.com.bd', '01834838457', 'dhaka', 'public/uploads/item_list/WhatsApp Image 2020-02-16 at 1.30.56 PM_34739465751.jpeg', '2020-03-22 23:16:42', '2020-03-22 23:16:42');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `delivery_policies`
 --
 
@@ -950,9 +975,9 @@ CREATE TABLE `delivery_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -966,11 +991,11 @@ CREATE TABLE `delivery_policies` (
 
 CREATE TABLE `faqs` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -985,9 +1010,9 @@ CREATE TABLE `faqs` (
 
 CREATE TABLE `flash_sell` (
   `id` int(10) UNSIGNED NOT NULL,
-  `flashPrice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `flashDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `flashProduct` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `flashPrice` text COLLATE utf8mb4_unicode_ci,
+  `flashDate` text COLLATE utf8mb4_unicode_ci,
+  `flashProduct` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1002,9 +1027,9 @@ CREATE TABLE `help_centers` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1019,7 +1044,7 @@ CREATE TABLE `help_centers` (
 CREATE TABLE `invoices` (
   `id` int(10) UNSIGNED NOT NULL,
   `invoiceId` int(11) NOT NULL,
-  `orderId` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orderId` text COLLATE utf8mb4_unicode_ci,
   `productCode` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `productName` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `productQuantity` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1039,12 +1064,12 @@ CREATE TABLE `menus` (
   `id` int(10) UNSIGNED NOT NULL,
   `menuName` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `menuTitle` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `menuContent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `menuStatus` tinyint(1) NOT NULL DEFAULT 1,
-  `menuType` int(11) NOT NULL DEFAULT 1,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `menuContent` text COLLATE utf8mb4_unicode_ci,
+  `menuStatus` tinyint(1) NOT NULL DEFAULT '1',
+  `menuType` int(11) NOT NULL DEFAULT '1',
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1169,7 +1194,7 @@ CREATE TABLE `orders` (
   `qty` int(10) UNSIGNED NOT NULL,
   `weight` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
-  `discount` double(8,2) DEFAULT 0.00,
+  `discount` double(8,2) DEFAULT '0.00',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1219,9 +1244,9 @@ CREATE TABLE `payment_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1235,13 +1260,13 @@ CREATE TABLE `payment_policies` (
 
 CREATE TABLE `policies` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `icon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `icon` text COLLATE utf8mb4_unicode_ci,
   `policiesStatus` tinyint(1) NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1255,26 +1280,26 @@ CREATE TABLE `policies` (
 
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
-  `category_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `category_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   `root_category` int(10) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description1` text COLLATE utf8mb4_unicode_ci,
+  `description2` text COLLATE utf8mb4_unicode_ci,
   `deal_code` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone_no` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `qty` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `reorder_qty` int(10) UNSIGNED NOT NULL DEFAULT 5,
+  `qty` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `reorder_qty` int(10) UNSIGNED NOT NULL DEFAULT '5',
   `stockUnit` int(11) DEFAULT NULL,
   `weight` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` int(11) NOT NULL,
-  `discount` double(8,2) DEFAULT 0.00,
-  `status` tinyint(1) NOT NULL DEFAULT 0,
-  `youtubeLink` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `productSection` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tag` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` double(8,2) DEFAULT '0.00',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `youtubeLink` text COLLATE utf8mb4_unicode_ci,
+  `productSection` text COLLATE utf8mb4_unicode_ci,
+  `tag` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1460,15 +1485,15 @@ INSERT INTO `product_images` (`id`, `productId`, `images`, `created_at`, `update
 CREATE TABLE `product_sections` (
   `id` int(10) UNSIGNED NOT NULL,
   `productId` int(11) NOT NULL,
-  `hotDiscount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hotDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `specialDiscount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `specialDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hotDiscount` text COLLATE utf8mb4_unicode_ci,
+  `hotDate` text COLLATE utf8mb4_unicode_ci,
+  `specialDiscount` text COLLATE utf8mb4_unicode_ci,
+  `specialDate` text COLLATE utf8mb4_unicode_ci,
   `free_shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pre_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pre_orderDuration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `multiImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `related_product` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `multiImage` text COLLATE utf8mb4_unicode_ci,
+  `related_product` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1560,7 +1585,7 @@ INSERT INTO `product_sections` (`id`, `productId`, `hotDiscount`, `hotDate`, `sp
 --
 CREATE TABLE `product_wise_profit` (
 `date` datetime
-,`productId` int(10) unsigned
+,`productId` int(11) unsigned
 ,`categoryId` mediumtext
 ,`cashProductQty` varchar(191)
 ,`cashPriceAmount` varchar(191)
@@ -1718,9 +1743,9 @@ CREATE TABLE `refund_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1736,11 +1761,11 @@ CREATE TABLE `reviews` (
   `id` int(10) UNSIGNED NOT NULL,
   `customerId` int(11) DEFAULT NULL,
   `productId` int(11) DEFAULT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `summary` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `star` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
+  `name` text COLLATE utf8mb4_unicode_ci,
+  `summary` text COLLATE utf8mb4_unicode_ci,
+  `review` text COLLATE utf8mb4_unicode_ci,
+  `star` text COLLATE utf8mb4_unicode_ci,
+  `status` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1766,7 +1791,7 @@ CREATE TABLE `sales_collection_standings` (
 ,`type` varchar(255)
 ,`date` datetime
 ,`sales` varchar(255)
-,`collection` int(11)
+,`collection` bigint(11)
 );
 
 -- --------------------------------------------------------
@@ -1794,22 +1819,22 @@ CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `siteTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `siteName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sitefavIcon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `siteLogo` text COLLATE utf8mb4_unicode_ci,
+  `sitefavIcon` text COLLATE utf8mb4_unicode_ci,
   `adminTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminsmalLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminfavIcon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteEmail1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteEmail2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteAddress1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteAddress2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adminLogo` text COLLATE utf8mb4_unicode_ci,
+  `adminsmalLogo` text COLLATE utf8mb4_unicode_ci,
+  `adminfavIcon` text COLLATE utf8mb4_unicode_ci,
+  `mobile1` text COLLATE utf8mb4_unicode_ci,
+  `mobile2` text COLLATE utf8mb4_unicode_ci,
+  `siteEmail1` text COLLATE utf8mb4_unicode_ci,
+  `siteEmail2` text COLLATE utf8mb4_unicode_ci,
+  `siteAddress1` text COLLATE utf8mb4_unicode_ci,
+  `siteAddress2` text COLLATE utf8mb4_unicode_ci,
   `sitestatus` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1820,7 +1845,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `siteTitle`, `siteName`, `siteLogo`, `sitefavIcon`, `adminTitle`, `adminLogo`, `adminsmalLogo`, `adminfavIcon`, `mobile1`, `mobile2`, `siteEmail1`, `siteEmail2`, `siteAddress1`, `siteAddress2`, `sitestatus`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_logo_49907109594.png', 'public/uploads/site_logo/fav_icon/nijr_bazar_favicon_41551121520.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/nijr_bazar_favicon_22861544401.png', '+88 09678-669966', NULL, 'nijer.bazar@gmail.com', NULL, 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'nijerbazarcom_ecommerce || Bangladeshi Handicrafts Products', 'Handicrafts, Handicraft in Bangladesh , Nakshi Kantha , Nokshi Kantha , Nokshi Katha Design , Online Shopping BD, Salwar Kameez Bangladesh  , Handmade Jewelry, Online Shopping Bangladesh, Hater Kaj', 'Handicrafts  Item In Bangladesh, We have Nakshi Home Decor,  Nakshi ladies dress, Nakshi Kantha, Handmade item, wall hanging. handmade jewelry many more!', 1, NULL, '2020-03-18 15:34:35');
+(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_another_logo_31030759214.png', 'public/uploads/site_logo/fav_icon/Nijer-Bazar_fav_12219220416.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/Nijer-Bazar_fav_59744208900.png', '+88 09678-669966', NULL, 'nijer.bazar@gmail.com', NULL, 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'nijerbazarcom_ecommerce || Bangladeshi Handicrafts Products', 'Handicrafts, Handicraft in Bangladesh , Nakshi Kantha , Nokshi Kantha , Nokshi Katha Design , Online Shopping BD, Salwar Kameez Bangladesh  , Handmade Jewelry, Online Shopping Bangladesh, Hater Kaj', 'Handicrafts  Item In Bangladesh, We have Nakshi Home Decor,  Nakshi ladies dress, Nakshi Kantha, Handmade item, wall hanging. handmade jewelry many more!', 1, NULL, '2020-03-22 01:16:02');
 
 -- --------------------------------------------------------
 
@@ -1831,7 +1856,7 @@ INSERT INTO `settings` (`id`, `siteTitle`, `siteName`, `siteLogo`, `sitefavIcon`
 CREATE TABLE `shippings` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci,
   `mobile` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
@@ -1858,17 +1883,24 @@ INSERT INTO `shippings` (`id`, `name`, `email`, `mobile`, `address`, `status`, `
 
 CREATE TABLE `shipping_charges` (
   `id` int(10) UNSIGNED NOT NULL,
-  `shippingAmount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shippingCharge` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `shippingLocation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shippingAmount` text COLLATE utf8mb4_unicode_ci,
+  `shippingCharge` text COLLATE utf8mb4_unicode_ci,
+  `shippingLocation` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `shippingStatus` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipping_charges`
+--
+
+INSERT INTO `shipping_charges` (`id`, `shippingAmount`, `shippingCharge`, `shippingLocation`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `shippingStatus`, `created_at`, `updated_at`) VALUES
+(1, '500', '20', 'inside', NULL, NULL, NULL, NULL, 1, '2020-03-22 01:58:03', '2020-03-22 02:10:08');
 
 -- --------------------------------------------------------
 
@@ -1878,14 +1910,14 @@ CREATE TABLE `shipping_charges` (
 
 CREATE TABLE `sliders` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `source` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `source` text COLLATE utf8mb4_unicode_ci,
   `productId` int(11) DEFAULT NULL,
-  `section` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `section` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1907,15 +1939,15 @@ INSERT INTO `sliders` (`id`, `title`, `source`, `productId`, `section`, `status`
 
 CREATE TABLE `socials` (
   `id` int(10) UNSIGNED NOT NULL,
-  `facebook` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `google` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkdin` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `youtube` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` text COLLATE utf8mb4_unicode_ci,
+  `twitter` text COLLATE utf8mb4_unicode_ci,
+  `google` text COLLATE utf8mb4_unicode_ci,
+  `linkdin` text COLLATE utf8mb4_unicode_ci,
+  `youtube` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1929,9 +1961,9 @@ CREATE TABLE `socials` (
 
 CREATE TABLE `social_links` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `icon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci,
+  `icon` text COLLATE utf8mb4_unicode_ci,
+  `link` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1973,7 +2005,7 @@ CREATE TABLE `stock_status_report` (
 -- (See below for the actual view)
 --
 CREATE TABLE `stock_valuation_report` (
-`supplierId` int(11)
+`supplierId` bigint(20)
 ,`categoryId` mediumtext
 ,`productId` int(11)
 ,`cashPurchaseQty` varchar(255)
@@ -1984,9 +2016,9 @@ CREATE TABLE `stock_valuation_report` (
 ,`purchaseReturnAmount` varchar(255)
 ,`cashSaleQty` varchar(191)
 ,`cashSaleAmount` varchar(191)
-,`creditSaleQty` int(1)
-,`creditSaleAmount` int(1)
-,`salesReturnQty` int(1)
+,`creditSaleQty` bigint(20)
+,`creditSaleAmount` bigint(20)
+,`salesReturnQty` bigint(20)
 );
 
 -- --------------------------------------------------------
@@ -1999,10 +2031,10 @@ CREATE TABLE `sub_categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `subcategoryName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subcategoryStatus` tinyint(1) NOT NULL DEFAULT 1,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subcategoryStatus` tinyint(1) NOT NULL DEFAULT '1',
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2024,7 +2056,7 @@ CREATE TABLE `supplier_payments` (
   `balance` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `money_receipt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remarks` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2079,15 +2111,15 @@ CREATE TABLE `tbl_account_transactions` (
   `coa_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `coa_head_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `showroom_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `narration` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `narration` text COLLATE utf8mb4_unicode_ci,
   `debit_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `credit_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `posted` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `approve` tinyint(4) NOT NULL DEFAULT 0,
+  `approve` tinyint(4) NOT NULL DEFAULT '0',
   `approve_by` int(11) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 1,
-  `delete` tinyint(4) NOT NULL DEFAULT 0,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `delete` tinyint(4) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -2114,14 +2146,14 @@ CREATE TABLE `tbl_coa` (
   `head_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_head_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `head_level` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 1,
-  `transaction` tinyint(4) NOT NULL DEFAULT 0,
-  `general_ledger` tinyint(4) NOT NULL DEFAULT 0,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `transaction` tinyint(4) NOT NULL DEFAULT '0',
+  `general_ledger` tinyint(4) NOT NULL DEFAULT '0',
   `head_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `budget` tinyint(4) NOT NULL,
   `depreciation` tinyint(4) NOT NULL,
   `depreciation_rate` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2166,8 +2198,8 @@ CREATE TABLE `tbl_showroom` (
   `vat` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tin` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `trade_license` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2205,9 +2237,9 @@ CREATE TABLE `terms` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2366,7 +2398,8 @@ INSERT INTO `user_menus` (`id`, `parentMenu`, `menuName`, `menuLink`, `menuIcon`
 (90, '84', 'Bank Book', 'bankBook.index', 'fa fa-caret', 24, '1', '2020-02-25 00:57:21', '2020-02-25 00:57:21'),
 (91, '84', 'Income Statement', 'incomeStatement.index', 'fa fa-caret', 25, '1', '2020-02-25 00:58:11', '2020-02-25 00:58:11'),
 (92, '84', 'Receive Payment', 'receivePaymentStatement.index', 'fa fa-caret', 26, '1', '2020-02-25 00:58:45', '2020-02-25 00:58:45'),
-(93, '84', 'Trial Balance', 'trialBalance.index', 'fa fa-caret', 27, '1', '2020-02-25 01:02:01', '2020-02-25 01:02:22');
+(93, '84', 'Trial Balance', 'trialBalance.index', 'fa fa-caret', 27, '1', '2020-02-25 01:02:01', '2020-02-25 01:02:22'),
+(94, '6', 'Item Request', 'customer.itemRequest', 'fa fa-caret-right', 1, '1', '2020-03-22 06:43:46', '2020-03-22 06:43:46');
 
 -- --------------------------------------------------------
 
@@ -2556,7 +2589,9 @@ INSERT INTO `user_menu_actions` (`id`, `parentmenuId`, `menuType`, `actionName`,
 (171, 92, 11, 'Print Receive Payment Statement', 'receivePaymentStatement.print', 133, 1, '2020-02-25 01:08:17', '2020-02-25 01:08:17'),
 (172, 88, 11, 'Print Transaction Ledger', 'transactionLedger.print', 134, 1, '2020-02-25 01:10:16', '2020-02-25 01:10:16'),
 (173, 93, 11, 'Print Trial Balance', 'trialBalance.print', 135, 1, '2020-02-25 01:11:22', '2020-02-25 01:11:22'),
-(174, 86, 11, 'Print Voucher List', 'voucherList.print', 136, 1, '2020-02-25 01:12:07', '2020-02-25 01:12:07');
+(174, 86, 11, 'Print Voucher List', 'voucherList.print', 136, 1, '2020-02-25 01:12:07', '2020-02-25 01:12:07'),
+(175, 94, 8, 'Details', 'customer.itemRequestDetails', 1, 1, '2020-03-22 23:34:48', '2020-03-22 23:34:48'),
+(176, 94, 4, 'Delete', 'customer.itemRequestDelete', 2, 1, '2020-03-22 23:35:04', '2020-03-22 23:35:04');
 
 -- --------------------------------------------------------
 
@@ -2566,10 +2601,10 @@ INSERT INTO `user_menu_actions` (`id`, `parentmenuId`, `menuType`, `actionName`,
 
 CREATE TABLE `user_roles` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) DEFAULT NULL,
-  `permission` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `actionPermission` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permission` text COLLATE utf8mb4_unicode_ci,
+  `actionPermission` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2579,7 +2614,7 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `name`, `status`, `permission`, `actionPermission`, `created_at`, `updated_at`) VALUES
-(2, 'Super User', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,142,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,147,168,174,169,172,167,166,170,171,173', '2019-04-17 00:50:05', '2020-02-25 01:15:13'),
+(2, 'Super User', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,142,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,147,168,174,169,172,167,166,170,171,173,175,176', '2019-04-17 00:50:05', '2020-03-22 23:35:33'),
 (3, 'Admin', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,77,78,79,80,81,82,83', '148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,146,147', '2019-04-17 00:52:54', '2020-02-24 05:10:22');
 
 -- --------------------------------------------------------
@@ -2593,7 +2628,7 @@ CREATE TABLE `vendors` (
   `vendor_serial` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendorName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contactPerson` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `vendorAddress` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendorAddress` text COLLATE utf8mb4_unicode_ci,
   `vendorPhone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendorEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `accountCode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -2620,9 +2655,9 @@ CREATE TABLE `verify_customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `gender` text COLLATE utf8mb4_unicode_ci,
   `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `confirmPassword` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `verifyCode` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2654,7 +2689,7 @@ CREATE TABLE `view_account` (
 --
 CREATE TABLE `view_voucher_approve` (
 `showroomId` varchar(191)
-,`id` int(10) unsigned
+,`id` int(11) unsigned
 ,`showroomName` varchar(191)
 ,`voucherNo` varchar(191)
 ,`voucherType` varchar(191)
@@ -2681,7 +2716,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `product_wise_profit`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `product_wise_profit`  AS  select `cash_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_quantity` AS `cashProductQty`,`cash_sale_items`.`item_price` AS `cashPriceAmount`,`cash_sale_items`.`item_price` * 4.5 / 100 AS `cashVatAmount`,`cash_sale_items`.`item_price` * `cash_sales`.`discount_as` / 100 AS `cashDiscountAmount`,0 AS `creditProductQty`,0 AS `creditPriceAmount`,0 AS `creditVatAmount`,0 AS `creditDiscountAmount` from ((`cash_sales` join `cash_sale_items` on(`cash_sale_items`.`cash_sale_id` = `cash_sales`.`id`)) join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) union all select `credit_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,0 AS `cashProductQty`,0 AS `cashPriceAmount`,0 AS `cashVatAmount`,0 AS `cashDiscountAmount`,`credit_sale_items`.`item_quantity` AS `creditProductQty`,`credit_sale_items`.`item_price` AS `creditPriceAmount`,`credit_sale_items`.`item_price` * 4.5 / 100 AS `creditVatAmount`,`credit_sale_items`.`item_price` * `credit_sales`.`discount_as` / 100 AS `creditDiscountAmount` from ((`credit_sales` join `credit_sale_items` on(`credit_sale_items`.`credit_sale_id` = `credit_sales`.`id`)) join `products` on(`products`.`id` = `credit_sale_items`.`item_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `product_wise_profit`  AS  select `cash_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_quantity` AS `cashProductQty`,`cash_sale_items`.`item_price` AS `cashPriceAmount`,((`cash_sale_items`.`item_price` * 4.5) / 100) AS `cashVatAmount`,((`cash_sale_items`.`item_price` * `cash_sales`.`discount_as`) / 100) AS `cashDiscountAmount`,0 AS `creditProductQty`,0 AS `creditPriceAmount`,0 AS `creditVatAmount`,0 AS `creditDiscountAmount` from ((`cash_sales` join `cash_sale_items` on((`cash_sale_items`.`cash_sale_id` = `cash_sales`.`id`))) join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) union all select `credit_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,0 AS `cashProductQty`,0 AS `cashPriceAmount`,0 AS `cashVatAmount`,0 AS `cashDiscountAmount`,`credit_sale_items`.`item_quantity` AS `creditProductQty`,`credit_sale_items`.`item_price` AS `creditPriceAmount`,((`credit_sale_items`.`item_price` * 4.5) / 100) AS `creditVatAmount`,((`credit_sale_items`.`item_price` * `credit_sales`.`discount_as`) / 100) AS `creditDiscountAmount` from ((`credit_sales` join `credit_sale_items` on((`credit_sale_items`.`credit_sale_id` = `credit_sales`.`id`))) join `products` on((`products`.`id` = `credit_sale_items`.`item_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -2690,7 +2725,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `purchase_order_status`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `purchase_order_status`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_items`.`product_id` AS `productId`,`purchase_order_items`.`qty` AS `orderQty`,0 AS `receiveQty` from (`purchase_orders` join `purchase_order_items` on(`purchase_order_items`.`purchase_order_id` = `purchase_orders`.`id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_receive_items`.`product_id` AS `productId`,0 AS `orderQty`,`purchase_order_receive_items`.`qty` AS `receiveQty` from ((`purchase_order_receives` join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `purchase_orders` on(`purchase_orders`.`id` = `purchase_order_receives`.`purchaseOrderNo`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `purchase_order_status`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_items`.`product_id` AS `productId`,`purchase_order_items`.`qty` AS `orderQty`,0 AS `receiveQty` from (`purchase_orders` join `purchase_order_items` on((`purchase_order_items`.`purchase_order_id` = `purchase_orders`.`id`))) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_receive_items`.`product_id` AS `productId`,0 AS `orderQty`,`purchase_order_receive_items`.`qty` AS `receiveQty` from ((`purchase_order_receives` join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `purchase_orders` on((`purchase_orders`.`id` = `purchase_order_receives`.`purchaseOrderNo`))) ;
 
 -- --------------------------------------------------------
 
@@ -2708,7 +2743,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `sales_contribution`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `sales_contribution`  AS  select `products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,sum(`cash_sale_items`.`item_quantity`) AS `cashSaleQty`,sum(`cash_sale_items`.`item_price`) AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount` from (`cash_sale_items` join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) group by `cash_sale_items`.`item_id` union all select `products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,sum(`credit_sale_items`.`item_quantity`) AS `creditSaleQty`,sum(`credit_sale_items`.`item_price`) AS `creditSaleAmount` from (`credit_sale_items` join `products` on(`products`.`id` = `credit_sale_items`.`item_id`)) group by `credit_sale_items`.`item_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `sales_contribution`  AS  select `products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,sum(`cash_sale_items`.`item_quantity`) AS `cashSaleQty`,sum(`cash_sale_items`.`item_price`) AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount` from (`cash_sale_items` join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) group by `cash_sale_items`.`item_id` union all select `products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,sum(`credit_sale_items`.`item_quantity`) AS `creditSaleQty`,sum(`credit_sale_items`.`item_price`) AS `creditSaleAmount` from (`credit_sale_items` join `products` on((`products`.`id` = `credit_sale_items`.`item_id`))) group by `credit_sale_items`.`item_id` ;
 
 -- --------------------------------------------------------
 
@@ -2717,7 +2752,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `stock_status_report`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `cash_sale_items` on(`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `cash_sales` on(`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`)) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `credit_sale_items` on(`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `credit_sales` on(`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`)) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) join `cash_sale_items` on((`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`))) join `cash_sales` on((`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`))) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) join `credit_sale_items` on((`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`))) join `credit_sales` on((`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`))) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` ;
 
 -- --------------------------------------------------------
 
@@ -2726,7 +2761,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `stock_valuation_report`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_valuation_report`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_purchase_item`.`product_id` AS `productId`,`cash_purchase_item`.`qty` AS `cashPurchaseQty`,`cash_purchase_item`.`amount` AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`cash_purchase_item` join `cash_purchase` on(`cash_purchase`.`id` = `cash_purchase_item`.`cash_puchase_id`)) join `products` on(`products`.`id` = `cash_purchase_item`.`product_id`)) union all select `credit_purchases`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`credit_purchase_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,`credit_purchase_items`.`qty` AS `creditPurchaseQty`,`credit_purchase_items`.`amount` AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`credit_purchase_items` join `credit_purchases` on(`credit_purchases`.`id` = `credit_purchase_items`.`credit_puchase_id`)) join `products` on(`products`.`id` = `credit_purchase_items`.`product_id`)) union all select `purchase_returns`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`purchase_return_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,`purchase_return_items`.`qty` AS `purchaseReturnQty`,`purchase_return_items`.`amount` AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`purchase_return_items` join `purchase_returns` on(`purchase_returns`.`id` = `purchase_return_items`.`purchase_return_id`)) join `products` on(`products`.`id` = `purchase_return_items`.`product_id`)) union all select 0 AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,`cash_sale_items`.`item_price` AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from (`cash_sale_items` join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_valuation_report`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_purchase_item`.`product_id` AS `productId`,`cash_purchase_item`.`qty` AS `cashPurchaseQty`,`cash_purchase_item`.`amount` AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`cash_purchase_item` join `cash_purchase` on((`cash_purchase`.`id` = `cash_purchase_item`.`cash_puchase_id`))) join `products` on((`products`.`id` = `cash_purchase_item`.`product_id`))) union all select `credit_purchases`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`credit_purchase_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,`credit_purchase_items`.`qty` AS `creditPurchaseQty`,`credit_purchase_items`.`amount` AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`credit_purchase_items` join `credit_purchases` on((`credit_purchases`.`id` = `credit_purchase_items`.`credit_puchase_id`))) join `products` on((`products`.`id` = `credit_purchase_items`.`product_id`))) union all select `purchase_returns`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`purchase_return_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,`purchase_return_items`.`qty` AS `purchaseReturnQty`,`purchase_return_items`.`amount` AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`purchase_return_items` join `purchase_returns` on((`purchase_returns`.`id` = `purchase_return_items`.`purchase_return_id`))) join `products` on((`products`.`id` = `purchase_return_items`.`product_id`))) union all select 0 AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,`cash_sale_items`.`item_price` AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from (`cash_sale_items` join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -2744,7 +2779,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `supply_payment_summery`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `supply_payment_summery`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`cash_purchase`.`type` AS `type`,`cash_purchase`.`voucher_date` AS `date`,`cash_purchase`.`total_amount` AS `purchase`,`cash_purchase`.`total_amount` AS `payment` from `cash_purchase` union all select `credit_purchases`.`supplier_id` AS `supplierId`,`credit_purchases`.`type` AS `type`,`credit_purchases`.`voucher_date` AS `date`,`credit_purchases`.`total_amount` AS `purchase`,0 AS `payment` from `credit_purchases` union all select `purchase_orders`.`supplier_id` AS `supplierId`,'Order Receive' AS `type`,`purchase_order_receives`.`receive_date` AS `date`,`purchase_order_receives`.`total_amount` AS `purchase`,0 AS `payment` from (`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) union all select `supplier_payments`.`supplier_id` AS `supplierId`,'Payment' AS `type`,`supplier_payments`.`payment_date` AS `date`,0 AS `purchase`,`supplier_payments`.`payment_now` AS `payment` from `supplier_payments` order by `type`,`supplierId` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `supply_payment_summery`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`cash_purchase`.`type` AS `type`,`cash_purchase`.`voucher_date` AS `date`,`cash_purchase`.`total_amount` AS `purchase`,`cash_purchase`.`total_amount` AS `payment` from `cash_purchase` union all select `credit_purchases`.`supplier_id` AS `supplierId`,`credit_purchases`.`type` AS `type`,`credit_purchases`.`voucher_date` AS `date`,`credit_purchases`.`total_amount` AS `purchase`,0 AS `payment` from `credit_purchases` union all select `purchase_orders`.`supplier_id` AS `supplierId`,'Order Receive' AS `type`,`purchase_order_receives`.`receive_date` AS `date`,`purchase_order_receives`.`total_amount` AS `purchase`,0 AS `payment` from (`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) union all select `supplier_payments`.`supplier_id` AS `supplierId`,'Payment' AS `type`,`supplier_payments`.`payment_date` AS `date`,0 AS `purchase`,`supplier_payments`.`payment_now` AS `payment` from `supplier_payments` order by `type`,`supplierId` ;
 
 -- --------------------------------------------------------
 
@@ -2753,7 +2788,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `view_account`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_account`  AS  select `tab1`.`showroom_id` AS `showroomId`,`tab1`.`voucher_no` AS `voucherNo`,`tab1`.`voucher_type` AS `voucherType`,`tab1`.`coa_head_code` AS `debitHeadCode`,`debitcoa`.`head_name` AS `debitHeadname`,`tab2`.`coa_head_code` AS `creditHeadcode`,`creditcoa`.`head_name` AS `creditHeadName` from (((`tbl_account_transactions` `tab1` join `tbl_account_transactions` `tab2` on(`tab2`.`voucher_no` = `tab1`.`voucher_no`)) join `tbl_coa` `debitcoa` on(`debitcoa`.`head_code` = `tab1`.`coa_head_code`)) join `tbl_coa` `creditcoa` on(`creditcoa`.`head_code` = `tab2`.`coa_head_code`)) where `tab1`.`debit_amount` <> 0 and `tab2`.`credit_amount` <> 0 order by `tab1`.`voucher_no` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_account`  AS  select `tab1`.`showroom_id` AS `showroomId`,`tab1`.`voucher_no` AS `voucherNo`,`tab1`.`voucher_type` AS `voucherType`,`tab1`.`coa_head_code` AS `debitHeadCode`,`debitcoa`.`head_name` AS `debitHeadname`,`tab2`.`coa_head_code` AS `creditHeadcode`,`creditcoa`.`head_name` AS `creditHeadName` from (((`tbl_account_transactions` `tab1` join `tbl_account_transactions` `tab2` on((`tab2`.`voucher_no` = `tab1`.`voucher_no`))) join `tbl_coa` `debitcoa` on((`debitcoa`.`head_code` = `tab1`.`coa_head_code`))) join `tbl_coa` `creditcoa` on((`creditcoa`.`head_code` = `tab2`.`coa_head_code`))) where ((`tab1`.`debit_amount` <> 0) and (`tab2`.`credit_amount` <> 0)) order by `tab1`.`voucher_no` ;
 
 -- --------------------------------------------------------
 
@@ -2762,7 +2797,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `view_voucher_approve`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_voucher_approve`  AS  select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`credit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'DV' and `tbl_account_transactions`.`debit_amount` = 0 union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`debit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'CV' and `tbl_account_transactions`.`credit_amount` = 0 union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'JV' group by `tbl_account_transactions`.`voucher_no` union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'OB' group by `tbl_account_transactions`.`voucher_no` order by `voucherNo` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_voucher_approve`  AS  select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`credit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where ((`tbl_account_transactions`.`voucher_type` = 'DV') and (`tbl_account_transactions`.`debit_amount` = 0)) union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`debit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where ((`tbl_account_transactions`.`voucher_type` = 'CV') and (`tbl_account_transactions`.`credit_amount` = 0)) union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where (`tbl_account_transactions`.`voucher_type` = 'JV') group by `tbl_account_transactions`.`voucher_no` union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where (`tbl_account_transactions`.`voucher_type` = 'OB') group by `tbl_account_transactions`.`voucher_no` order by `voucherNo` ;
 
 --
 -- Indexes for dumped tables
@@ -2899,6 +2934,12 @@ ALTER TABLE `customer_groups`
 -- Indexes for table `customer_group_sections`
 --
 ALTER TABLE `customer_group_sections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_request_item_list`
+--
+ALTER TABLE `customer_request_item_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3222,7 +3263,7 @@ ALTER TABLE `cash_sale_items`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `checkouts`
@@ -3295,6 +3336,12 @@ ALTER TABLE `customer_groups`
 --
 ALTER TABLE `customer_group_sections`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `customer_request_item_list`
+--
+ALTER TABLE `customer_request_item_list`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `delivery_policies`
@@ -3450,7 +3497,7 @@ ALTER TABLE `shippings`
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`
@@ -3486,7 +3533,7 @@ ALTER TABLE `supplier_payments`
 -- AUTO_INCREMENT for table `tbl_account_transactions`
 --
 ALTER TABLE `tbl_account_transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT for table `tbl_coa`
@@ -3498,7 +3545,7 @@ ALTER TABLE `tbl_coa`
 -- AUTO_INCREMENT for table `tbl_showroom`
 --
 ALTER TABLE `tbl_showroom`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -3528,13 +3575,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_menus`
 --
 ALTER TABLE `user_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `user_menu_actions`
 --
 ALTER TABLE `user_menu_actions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

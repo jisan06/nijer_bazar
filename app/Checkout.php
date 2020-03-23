@@ -13,11 +13,6 @@ class Checkout extends Model
         'shipping_id', 'customer_id', 'status'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'created_at', 'updated_at',
     ];

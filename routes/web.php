@@ -15,6 +15,10 @@ Route::prefix('admin')->group(function()
 		Route::get('/monthly-sales/{id}', 'Admin\OrderController@monthlySales');
 
 		//route for pending, complete, processing, shipping orders
+		Route::get('/customer-item-request','Admin\OrderController@CustomerRequestItemList')->name('customer.itemRequest');
+		Route::get('/customer-item-request-details/{id}','Admin\OrderController@CustomerRequestItemDetails')->name('customer.itemRequestDetails');
+		Route::post('/customer-item-request-delete', 'Admin\OrderController@CustomerRequestItemDelete')->name('customer.itemRequestDelete');
+
 		Route::get('/new-order','Admin\OrderController@neworderList')->name('order.new');
 		Route::get('/processing-order', 'Admin\OrderController@processingOrder')->name('order.processing');
 		Route::get('/shipping-order', 'Admin\OrderController@shippingOrder')->name('order.shipping');
@@ -683,6 +687,10 @@ Route::prefix('admin')->group(function()
 //frontend url start from here
 Route::get('/', 'FrontendController@index')->name('home.index');
 Route::get('/search', 'FrontendController@searchProduct')->name('product.search');
+
+//upload item list
+Route::get('/upload-itemlist', 'FrontendController@UploadItem')->name('upload.itemList');
+Route::post('/upload-itemlist', 'FrontendController@UploadItem')->name('upload.itemList');
 
 //view product
 /*Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product.single');*/

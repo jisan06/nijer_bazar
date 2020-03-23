@@ -23,6 +23,7 @@ use App\Terms;
 use App\Blog;
 use App\Settings;
 use App\ProductSections;
+use App\CustomerRequestItemList;
 
 
 class FrontendController extends Controller
@@ -321,6 +322,25 @@ class FrontendController extends Controller
      return view('frontend.blog.blogDetails')->with(compact('blogs'));
     }
 
+    public function UploadItem(Request $request){
+      $title = "Upload Your Item List";
+      if(count($request->all()) > 0){
+        if (isset($request->itemList)) {
+              $itemList = \App\helperClass::UploadImage($request->itemList,'customer_request_item_list','public/uploads/item_list/');
+            }
+          $customerRequestItem = CustomerRequestItemList::create([
+            'name'=>$request->fullName,
+            'email'=>$request->email,
+            'mobile'=>$request->phone,
+            'address'=>$request->address,
+            'itemList'=>$itemList,
+          ]);
+
+          $message = "<h3 style='display:inline-block;width:auto;' class='alert alert-success'>Your Item List Uploaded Successfully</h3>"; 
+        return redirect(route('upload.itemList'))->with('msg',$message);
+      }
+      return view('frontend.order.upload_item')->with(compact('title'));
+    }
 
     public function page404()
     {

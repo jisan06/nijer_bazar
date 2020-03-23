@@ -44,6 +44,9 @@
 <!-- This is data table -->
 <script src="{{ asset('/public/admin-elite/assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>
 
+<script type="text/javascript" src="{{ asset('/public/admin-elite/dist/js/jquery.fancybox.min.js') }}"></script>
+
+
 <!-- This is Tree Menu JS  -->
 <script src="{{ asset('/public/tree-menu/TreeMenu.js') }}"></script>
 
@@ -118,3 +121,4 @@
 		});
 	} );
 </script>
+

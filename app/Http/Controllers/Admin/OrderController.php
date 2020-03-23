@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use DB;
 use PDF;
 use App\Checkout;
@@ -12,10 +13,28 @@ use App\Transaction;
 use App\Product;
 use App\Settings;
 use App\ProductSections;
-use Illuminate\Http\Request;
+use App\CustomerRequestItemList;
 
 class OrderController extends Controller
-{
+{   public function CustomerRequestItemList(){
+        $title = "Customer Request Item List";
+        $customerItemRequestList = CustomerRequestItemList::orderBy('id','dsc')->get();
+        return view('admin.customers_item_request.index')->with(compact('title','customerItemRequestList'));
+    }
+
+    public function CustomerRequestItemDetails($id){
+        $title = "Customer Request Item Details";
+        $customerItemRequest = CustomerRequestItemList::where('id',$id)->first();
+        return view('admin.customers_item_request.details')->with(compact('title','customerItemRequest'));
+    }
+
+    public function CustomerRequestItemDelete(Request $request)
+    {
+        $customerItemRequest =  CustomerRequestItemList::find($request->customerItemRequestId);
+        @unlink($customerItemRequest->itemList);
+        $customerItemRequest->delete();
+    }
+
     public function neworderList()
     {
         $title = "Manage Pending Orders";

@@ -12523,6 +12523,10 @@ body#product #block-reassurance {
     #header .user-info .dropdown-content {
         left: 0
     }
+
+    .uploadListButton{
+        display: none !important;
+    }
     #header .tptnheaderlinks {
         position: relative;
         z-index: 102
