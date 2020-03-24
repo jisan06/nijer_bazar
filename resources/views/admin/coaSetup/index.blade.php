@@ -40,7 +40,7 @@
 			                            $visit[$i] = false;
 			                            $i++;
 			                        }
-			                        echo \App\HelperClass::makeTree("COA","0",$coaLists,$visit,0);
+			                        echo \App\helperClass::makeTree("COA","0",$coaLists,$visit,0);
 		                    	@endphp
 		                    </ul>
 		                </div>

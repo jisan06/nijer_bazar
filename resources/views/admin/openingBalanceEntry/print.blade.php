@@ -47,8 +47,8 @@
                     <td>{{ $sl++ }}</td>
                     <td>{{ $transactionList->voucher_no }}</td>
                     <td>{{ date('d-m-Y',strtotime($transactionList->voucher_date)) }}</td>
-                    <td>{{ $accountHeadName->debitHeadname }}</td>
-                    <td>{{ $accountHeadName->creditHeadName }}</td>
+                    <td>{{ @$accountHeadName->debitHeadname }}</td>
+                    <td>{{ @$accountHeadName->creditHeadName }}</td>
                     <td align="center">
                         @php
                             if ($transactionList->approve == 1)

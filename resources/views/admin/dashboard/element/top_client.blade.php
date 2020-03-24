@@ -1,13 +1,13 @@
 <div class="col-lg-4 col-md-4">
     <div class="card ordertable">
-     <div class="card-body" style="min-height: 441px;">
+     <div style="min-height: 441px;">
         <h4 class="card-title" style="float: left;">Top Client </h4>
             <div class="table-responsive">
                 <table id="checkoutsTable" class="table table-bordered table-striped"  name="checkoutsTable">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Amount</th>
+                            <th>Product Name</th>
+                            <th style="text-align: right;">Amount</th>
 
                         </tr>
                     </thead>
@@ -18,7 +18,7 @@
                             ?>
                             <tr>
                                 <td>{{$customer->name}}</td>
-                                <td>{{$customer->sum}}</td>
+                                <td style="text-align: right;">{{$customer->sum}}</td>
 
                                 <?php } ?>
                     </tbody>

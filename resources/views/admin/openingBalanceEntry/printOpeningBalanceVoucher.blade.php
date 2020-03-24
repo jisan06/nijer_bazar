@@ -68,7 +68,7 @@
             <tr>
                 <th style="text-align: left; padding: 10px" colspan="4">	                
 	                @php
-	                    $inWords = \App\HelperClass::numberToWords($totalDebit);
+	                    $inWords = \App\helperClass::numberToWords($totalDebit);
 	                @endphp
 	                In Words : {{ $inWords }} Taka Only.
                 	<b></b>

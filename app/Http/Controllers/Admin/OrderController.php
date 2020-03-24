@@ -17,13 +17,13 @@ use App\CustomerRequestItemList;
 
 class OrderController extends Controller
 {   public function CustomerRequestItemList(){
-        $title = "Customer Request Item List";
+        $title = "Customer Sleep Request List";
         $customerItemRequestList = CustomerRequestItemList::orderBy('id','dsc')->get();
         return view('admin.customers_item_request.index')->with(compact('title','customerItemRequestList'));
     }
 
     public function CustomerRequestItemDetails($id){
-        $title = "Customer Request Item Details";
+        $title = "Customer Sleep Request Details";
         $customerItemRequest = CustomerRequestItemList::where('id',$id)->first();
         return view('admin.customers_item_request.details')->with(compact('title','customerItemRequest'));
     }

@@ -7,6 +7,7 @@
     use App\Checkout;
     use App\Transaction;
     use App\Order;
+    use App\CustomerRequestItemList;
 
     $allCustomer = Customer::all();
     $customerCount = $allCustomer->count();
@@ -23,7 +24,7 @@
     $productCount = Product::where('status',1)->count();
 
     $newOrderCount = Checkout::where('status','Waiting')->count();
-    $completeOrderCount = Checkout::where('status','Complete')->count();
+    $sleepOrderCount = CustomerRequestItemList::count();
 
     $orders = DB::table('checkouts')
     ->join('shippings', 'checkouts.shipping_id', '=', 'shippings.id')
@@ -106,9 +107,23 @@
     }
 
     table thead{
-        line-height: 4px;
+        line-height: 20px;
+        background-color: #10cb9c;
     }
 
+    table thead th{
+        font-weight: bold !important;
+        text-transform: uppercase;
+    }
+
+    .card{
+        padding-top: 5px;
+    }
+
+    .card-title{
+        padding-left: 5px;
+        padding-right: 10px;
+    }
 </style>
 
 <div class="container-fluid">
@@ -145,10 +160,10 @@
                         <div class="d-flex no-block align-items-center">
                             <div>
                                 <h3><i class="icon-note"></i></h3>
-                                <p class="text-muted">Complete Order</p>
+                                <p class="text-muted">Sleep Request</p>
                             </div>
                             <div class="ml-auto">
-                                <h2 class="counter text-cyan"><a href="{{route('orderlist.complete')}}">{{$completeOrderCount}}</a></h2>
+                                <h2 class="counter text-cyan"><a href="{{route('customer.itemRequest')}}">{{$sleepOrderCount}}</a></h2>
                             </div>
                         </div>
                     </div>

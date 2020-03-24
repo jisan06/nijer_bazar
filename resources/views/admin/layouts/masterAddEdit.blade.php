@@ -113,7 +113,7 @@
 
             <!-- footer -->
             <footer class="footer">
-                © {{ date('Y') }} Developed by <a target="_blank" href="http://www.technoparkbd.com/">Techno Park</a>           
+                © @php echo Date('Y') @endphp Developed by <a target="_blank" href="http://www.technoparkbd.com/">Techno Park Bangladesh</a>     
             </footer>
             <!-- End footer -->
 

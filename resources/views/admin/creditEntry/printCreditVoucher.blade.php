@@ -42,7 +42,7 @@
             <tr>
                 <th style="text-align: left; padding: 10px" colspan="2">	                
 	                @php
-	                    $inWords = \App\HelperClass::numberToWords($creditEntry->debit_amount);
+	                    $inWords = \App\helperClass::numberToWords($creditEntry->debit_amount);
 	                @endphp
 	                In Words : {{ $inWords }} Taka Only.
                 	<b></b>

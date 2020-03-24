@@ -433,13 +433,54 @@ class ProductController extends Controller
         return redirect(route('flashSell'))->with('msg','Flash Product Updated Successfully');
     }
 
+     public function ProductQuickUpdateList()
+    {
+        $title = "Quick Product Update";
+        $categories = Category::where('categoryStatus',1)
+            ->orderBy('categoryName','asc')
+            ->get();
+        $products = Product::select('products.*','categories.id as catId','categories.categoryName as catName',DB::raw('(select images from product_images where product_images.productId = products.id order by id asc limit 1) as images'))
+            ->leftjoin('categories','categories.id','=','products.category_id')
+            ->leftjoin('product_images','product_images.productId','=','products.id')
+            ->orderBy('categories.categoryName','asc')
+            ->orderBy('products.name','asc')
+            ->where('products.status','1')
+            ->get();
 
-    /**
-     * Internal function for validation.
-     *
-     * @param  $request
-     * @return \validation
-     */
-    
+        return view('admin.product.product_quick_update_list')->with(compact('title','products','categories'));
+    }
+
+    public function ProductQuickUpdate(Request $request){
+        $this->validate(request(), [
+            'category_id' => 'required',
+            'name' => 'required|string',
+            'deal_code' => 'required',                              
+            'price' => 'required',            
+            'discount' => 'nullable|numeric',         
+        ]);
+      
+        $productId = $request->productId;
+        $product = Product::find($productId);
+        /*if($request->category_id){
+           $category_id = implode(',', @$request->category_id); 
+        }*/
         
+       $allCategory = Category::where('id',@$request->category_id)->first();
+       if ($allCategory->parent) {
+           $root_category = $allCategory->parent;
+       }else{
+            $root_category =  @$category_id;
+       }
+
+        $product->update( [
+            'root_category' => @$root_category,
+            'category_id' => @$request->category_id,
+            'name' => $request->name,
+            'deal_code' => $request->deal_code,
+            'price' => $request->price,
+            'discount' => $request->discount,                    
+            'orderBy' => $request->orderBy,                             
+        ]);
+    }
+     
 }

@@ -88,7 +88,7 @@
             <table class="table table-hover no-wrap">
                 <thead>
                     <tr>
-                        <th width="71%">NAME</th>
+                        <th width="71%">Product Name</th>
                         <th>Amount</th>
                     </tr>
                 </thead>

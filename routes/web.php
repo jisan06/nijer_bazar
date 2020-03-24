@@ -111,6 +111,9 @@ Route::prefix('admin')->group(function()
 
 		Route::post('/single-product-destroy', 'Admin\ProductController@destroy')->name('single-product-destroy');
 
+		Route::get('/product-quick-update', 'Admin\ProductController@ProductQuickUpdateList')->name('product.quickUpdateList');
+		Route::post('/product-quick-update', 'Admin\ProductController@ProductQuickUpdate')->name('product.quickUpdate');
+
 		//route for flash sell
 		Route::get('/flash-sell', 'Admin\ProductController@FlashSell')->name('flashSell');
 		Route::post('/flash-sell-update', 'Admin\ProductController@FlashSellUpdate')->name('flashSell.update');

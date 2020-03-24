@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 23, 2020 at 07:05 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.26
+-- Host: localhost:3306
+-- Generation Time: Mar 24, 2020 at 01:48 PM
+-- Server version: 10.3.22-MariaDB-log-cll-lve
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nijer_bazar`
+-- Database: `nijerbazarcom_ecommerce`
 --
 
 -- --------------------------------------------------------
@@ -32,9 +32,9 @@ CREATE TABLE `abouts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `aboutDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -45,7 +45,7 @@ CREATE TABLE `abouts` (
 --
 
 INSERT INTO `abouts` (`id`, `title`, `aboutDescription`, `metaTitle`, `metaKeyword`, `metaDescription`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nijer Bazar', '<h4 class=\"dropdown-item\"><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Nijer bazar, A type of embroidered quilt, is a centuries-old Bengali art tradition of the Bengali Region, The basic material used is thread and old cloth.</span><sup><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\"> </span></sup><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Nakshi kanthas are made throughout Bangladesh, but the greater Mymensingh, Jamalpur, Bogra, Rajshahi, Faridpur and Jessore areas are most famous for this craft.\r\n</span></h4><h4><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">The colourful patterns and designs that are embroidered resulted in the name \"Nakshi Kantha\", which was derived from the Bengali  word \"naksha\", which refers to artistic patterns.</span><sup><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\"> </span></sup><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">The early kanthas had a white background accented with red, blue and \r\nblack embroidery; later yellow, green, pink and other colours were also \r\nincluded. The running stitch called \"kantha stitch\" is the main stitch used for the purpose.Traditionally, kantha was produced for the use of the family. Today, \r\nafter the revival of the nakshi kantha, they are produced commercially.\r\n</span></h4><h4><br></h4><h4 style=\"text-align: justify;\"><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Different forms of the running kantha \r\nstitch are named according to the pattern each creates. While each \r\nkantha has designs that are unique to its maker’s imagination, usually \r\nthere is a basic traditional pattern. Some of the most common motifs \r\nused are: lotus, solar, moon, chakra or wheel, swastika, tree-of-life, \r\nkalka, water, mountain, fish, boat, agricultural items and animals \r\n(elephant, horses, peacocks, tiger, monkeys, etc).</span><span style=\"font-family: \" verdana\";\"=\"\">﻿</span></h4><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">\r\n</span><h4><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Chok Par :- eye border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Barfi Par :- diamond border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Beki Par :- wavy or bent&nbsp;</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Nolok Taga :- nose ring border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Maach Par :- fish border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Chok Taga :- eye motif border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Dheu Par :- wavy border</span><br><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">Gaach Par :- tree border</span></h4><h4><br></h4><h4><span style=\"font-family: \" verdana\";\"=\"\" tahoma\";\"=\"\">The revival of Nakshi Kantha has not only generated an interest and \r\nappreciation for this indigenous folk art of Bengal, but has also helped\r\n to provide a livelihood for thousands of rural women who would \r\notherwise be unemployed or underemployed. Aarong has played an \r\ninstrumental role in reviving the kantha art since the late ‘70s by \r\ntraining and supporting thousands of rural women in its various centers,\r\n which focus specifically on the making of Nakshi Kantha and other \r\nproducts, made from this art. It has helped to make this invaluable art \r\nbe integrated in Bangladesh’s cultural life and also promoted its value \r\nand recognition on an international level.</span></h4>', NULL, NULL, NULL, 1, NULL, '2020-02-06 03:26:39');
+(1, 'Nijer Bazar', '<h4 class=\"dropdown-item\"><p style=\"font-family: Exo, sans-serif; font-size: 16px; text-align: justify; white-space: normal; outline-style: initial !important; outline-width: 0px !important;\">Nijer Bazar is the online platform, one of the largest retail supermarket in Bangladesh. Nijer Bazar is a concern of Techno Park Bangladesh, a business entity that’s defining the standards in innovation and service quality in the nation.</p><p style=\"font-family: Exo, sans-serif; font-size: 16px; text-align: justify; white-space: normal; outline-style: initial !important; outline-width: 0px !important;\">Thanks to its fresh products, quality service and innovative organic offerings, today Nijer Bazar stands as a leader in its sector. In order to offer the best possible price to its valuable customers, produce items are procured directly from the farmers, cutting the middlemen, while ensuring highest quality, freshness and continuous availability.</p></h4>', 'Online Grocery Shop', 'Online Bazar, Gore Bazar,', 'Online Shopping with Home Delivery System', 1, NULL, '2020-03-22 18:37:10');
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` text COLLATE utf8mb4_unicode_ci,
+  `username` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int(11) DEFAULT NULL,
@@ -83,12 +83,12 @@ INSERT INTO `admins` (`id`, `name`, `email`, `username`, `role`, `password`, `st
 
 CREATE TABLE `banners` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci,
-  `bannerImage` text COLLATE utf8mb4_unicode_ci,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bannerImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bannerStatus` tinyint(1) NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -103,12 +103,12 @@ CREATE TABLE `banners` (
 CREATE TABLE `blogs` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `blogImage` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `blogImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -233,14 +233,14 @@ CREATE TABLE `cash_sale_items` (
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `categoryName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `categoryCoverImage` text COLLATE utf8mb4_unicode_ci,
-  `categoryImage` text COLLATE utf8mb4_unicode_ci,
-  `categoryStatus` tinyint(1) NOT NULL DEFAULT '1',
-  `parent` text COLLATE utf8mb4_unicode_ci,
+  `categoryCoverImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categoryImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categoryStatus` tinyint(1) NOT NULL DEFAULT 1,
+  `parent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `showInHomepage` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -251,24 +251,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `categoryName`, `categoryCoverImage`, `categoryImage`, `categoryStatus`, `parent`, `showInHomepage`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(17, 'Electronics', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-02-05 03:15:33', '2020-02-05 03:16:47'),
-(18, 'Clothing', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-02-05 03:16:17', '2020-02-05 03:16:40'),
-(19, 'Furniture', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 3, '2020-02-05 03:16:26', '2020-02-05 03:16:55'),
-(20, 'Television', NULL, NULL, 1, '17', NULL, NULL, NULL, NULL, 1, '2020-02-05 03:24:20', '2020-02-05 03:24:20'),
-(26, 'Smarphone', NULL, NULL, 1, '17', 'yes', NULL, NULL, NULL, 2, '2020-02-05 03:26:11', '2020-02-05 03:26:46'),
-(27, 'Ladies Corner', NULL, 'public/uploads/category_image/20200108_094841.jpg', 1, '17', 'yes', NULL, NULL, NULL, 3, '2020-02-05 03:26:22', '2020-02-05 03:38:02'),
-(28, 'LED', NULL, NULL, 1, '17', 'yes', NULL, NULL, NULL, 4, '2020-02-05 03:27:16', '2020-02-05 03:27:16'),
-(29, 'Mens Collection', NULL, NULL, 1, '18', 'yes', NULL, NULL, NULL, 1, '2020-02-05 03:27:41', '2020-02-05 03:27:41'),
-(30, 'Womens Collection', NULL, NULL, 1, '18', 'yes', NULL, NULL, NULL, 2, '2020-02-05 03:27:54', '2020-02-05 03:27:54'),
-(31, 'Kids Collection', NULL, NULL, 1, '18', 'yes', NULL, NULL, NULL, 3, '2020-02-05 03:28:06', '2020-02-05 03:28:06'),
-(32, 'Accessories', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 4, '2020-02-05 03:28:52', '2020-02-05 03:28:52'),
-(33, 'Refrigerator', NULL, NULL, 1, '17', 'yes', NULL, NULL, NULL, 5, '2020-02-05 23:55:19', '2020-02-05 23:55:19'),
-(34, 'Office Table', NULL, NULL, 1, '19', 'yes', NULL, NULL, NULL, 1, '2020-02-06 02:51:50', '2020-02-06 02:51:50'),
-(35, 'Interior Sofa', NULL, NULL, 1, '19', 'yes', NULL, NULL, NULL, 2, '2020-02-06 02:52:09', '2020-02-06 02:52:09'),
-(36, 'Dining Table', NULL, NULL, 1, '19', 'yes', NULL, NULL, NULL, 3, '2020-02-06 02:52:27', '2020-02-06 02:52:27'),
-(37, 'Designer Curtains', NULL, NULL, 1, '19', 'yes', NULL, NULL, NULL, 4, '2020-02-06 02:52:48', '2020-02-06 02:52:48'),
+(18, 'Frozen Food', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-02-05 03:16:17', '2020-03-22 18:26:00'),
 (38, 'Vagetable', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-03-18 13:48:03', '2020-03-18 13:48:03'),
-(39, 'Fish and Meet', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-03-21 10:10:24', '2020-03-21 13:17:40');
+(39, 'Fish and Meet', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-03-21 10:10:24', '2020-03-21 13:17:40'),
+(41, 'Grocery', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-03-22 13:30:17', '2020-03-22 13:30:17');
 
 -- --------------------------------------------------------
 
@@ -294,8 +280,8 @@ INSERT INTO `checkouts` (`id`, `shipping_id`, `customer_id`, `status`, `deleted_
 (1, 4, NULL, 'Waiting', '2020-01-04 17:59:42', '2020-01-04 17:56:08', '2020-01-04 17:59:42'),
 (2, 5, NULL, 'Waiting', '2020-01-04 17:58:50', '2020-01-04 17:58:15', '2020-01-04 17:58:50'),
 (3, 4, NULL, 'Waiting', '2020-02-05 06:17:07', '2020-02-05 01:07:26', '2020-02-05 06:17:07'),
-(4, 5, NULL, 'Waiting', NULL, '2020-02-05 01:08:13', '2020-02-05 01:08:13'),
-(5, 6, NULL, 'Complete', NULL, '2020-02-05 06:17:37', '2020-02-15 16:39:20');
+(4, 5, NULL, 'Waiting', '2020-03-24 09:03:47', '2020-02-05 01:08:13', '2020-03-24 09:03:47'),
+(5, 6, NULL, 'Complete', '2020-03-24 19:02:14', '2020-02-05 06:17:37', '2020-03-24 19:02:14');
 
 -- --------------------------------------------------------
 
@@ -326,8 +312,8 @@ CREATE TABLE `client_statement_report` (
 ,`type` varchar(255)
 ,`date` datetime
 ,`sales` varchar(255)
-,`collection` bigint(11)
-,`others` bigint(20)
+,`collection` int(11)
+,`others` int(1)
 );
 
 -- --------------------------------------------------------
@@ -338,12 +324,12 @@ CREATE TABLE `client_statement_report` (
 
 CREATE TABLE `contacts` (
   `id` int(10) UNSIGNED NOT NULL,
-  `contactName` text COLLATE utf8mb4_unicode_ci,
-  `contactPhone` text COLLATE utf8mb4_unicode_ci,
-  `contactEmail` text COLLATE utf8mb4_unicode_ci,
-  `contactAddress` text COLLATE utf8mb4_unicode_ci,
-  `contactTitle` text COLLATE utf8mb4_unicode_ci,
-  `contactMessage` text COLLATE utf8mb4_unicode_ci,
+  `contactName` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactPhone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactEmail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactAddress` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contactMessage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -713,9 +699,9 @@ CREATE TABLE `contactuses` (
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new-message',
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -736,7 +722,7 @@ CREATE TABLE `credit_collections` (
   `money_receipt_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `money_receipt_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_amount` int(11) NOT NULL,
-  `remarks` text COLLATE utf8mb4_unicode_ci,
+  `remarks` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -845,25 +831,17 @@ CREATE TABLE `customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` text COLLATE utf8mb4_unicode_ci,
+  `mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dob` date DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
-  `password` text COLLATE utf8mb4_unicode_ci,
-  `confirmPassword` text COLLATE utf8mb4_unicode_ci,
-  `clientGroup` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `confirmPassword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `clientGroup` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `dob`, `address`, `gender`, `password`, `confirmPassword`, `clientGroup`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '0186289588', NULL, 'Badda', NULL, 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, NULL, '2020-02-05 01:07:26', '2020-02-05 01:07:26'),
-(5, 'M Hasan', NULL, '01832967276', NULL, 'Barisal', NULL, NULL, NULL, NULL, NULL, '2020-02-05 06:17:37', '2020-02-05 06:17:37');
 
 -- --------------------------------------------------------
 
@@ -874,10 +852,10 @@ INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `dob`, `address`, `gen
 CREATE TABLE `customer_groups` (
   `id` int(10) UNSIGNED NOT NULL,
   `groupName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `groupCode` text COLLATE utf8mb4_unicode_ci,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `groupCode` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `groupStatus` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -900,8 +878,8 @@ INSERT INTO `customer_groups` (`id`, `groupName`, `groupCode`, `metaTitle`, `met
 CREATE TABLE `customer_group_sections` (
   `id` int(10) UNSIGNED NOT NULL,
   `productId` int(11) DEFAULT NULL,
-  `customerGroupId` text COLLATE utf8mb4_unicode_ci,
-  `customerGroupPrice` text COLLATE utf8mb4_unicode_ci,
+  `customerGroupId` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customerGroupPrice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -911,21 +889,6 @@ CREATE TABLE `customer_group_sections` (
 --
 
 INSERT INTO `customer_group_sections` (`id`, `productId`, `customerGroupId`, `customerGroupPrice`, `created_at`, `updated_at`) VALUES
-(2, 2, NULL, NULL, NULL, NULL),
-(3, 2, NULL, NULL, NULL, NULL),
-(4, 3, NULL, NULL, NULL, NULL),
-(5, 5, '1', '1250', NULL, NULL),
-(9, 59, NULL, NULL, NULL, NULL),
-(12, 13, NULL, NULL, NULL, NULL),
-(14, 58, NULL, NULL, NULL, NULL),
-(15, 53, NULL, NULL, NULL, NULL),
-(16, 9, NULL, NULL, NULL, NULL),
-(17, 41, NULL, NULL, NULL, NULL),
-(19, 48, NULL, NULL, NULL, NULL),
-(20, 29, NULL, NULL, NULL, NULL),
-(21, 60, NULL, NULL, NULL, NULL),
-(22, 16, NULL, NULL, NULL, NULL),
-(23, 49, NULL, NULL, NULL, NULL),
 (28, 65, NULL, NULL, NULL, NULL),
 (29, 61, NULL, NULL, NULL, NULL),
 (30, 61, NULL, NULL, NULL, NULL),
@@ -936,9 +899,10 @@ INSERT INTO `customer_group_sections` (`id`, `productId`, `customerGroupId`, `cu
 (35, 72, NULL, NULL, NULL, NULL),
 (36, 71, NULL, NULL, NULL, NULL),
 (37, 80, NULL, NULL, NULL, NULL),
-(38, 82, NULL, NULL, NULL, NULL),
 (39, 86, NULL, NULL, NULL, NULL),
-(40, 90, NULL, NULL, NULL, NULL);
+(40, 90, NULL, NULL, NULL, NULL),
+(41, 92, NULL, NULL, NULL, NULL),
+(47, 82, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -950,9 +914,9 @@ CREATE TABLE `customer_request_item_list` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` text COLLATE utf8mb4_unicode_ci,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `itemList` text COLLATE utf8mb4_unicode_ci,
+  `mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `itemList` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -962,8 +926,7 @@ CREATE TABLE `customer_request_item_list` (
 --
 
 INSERT INTO `customer_request_item_list` (`id`, `name`, `email`, `mobile`, `address`, `itemList`, `created_at`, `updated_at`) VALUES
-(1, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '01834838457', 'dhaka', 'public/uploads/item_list/WhatsApp Image 2020-02-17 at 1.26.17 PM_194315519452.jpeg', '2020-03-22 22:42:22', '2020-03-22 22:42:22'),
-(2, 'M Hasan', 'info@bis.com.bd', '01834838457', 'dhaka', 'public/uploads/item_list/WhatsApp Image 2020-02-16 at 1.30.56 PM_34739465751.jpeg', '2020-03-22 23:16:42', '2020-03-22 23:16:42');
+(2, 'Mamunur Rashid', 'alfattah@gmail.com', '01552344239', 'House# 23, Road# 9, Marul Badda DIT Project', 'public/uploads/item_list/Capture5_160923871663.PNG', '2020-03-24 14:52:39', '2020-03-24 14:52:39');
 
 -- --------------------------------------------------------
 
@@ -975,9 +938,9 @@ CREATE TABLE `delivery_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -991,11 +954,11 @@ CREATE TABLE `delivery_policies` (
 
 CREATE TABLE `faqs` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1010,9 +973,9 @@ CREATE TABLE `faqs` (
 
 CREATE TABLE `flash_sell` (
   `id` int(10) UNSIGNED NOT NULL,
-  `flashPrice` text COLLATE utf8mb4_unicode_ci,
-  `flashDate` text COLLATE utf8mb4_unicode_ci,
-  `flashProduct` text COLLATE utf8mb4_unicode_ci,
+  `flashPrice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `flashDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `flashProduct` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1027,9 +990,9 @@ CREATE TABLE `help_centers` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1044,7 +1007,7 @@ CREATE TABLE `help_centers` (
 CREATE TABLE `invoices` (
   `id` int(10) UNSIGNED NOT NULL,
   `invoiceId` int(11) NOT NULL,
-  `orderId` text COLLATE utf8mb4_unicode_ci,
+  `orderId` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `productCode` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `productName` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `productQuantity` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1064,12 +1027,12 @@ CREATE TABLE `menus` (
   `id` int(10) UNSIGNED NOT NULL,
   `menuName` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `menuTitle` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `menuContent` text COLLATE utf8mb4_unicode_ci,
-  `menuStatus` tinyint(1) NOT NULL DEFAULT '1',
-  `menuType` int(11) NOT NULL DEFAULT '1',
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `menuContent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `menuStatus` tinyint(1) NOT NULL DEFAULT 1,
+  `menuType` int(11) NOT NULL DEFAULT 1,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1194,19 +1157,10 @@ CREATE TABLE `orders` (
   `qty` int(10) UNSIGNED NOT NULL,
   `weight` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
-  `discount` double(8,2) DEFAULT '0.00',
+  `discount` double(8,2) DEFAULT 0.00,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `checkout_id`, `product_id`, `qty`, `weight`, `price`, `discount`, `created_at`, `updated_at`) VALUES
-(3, 4, 5, 2, '', 1500.00, NULL, '2020-02-05 01:08:13', '2020-02-05 01:08:13'),
-(4, 4, 12, 1, '', 860.00, NULL, '2020-02-05 01:08:13', '2020-02-05 01:08:13'),
-(5, 5, 9, 1, '', 1450.00, NULL, '2020-02-05 06:17:37', '2020-02-05 06:17:37');
 
 -- --------------------------------------------------------
 
@@ -1244,9 +1198,9 @@ CREATE TABLE `payment_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1260,13 +1214,13 @@ CREATE TABLE `payment_policies` (
 
 CREATE TABLE `policies` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `icon` text COLLATE utf8mb4_unicode_ci,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `policiesStatus` tinyint(1) NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1280,26 +1234,26 @@ CREATE TABLE `policies` (
 
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
-  `category_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `category_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `root_category` int(10) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description1` text COLLATE utf8mb4_unicode_ci,
-  `description2` text COLLATE utf8mb4_unicode_ci,
+  `description1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `deal_code` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone_no` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `qty` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `reorder_qty` int(10) UNSIGNED NOT NULL DEFAULT '5',
+  `qty` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `reorder_qty` int(10) UNSIGNED NOT NULL DEFAULT 5,
   `stockUnit` int(11) DEFAULT NULL,
   `weight` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` int(11) NOT NULL,
-  `discount` double(8,2) DEFAULT '0.00',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `youtubeLink` text COLLATE utf8mb4_unicode_ci,
-  `productSection` text COLLATE utf8mb4_unicode_ci,
-  `tag` text COLLATE utf8mb4_unicode_ci,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `discount` double(8,2) DEFAULT 0.00,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `youtubeLink` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `productSection` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tag` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1310,48 +1264,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `root_category`, `name`, `description1`, `description2`, `deal_code`, `phone_no`, `qty`, `reorder_qty`, `stockUnit`, `weight`, `price`, `discount`, `status`, `youtubeLink`, `productSection`, `tag`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(2, '28', 17, 'Monitor with Wide Viewing Angle', NULL, NULL, '002', '01654688765', '1', 5, 1, NULL, 1050, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 2, '2019-12-01 17:26:54', '2020-03-18 14:44:55'),
-(3, '2', 1, 'Shal', NULL, NULL, '003', NULL, '2', 5, 1, NULL, 850, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 3, '2019-12-01 17:39:57', '2020-03-18 14:46:00'),
-(4, '5', 4, 'RI Three Pcs', NULL, NULL, 'TP001', NULL, '1', 5, 1, NULL, 1500, NULL, 0, NULL, '3', NULL, NULL, NULL, NULL, 1, '2019-12-02 14:16:50', '2020-02-06 01:56:46'),
-(5, '26', 17, 'Galaxy Android Smartphone', NULL, NULL, 'TP002', NULL, NULL, 5, NULL, NULL, 1500, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 1, '2019-12-02 14:28:21', '2020-03-18 13:44:14'),
-(7, '2', 1, 'Shal', NULL, NULL, '004', NULL, NULL, 5, NULL, NULL, 850, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-01-06 15:33:01', '2020-02-06 01:57:03'),
-(8, '2', 1, 'Shal', NULL, NULL, '005', NULL, NULL, 5, NULL, NULL, 900, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 5, '2020-01-06 16:32:54', '2020-01-29 16:50:19'),
-(9, '29', 18, 'Casual Shoes For Men', '<p><span style=\"color: rgb(153, 153, 153); font-family: Roboto, sans-serif; font-size: 13px;\">This is product short description. Capicola chuck tongue, anim consequat leberkas laborum ut enim bacon. Ribeye hamburger pastrami nisi ad consectetur dolor.</span><br></p>', '<h5 style=\"box-sizing: inherit; font-family: Roboto, sans-serif; line-height: 1.1; color: rgb(51, 51, 51); font-size: 0.8125rem;\">Multi-language product description</h5><p style=\"box-sizing: inherit; color: rgb(51, 51, 51); font-family: Roboto, sans-serif; font-size: 13px;\">Lorem ipsum voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p style=\"box-sizing: inherit; color: rgb(51, 51, 51); font-family: Roboto, sans-serif; font-size: 13px;\">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p><p style=\"box-sizing: inherit; color: rgb(51, 51, 51); font-family: Roboto, sans-serif; font-size: 13px;\">Dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex eacommodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>', '006', NULL, NULL, 5, NULL, NULL, 1450, NULL, 0, NULL, '1,2,4', NULL, NULL, NULL, NULL, 6, '2020-01-06 16:41:57', '2020-03-18 14:58:35'),
-(12, '5', 4, 'sheikh tex', NULL, NULL, 'TP003', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-01-07 10:38:30', '2020-02-06 01:57:01'),
-(13, '33', 17, 'Convection Micro Wave Owen', NULL, NULL, 'TP004', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, '1,2', NULL, NULL, NULL, NULL, 4, '2020-01-07 10:49:14', '2020-03-18 14:44:47'),
-(14, '5', 4, 'Ytex', NULL, NULL, 'TP005', NULL, NULL, 5, NULL, NULL, 950, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 5, '2020-01-07 11:06:59', '2020-02-06 01:57:25'),
-(16, '18', 18, 'Hand Accessories', NULL, NULL, 'TP007', NULL, NULL, 5, NULL, NULL, 950, NULL, 0, NULL, '1,4', NULL, NULL, NULL, NULL, 7, '2020-01-07 11:19:16', '2020-03-18 13:17:02'),
-(17, '5', 4, 'Ptex', NULL, NULL, 'TP014', NULL, NULL, 5, NULL, NULL, 950, NULL, 0, NULL, '3', NULL, NULL, NULL, NULL, 14, '2020-01-07 15:02:01', '2020-02-06 01:56:42'),
-(19, '5', 4, 'sheikh tex', NULL, NULL, 'TP012', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-01-07 15:07:25', '2020-02-06 01:57:00'),
-(21, '5', 4, 'sheikh tex', NULL, NULL, 'TP010', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-01-07 15:18:44', '2020-01-29 16:40:24'),
-(22, '5', 4, 'sheikh tex', NULL, NULL, 'TP009', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-01-07 15:21:39', '2020-01-29 16:45:42'),
-(24, '9', 4, 'V tex', NULL, NULL, 'TP015', NULL, NULL, 5, NULL, NULL, 1050, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 15, '2020-01-08 10:59:54', '2020-01-29 16:47:39'),
-(25, '9', 4, 'v tex', NULL, NULL, 'TP018', NULL, NULL, 5, NULL, NULL, 1050, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-01-08 11:10:58', '2020-01-29 16:47:46'),
-(26, '9', 4, 'v tex', NULL, NULL, 'TP017', NULL, NULL, 5, NULL, NULL, 1050, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 17, '2020-01-08 11:17:07', '2020-02-06 01:57:30'),
-(27, '9', 4, 'v tex', NULL, NULL, 'TP016', NULL, NULL, 5, NULL, NULL, 1050, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-01-08 11:25:37', '2020-02-06 01:57:27'),
-(29, '18', 18, 'Dotted Golden Handbag', NULL, NULL, 'TP019', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, '1,4', NULL, NULL, NULL, NULL, 19, '2020-01-08 11:46:13', '2020-03-18 14:45:02'),
-(33, '5', 4, 'Nsd tex', NULL, NULL, 'TP022', NULL, NULL, 5, NULL, NULL, 1280, NULL, 0, NULL, '4', NULL, NULL, NULL, NULL, 22, '2020-01-08 11:59:47', '2020-02-06 01:56:37'),
-(35, '5', 4, 'Mahi 3pcs', NULL, NULL, 'TP027', NULL, NULL, 5, NULL, NULL, 620, NULL, 0, NULL, '4', NULL, NULL, NULL, NULL, 27, '2020-01-08 12:07:38', '2020-02-06 01:56:35'),
-(37, '5', 4, 'Suzuki', NULL, NULL, 'TP038', NULL, NULL, 5, NULL, NULL, 1650, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 38, '2020-01-08 16:17:47', '2020-01-29 16:47:25'),
-(38, '5', 4, 's tex', NULL, NULL, 'TP033', NULL, NULL, 5, NULL, NULL, 980, NULL, 0, NULL, '3', NULL, NULL, NULL, NULL, 33, '2020-01-08 16:23:59', '2020-03-18 14:46:08'),
-(39, '5', 4, 'Suzuki', NULL, NULL, 'TP037', NULL, NULL, 5, NULL, NULL, 1490, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 37, '2020-01-08 16:35:25', '2020-01-29 16:47:16'),
-(40, '5', 4, 'Suzuki', NULL, NULL, 'TP036', NULL, NULL, 5, NULL, NULL, 1650, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 36, '2020-01-08 16:38:24', '2020-01-29 16:47:05'),
-(41, '33', 17, 'Double Door Smart Refrigerator', NULL, NULL, 'TP035', NULL, NULL, 5, NULL, NULL, 1520, NULL, 0, NULL, '1,2', NULL, NULL, NULL, NULL, 35, '2020-01-08 16:49:14', '2020-03-18 13:44:14'),
-(42, '5', 4, 's tex', NULL, NULL, 'TP034', NULL, NULL, 5, NULL, NULL, 860, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 34, '2020-01-08 16:59:50', '2020-03-18 14:46:04'),
-(43, '5', 4, 'Kishan tex', NULL, NULL, 'TP031', NULL, NULL, 5, NULL, NULL, 1550, NULL, 0, NULL, '4', NULL, NULL, NULL, NULL, 31, '2020-01-08 17:03:07', '2020-02-06 01:56:31'),
-(45, '5', 4, 's tex', NULL, NULL, 'TP029', NULL, NULL, 5, NULL, NULL, 990, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 29, '2020-01-08 17:12:31', '2020-03-18 14:46:02'),
-(46, '8', 4, 'L tex', NULL, NULL, 'TP032', NULL, NULL, 5, NULL, NULL, 750, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 32, '2020-01-08 17:16:30', '2020-02-06 04:21:20'),
-(48, '33', 17, 'Convection Micro Wave Owen', NULL, NULL, 'TP039', NULL, NULL, 5, NULL, NULL, 1150, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 39, '2020-01-09 14:53:15', '2020-03-18 14:44:50'),
-(49, '18', 18, 'Printed Summer Shirt', NULL, NULL, 'TP043', NULL, NULL, 5, NULL, NULL, 1150, NULL, 0, NULL, '1,2,4', NULL, NULL, NULL, NULL, 43, '2020-01-09 14:57:31', '2020-03-18 13:16:57'),
-(50, '27', 17, 'K Tex', NULL, NULL, 'TP042', NULL, NULL, 5, NULL, NULL, 600, NULL, 0, NULL, '4', NULL, NULL, NULL, NULL, 42, '2020-01-09 15:00:32', '2020-02-06 01:59:22'),
-(53, '27', 17, 'HF Tex', NULL, NULL, 'TP051', NULL, NULL, 5, NULL, NULL, 1150, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 51, '2020-01-09 15:10:43', '2020-02-06 01:59:24'),
-(54, '5', 4, 'Ytex', NULL, NULL, 'TP050', NULL, NULL, 5, NULL, NULL, 750, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 50, '2020-01-09 15:13:18', '2020-02-06 01:57:21'),
-(55, '5', 4, 'Ytex', NULL, NULL, 'TP049', NULL, NULL, 5, NULL, NULL, 750, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 49, '2020-01-09 15:21:39', '2020-02-06 01:57:17'),
-(56, '5', 4, 'Ytex', NULL, NULL, 'TP048', NULL, NULL, 5, NULL, NULL, 950, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 48, '2020-01-09 15:23:21', '2020-02-06 01:57:14'),
-(57, '5', 4, 'Ytex', NULL, NULL, 'TP047', NULL, NULL, 5, NULL, NULL, 950, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 47, '2020-01-09 15:27:54', '2020-02-06 01:57:12'),
-(58, '27', 17, 'Btex', NULL, NULL, 'TP046', NULL, NULL, 5, NULL, NULL, 850, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 46, '2020-01-09 15:30:29', '2020-02-06 01:59:28'),
-(59, '26', 17, 'Galaxy Note Series Smartphone', NULL, NULL, 'TP045', NULL, NULL, 5, NULL, NULL, 850, NULL, 0, NULL, '2,4', NULL, NULL, NULL, NULL, 45, '2020-01-09 15:39:50', '2020-03-18 13:44:16'),
-(60, '18', 18, 'Latest Designer Purse', NULL, NULL, 'TP044', NULL, NULL, 5, NULL, NULL, 850, NULL, 0, NULL, '1,2,4', NULL, NULL, NULL, NULL, 44, '2020-01-09 15:43:34', '2020-03-18 13:17:00'),
 (61, '38', 38, 'করলা(Bitter Gourd)', NULL, NULL, 'V001', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 1, '2020-03-18 14:41:54', '2020-03-21 09:22:09'),
 (62, '38', 38, 'টমেটো(Tomato)', NULL, NULL, 'v002', NULL, NULL, 5, NULL, NULL, 60, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 2, '2020-03-18 14:47:58', '2020-03-21 09:36:44'),
 (63, '38', 38, 'বেগুন(Brinjal Round)', NULL, NULL, 'v003', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-18 14:50:54', '2020-03-21 09:35:58'),
@@ -1381,7 +1293,31 @@ INSERT INTO `products` (`id`, `category_id`, `root_category`, `name`, `descripti
 (88, '39', 39, 'মলা মাছ', NULL, NULL, 'F008', NULL, NULL, 5, NULL, NULL, 320, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-21 14:45:52', '2020-03-21 14:45:52'),
 (89, '39', 39, 'মৃগেল মাছ', NULL, NULL, 'F009', NULL, NULL, 5, NULL, NULL, 330, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-21 15:03:16', '2020-03-21 15:03:16'),
 (90, '39', 39, 'গরুর মাংস', NULL, NULL, 'M001', NULL, NULL, 5, NULL, NULL, 570, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 10, '2020-03-21 15:18:32', '2020-03-21 15:22:57'),
-(91, '39', 39, 'খাসির মাংস', NULL, NULL, 'M002', NULL, NULL, 5, NULL, NULL, 750, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-21 16:02:12', '2020-03-21 16:02:12');
+(91, '39', 39, 'খাসির মাংস', NULL, NULL, 'M002', NULL, NULL, 5, NULL, NULL, 750, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-21 16:02:12', '2020-03-21 16:02:12'),
+(92, '39', 39, 'ব্রয়লার মুরগি', NULL, NULL, 'M003', NULL, NULL, 5, NULL, NULL, 130, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 14, '2020-03-21 16:16:36', '2020-03-21 16:18:15'),
+(94, '39', 39, 'খাসীর মগজ', NULL, NULL, 'k001', NULL, NULL, 5, NULL, NULL, 500, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:46:43', '2020-03-22 08:46:43'),
+(95, '39', 39, 'গরুর মগজ', NULL, NULL, 'g001', NULL, NULL, 5, NULL, NULL, 400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:50:41', '2020-03-22 08:50:41'),
+(96, '39', 39, 'পাবদা মাছ (Pabda Fish )', NULL, NULL, 'F016', NULL, NULL, 5, NULL, NULL, 380, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-22 12:14:19', '2020-03-22 12:14:19'),
+(97, '39', 39, 'তেলাপিয়া মাছ', NULL, NULL, 'F018', NULL, NULL, 5, NULL, NULL, 150, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-22 12:33:15', '2020-03-22 12:33:15'),
+(98, '39', 39, 'শিং মাছ', NULL, NULL, 'F019', NULL, NULL, 5, NULL, NULL, 400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 13:22:28', '2020-03-22 13:22:28'),
+(99, '39', 0, 'কই মাছ', NULL, NULL, 'F020', NULL, NULL, 5, NULL, NULL, 180, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 20, '2020-03-22 13:57:50', '2020-03-24 19:02:05'),
+(100, '39', 39, 'বোয়াল মাছ', NULL, NULL, 'F021', NULL, NULL, 5, NULL, NULL, 350, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 14:08:40', '2020-03-22 14:08:40'),
+(101, '18', 18, 'Mini Shingara Liver', NULL, NULL, 'DFF001', NULL, NULL, 5, NULL, NULL, 115, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-24 09:15:55', '2020-03-24 09:15:55'),
+(103, '18', 18, 'Chickpeas Curry (Chola)', NULL, NULL, 'DFF003', NULL, NULL, 5, NULL, NULL, 180, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-24 09:33:09', '2020-03-24 09:33:09'),
+(104, '18', 18, 'Mini Singara - Vegetable', NULL, NULL, 'DFF002', NULL, NULL, 5, NULL, NULL, 85, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-24 09:35:37', '2020-03-24 09:37:12'),
+(105, '18', 18, 'Mini Samosa Beef', NULL, NULL, 'DFF004', NULL, NULL, 5, NULL, NULL, 185, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-24 09:39:19', '2020-03-24 09:39:19'),
+(106, '18', 18, 'Mini Samosa Chicken', NULL, NULL, 'DFF005', NULL, NULL, 5, NULL, NULL, 115, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-03-24 09:41:37', '2020-03-24 09:41:37'),
+(107, '18', 18, 'Mini Samosa Vegetable', NULL, NULL, 'DFF006', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 6, '2020-03-24 20:28:44', '2020-03-24 20:28:44'),
+(108, '18', 18, 'Mini Spring Roll Beef', NULL, NULL, 'DFF007', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-24 20:30:32', '2020-03-24 20:30:32'),
+(109, '18', 18, 'Mini Spring Roll Chicken', NULL, NULL, 'DFF008', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-24 20:31:42', '2020-03-24 20:31:42'),
+(110, '18', 18, 'Mini Spring Roll Vegetable', NULL, NULL, 'DFF009', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-24 20:32:51', '2020-03-24 20:32:51'),
+(111, '18', 18, 'Momo Dumpling Beef', NULL, NULL, 'DFF010', NULL, NULL, 5, NULL, NULL, 122, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-03-24 20:38:07', '2020-03-24 20:38:07'),
+(112, '18', 18, 'Momo Dumpling Chicken', NULL, NULL, 'DFF011', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 11, '2020-03-24 20:39:14', '2020-03-24 20:39:14'),
+(113, '18', 18, 'Momo Dumpling Chocolate', NULL, NULL, 'DFF012', NULL, NULL, 5, NULL, NULL, 22, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-24 20:42:52', '2020-03-24 20:42:52'),
+(114, '18', 18, 'Momo Dumpling Vegetable', NULL, NULL, 'DFF013', NULL, NULL, 5, NULL, NULL, 232, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 13, '2020-03-24 20:44:11', '2020-03-24 20:44:11'),
+(115, '18', 18, 'Puri Aloo', NULL, NULL, 'DFF014', NULL, NULL, 5, NULL, NULL, 121, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 14, '2020-03-24 20:46:48', '2020-03-24 20:46:48'),
+(116, '18', 18, 'Puri Daal', NULL, NULL, 'DFF015', NULL, NULL, 5, NULL, NULL, 222, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 15, '2020-03-24 20:47:48', '2020-03-24 20:47:48'),
+(117, '18', 18, 'Puri Kima', NULL, NULL, 'DFF016', NULL, NULL, 5, NULL, NULL, 113, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-24 20:48:48', '2020-03-24 20:48:48');
 
 -- --------------------------------------------------------
 
@@ -1402,49 +1338,6 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `productId`, `images`, `created_at`, `updated_at`) VALUES
-(3, 3, 'public/uploads/product_image/IMG-20191201-WA0004.jpg', '2019-12-01 17:40:19', '2019-12-01 17:40:19'),
-(9, 4, 'public/uploads/product_image/RM 001_83056018351.jpg', '2020-01-06 16:00:15', '2020-01-06 16:00:15'),
-(11, 8, 'public/uploads/product_image/20191201_120605_3081624111.jpg', '2020-01-06 16:34:34', '2020-01-06 16:34:34'),
-(12, 8, '', '2020-01-06 16:34:47', '2020-01-06 16:34:47'),
-(17, 7, 'public/uploads/product_image/20191201_113733_14433437018.jpg', '2020-01-06 17:06:11', '2020-01-06 17:06:11'),
-(18, 12, 'public/uploads/product_image/20191117_164637_61278715776.jpg', '2020-01-07 10:39:57', '2020-01-07 10:39:57'),
-(20, 14, 'public/uploads/product_image/tp005_38778370683.jpg', '2020-01-07 11:08:19', '2020-01-07 11:08:19'),
-(25, 17, 'public/uploads/product_image/20191117_171034_14733886034.jpg', '2020-01-07 15:03:42', '2020-01-07 15:03:42'),
-(26, 19, 'public/uploads/product_image/20200107_135531_4573695780.jpg', '2020-01-07 15:08:22', '2020-01-07 15:08:22'),
-(29, 21, 'public/uploads/product_image/20200107_135531_30810798458.jpg', '2020-01-07 15:19:27', '2020-01-07 15:19:27'),
-(30, 22, 'public/uploads/product_image/20200107_133107_34489221410.jpg', '2020-01-07 15:22:56', '2020-01-07 15:22:56'),
-(33, 24, 'public/uploads/product_image/20200108_094823_83457253801.jpg', '2020-01-08 11:01:12', '2020-01-08 11:01:12'),
-(34, 25, 'public/uploads/product_image/20200108_100006_32168886641.jpg', '2020-01-08 11:12:03', '2020-01-08 11:12:03'),
-(35, 26, 'public/uploads/product_image/20200108_095702_47366710123.jpg', '2020-01-08 11:17:52', '2020-01-08 11:17:52'),
-(36, 27, 'public/uploads/product_image/20200108_095329_94648188802.jpg', '2020-01-08 11:27:41', '2020-01-08 11:27:41'),
-(42, 33, 'public/uploads/product_image/20200108_101730_21247838568.jpg', '2020-01-08 12:00:57', '2020-01-08 12:00:57'),
-(44, 35, 'public/uploads/product_image/20200108_103537_13720525569.jpg', '2020-01-08 12:10:01', '2020-01-08 12:10:01'),
-(46, 37, 'public/uploads/product_image/mmmmm_81770976096.jpg', '2020-01-08 16:21:51', '2020-01-08 16:21:51'),
-(47, 38, 'public/uploads/product_image/nnnnnn_56476937165.jpg', '2020-01-08 16:28:30', '2020-01-08 16:28:30'),
-(48, 39, 'public/uploads/product_image/20200108_150238_9726046021.jpg', '2020-01-08 16:36:32', '2020-01-08 16:36:32'),
-(49, 40, 'public/uploads/product_image/zzzz_66311891209.jpg', '2020-01-08 16:42:22', '2020-01-08 16:42:22'),
-(51, 42, 'public/uploads/product_image/20200108_144506_46649785991.jpg', '2020-01-08 17:01:40', '2020-01-08 17:01:40'),
-(52, 43, 'public/uploads/product_image/tp031_25922676371.jpg', '2020-01-08 17:06:41', '2020-01-08 17:06:41'),
-(54, 45, 'public/uploads/product_image/20200108_140259_56345345361.jpg', '2020-01-08 17:13:31', '2020-01-08 17:13:31'),
-(55, 46, 'public/uploads/product_image/tp032_71295600227.jpg', '2020-01-08 17:17:13', '2020-01-08 17:17:13'),
-(62, 53, 'public/uploads/product_image/20200109_111700_41489925845.jpg', '2020-01-09 15:11:51', '2020-01-09 15:11:51'),
-(63, 54, 'public/uploads/product_image/20200109_111026_80666751204.jpg', '2020-01-09 15:14:25', '2020-01-09 15:14:25'),
-(64, 55, 'public/uploads/product_image/20200109_111026_84159796652.jpg', '2020-01-09 15:22:17', '2020-01-09 15:22:17'),
-(65, 56, 'public/uploads/product_image/20200109_110424_50661299813.jpg', '2020-01-09 15:24:10', '2020-01-09 15:24:10'),
-(66, 57, 'public/uploads/product_image/20200109_110424_60235296208.jpg', '2020-01-09 15:29:03', '2020-01-09 15:29:03'),
-(67, 58, 'public/uploads/product_image/20200109_110120_22261644460.jpg', '2020-01-09 15:35:29', '2020-01-09 15:35:29'),
-(90, 50, 'public/uploads/product_image/20200109_104503_91016051357_86376709710.jpg', '2020-01-30 05:55:12', '2020-01-30 05:55:12'),
-(93, 48, 'public/uploads/product_image/20200109_103450_16035756966_94757176318.jpg', '2020-01-30 07:25:07', '2020-01-30 07:25:07'),
-(95, 9, 'public/uploads/product_image/casual-shoes-for-men_56471194630.jpg', '2020-02-04 01:35:13', '2020-02-04 01:35:13'),
-(106, 29, 'public/uploads/product_image/dotted-golden-handbag_30061878058.jpg', '2020-02-06 01:14:36', '2020-02-06 01:14:36'),
-(107, 2, 'public/uploads/product_image/monitor-with-wide-viewing-angle_64278146215.jpg', '2020-02-06 01:18:14', '2020-02-06 01:18:14'),
-(108, 16, 'public/uploads/product_image/hand-accessories_54317573007.jpg', '2020-02-06 01:22:53', '2020-02-06 01:22:53'),
-(109, 5, 'public/uploads/product_image/galaxy-android-smartphone_20164247651.jpg', '2020-02-06 01:52:34', '2020-02-06 01:52:34'),
-(111, 13, 'public/uploads/product_image/convection-micro-wave-owen_80311002303.jpg', '2020-02-06 01:58:42', '2020-02-06 01:58:42'),
-(112, 41, 'public/uploads/product_image/double-door-smart-refrigerator_31073489281.jpg', '2020-02-06 02:02:15', '2020-02-06 02:02:15'),
-(113, 59, 'public/uploads/product_image/galaxy-note-series-smartphone_66021189117.jpg', '2020-02-06 02:06:46', '2020-02-06 02:06:46'),
-(114, 49, 'public/uploads/product_image/printed-summer-shirt_48734524877.jpg', '2020-02-06 03:32:37', '2020-02-06 03:32:37'),
-(115, 60, 'public/uploads/product_image/latest-designer-purse_81424968306.jpg', '2020-02-06 03:42:31', '2020-02-06 03:42:31'),
 (117, 62, 'public/uploads/product_image/tometo_1629228580.png', '2020-03-18 14:48:24', '2020-03-18 14:48:24'),
 (121, 64, 'public/uploads/product_image/Daikon-(mooli)_72506261484.png', '2020-03-18 14:53:00', '2020-03-18 14:53:00'),
 (122, 65, 'public/uploads/product_image/Coriander-(dhaniya)_92641977821.png', '2020-03-18 14:54:34', '2020-03-18 14:54:34'),
@@ -1474,7 +1367,31 @@ INSERT INTO `product_images` (`id`, `productId`, `images`, `created_at`, `update
 (151, 88, 'public/uploads/product_image/mola_66502235036.png', '2020-03-21 14:47:16', '2020-03-21 14:47:16'),
 (152, 89, 'public/uploads/product_image/mrigel_17866540888.png', '2020-03-21 15:06:27', '2020-03-21 15:06:27'),
 (154, 90, 'public/uploads/product_image/beef-bone_23065109953.png', '2020-03-21 15:48:33', '2020-03-21 15:48:33'),
-(155, 91, 'public/uploads/product_image/khasir-manso_73580415657.png', '2020-03-21 16:03:45', '2020-03-21 16:03:45');
+(155, 91, 'public/uploads/product_image/khasir-manso_73580415657.png', '2020-03-21 16:03:45', '2020-03-21 16:03:45'),
+(156, 92, 'public/uploads/product_image/broilar_12645856105.png', '2020-03-21 16:17:52', '2020-03-21 16:17:52'),
+(158, 94, 'public/uploads/product_image/maton-brean_17719049274.png', '2020-03-22 08:47:38', '2020-03-22 08:47:38'),
+(161, 95, 'public/uploads/product_image/new.._68423310653.png', '2020-03-22 11:53:20', '2020-03-22 11:53:20'),
+(162, 96, 'public/uploads/product_image/pabda_18315175042.png', '2020-03-22 12:23:59', '2020-03-22 12:23:59'),
+(163, 97, 'public/uploads/product_image/telapia_97594167186.png', '2020-03-22 12:33:50', '2020-03-22 12:33:50'),
+(164, 98, 'public/uploads/product_image/shing-mas_86993037640.png', '2020-03-22 13:26:18', '2020-03-22 13:26:18'),
+(165, 99, 'public/uploads/product_image/koi_20692661036.png', '2020-03-22 14:01:58', '2020-03-22 14:01:58'),
+(166, 100, 'public/uploads/product_image/boyal_6714451689.png', '2020-03-22 14:48:52', '2020-03-22 14:48:52'),
+(167, 101, 'public/uploads/product_image/Mini Shingara_Liver copy_7311631671.png', '2020-03-24 09:17:10', '2020-03-24 09:17:10'),
+(170, 103, 'public/uploads/product_image/Chick_Peas_Curry copy_80087878474.png', '2020-03-24 09:33:25', '2020-03-24 09:33:25'),
+(171, 104, 'public/uploads/product_image/Mini Shingara_Vegetable copy_42450577324.png', '2020-03-24 09:35:52', '2020-03-24 09:35:52'),
+(172, 105, 'public/uploads/product_image/Mini_Samosa_Beef copy_64631911875.png', '2020-03-24 09:39:32', '2020-03-24 09:39:32'),
+(173, 106, 'public/uploads/product_image/Mini_Samosa_Chicken copy_80897710295.png', '2020-03-24 09:41:48', '2020-03-24 09:41:48'),
+(174, 107, 'public/uploads/product_image/Mini_Samosa_Vegetable copy_20503797654.png', '2020-03-24 20:29:04', '2020-03-24 20:29:04'),
+(175, 108, 'public/uploads/product_image/Mini_Spring Roll_Beef copy_19083781617.png', '2020-03-24 20:30:48', '2020-03-24 20:30:48'),
+(176, 109, 'public/uploads/product_image/Mini_Spring Roll_Chicken copy_83629551531.png', '2020-03-24 20:31:56', '2020-03-24 20:31:56'),
+(177, 110, 'public/uploads/product_image/Mini_Spring Roll_Vegetable copy_24398522559.png', '2020-03-24 20:33:05', '2020-03-24 20:33:05'),
+(178, 111, 'public/uploads/product_image/Momo_Dumpling_Beef copy_50982927091.png', '2020-03-24 20:38:24', '2020-03-24 20:38:24'),
+(179, 112, 'public/uploads/product_image/Momo_Dumpling_Chicken copy_82753236914.png', '2020-03-24 20:39:24', '2020-03-24 20:39:24'),
+(180, 113, 'public/uploads/product_image/Momo_Dumpling_Chocolate copy_78411502353.png', '2020-03-24 20:43:04', '2020-03-24 20:43:04'),
+(181, 114, 'public/uploads/product_image/Momo_Dumpling_Vegetable copy_54574213139.png', '2020-03-24 20:44:45', '2020-03-24 20:44:45'),
+(182, 115, 'public/uploads/product_image/Puri_Aloo copy_58080728799.png', '2020-03-24 20:46:59', '2020-03-24 20:46:59'),
+(183, 116, 'public/uploads/product_image/Puri_Daal copy_16662867671.png', '2020-03-24 20:48:01', '2020-03-24 20:48:01'),
+(184, 117, 'public/uploads/product_image/Puri_Kima copy_69816673975.png', '2020-03-24 20:49:00', '2020-03-24 20:49:00');
 
 -- --------------------------------------------------------
 
@@ -1485,15 +1402,15 @@ INSERT INTO `product_images` (`id`, `productId`, `images`, `created_at`, `update
 CREATE TABLE `product_sections` (
   `id` int(10) UNSIGNED NOT NULL,
   `productId` int(11) NOT NULL,
-  `hotDiscount` text COLLATE utf8mb4_unicode_ci,
-  `hotDate` text COLLATE utf8mb4_unicode_ci,
-  `specialDiscount` text COLLATE utf8mb4_unicode_ci,
-  `specialDate` text COLLATE utf8mb4_unicode_ci,
+  `hotDiscount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hotDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `specialDiscount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `specialDate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `free_shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pre_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pre_orderDuration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `multiImage` text COLLATE utf8mb4_unicode_ci,
-  `related_product` text COLLATE utf8mb4_unicode_ci,
+  `multiImage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `related_product` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1503,48 +1420,6 @@ CREATE TABLE `product_sections` (
 --
 
 INSERT INTO `product_sections` (`id`, `productId`, `hotDiscount`, `hotDate`, `specialDiscount`, `specialDate`, `free_shipping`, `pre_order`, `pre_orderDuration`, `multiImage`, `related_product`, `created_at`, `updated_at`) VALUES
-(2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-01 17:27:49', '2019-12-01 17:27:49'),
-(3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-01 17:28:36', '2019-12-01 17:28:36'),
-(4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-01 17:40:30', '2019-12-01 17:40:30'),
-(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-02 14:31:07', '2019-12-02 14:31:07'),
-(7, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-06 15:33:01', '2020-01-06 15:33:01'),
-(8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-06 16:32:54', '2020-01-06 16:32:54'),
-(9, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,48', '2020-01-06 16:41:57', '2020-02-04 00:04:16'),
-(12, 12, '850', '29-02-2020', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-07 10:38:30', '2020-01-30 01:15:45'),
-(13, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-07 10:49:14', '2020-01-07 10:49:14'),
-(14, 14, NULL, NULL, '950', '15-04-2020', NULL, NULL, NULL, NULL, '4,5', '2020-01-07 11:06:59', '2020-01-30 01:35:52'),
-(16, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-07 11:19:16', '2020-01-07 11:19:16'),
-(17, 17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,59,4,5', '2020-01-07 15:02:01', '2020-01-30 00:48:50'),
-(19, 19, '860', '28-02-2020', NULL, NULL, NULL, NULL, NULL, NULL, '58,59', '2020-01-07 15:07:25', '2020-01-30 01:32:57'),
-(21, 21, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-07 15:18:44', '2020-01-07 15:18:44'),
-(22, 22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-07 15:21:39', '2020-01-07 15:21:39'),
-(24, 24, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 10:59:54', '2020-01-08 10:59:54'),
-(25, 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 11:10:58', '2020-01-08 11:10:58'),
-(26, 26, NULL, NULL, '1050', '15-03-2020', NULL, NULL, NULL, NULL, NULL, '2020-01-08 11:17:07', '2020-01-30 01:41:23'),
-(27, 27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 11:25:37', '2020-01-08 11:25:37'),
-(29, 29, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 11:46:13', '2020-01-08 11:46:13'),
-(33, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 11:59:47', '2020-01-08 11:59:47'),
-(35, 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,4,5', '2020-01-08 12:07:38', '2020-01-30 00:44:00'),
-(37, 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 16:17:47', '2020-01-08 16:17:47'),
-(38, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 16:23:59', '2020-01-08 16:23:59'),
-(39, 39, NULL, NULL, '5', '31-01-2020', NULL, NULL, NULL, NULL, NULL, '2020-01-08 16:35:25', '2020-01-11 09:41:44'),
-(40, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 16:38:24', '2020-01-08 16:38:24'),
-(41, 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,59,60,49,4,5', '2020-01-08 16:49:14', '2020-01-30 00:10:50'),
-(42, 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 16:59:50', '2020-01-08 16:59:50'),
-(43, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 17:03:07', '2020-01-08 17:03:07'),
-(45, 45, '980', '14-02-2020', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 17:12:31', '2020-01-30 01:09:26'),
-(46, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-08 17:16:30', '2020-01-08 17:16:30'),
-(48, 48, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,59,60,5,4', '2020-01-09 14:53:15', '2020-02-06 01:53:32'),
-(49, 49, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '41,59,60', '2020-01-09 14:57:31', '2020-02-06 02:11:03'),
-(50, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,59,60,48,49,4,5', '2020-01-09 15:00:32', '2020-01-30 00:14:18'),
-(53, 53, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '58,59,60,48,4,5', '2020-01-09 15:10:43', '2020-01-30 00:09:08'),
-(54, 54, NULL, NULL, '750', '15-04-2020', NULL, NULL, NULL, NULL, NULL, '2020-01-09 15:13:18', '2020-01-30 01:36:35'),
-(55, 55, NULL, NULL, NULL, '15-03-2020', NULL, NULL, NULL, NULL, NULL, '2020-01-09 15:21:39', '2020-01-30 01:38:20'),
-(56, 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-09 15:23:21', '2020-01-09 15:23:21'),
-(57, 57, NULL, NULL, '950', '15-03-2020', NULL, NULL, NULL, NULL, '58,59,60,48,49', '2020-01-09 15:27:54', '2020-01-30 01:39:43'),
-(58, 58, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-09 15:30:29', '2020-01-09 15:30:29'),
-(59, 59, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '4,5', '2020-01-09 15:39:50', '2020-01-29 23:34:03'),
-(60, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-09 15:43:34', '2020-01-09 15:43:34'),
 (61, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-30 00:58:46', '2020-01-30 00:58:46'),
 (62, 61, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-18 14:41:54', '2020-03-18 14:41:54'),
 (63, 62, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-18 14:47:58', '2020-03-18 14:47:58'),
@@ -1575,7 +1450,31 @@ INSERT INTO `product_sections` (`id`, `productId`, `hotDiscount`, `hotDate`, `sp
 (89, 88, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 14:45:52', '2020-03-21 14:45:52'),
 (90, 89, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 15:03:16', '2020-03-21 15:03:16'),
 (91, 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 15:18:32', '2020-03-21 15:18:32'),
-(92, 91, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 16:02:12', '2020-03-21 16:02:12');
+(92, 91, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 16:02:12', '2020-03-21 16:02:12'),
+(93, 92, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-21 16:16:36', '2020-03-21 16:16:36'),
+(95, 94, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 08:46:43', '2020-03-22 08:46:43'),
+(96, 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 08:50:41', '2020-03-22 08:50:41'),
+(97, 96, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 12:14:19', '2020-03-22 12:14:19'),
+(98, 97, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 12:33:15', '2020-03-22 12:33:15'),
+(99, 98, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 13:22:28', '2020-03-22 13:22:28'),
+(100, 99, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 13:57:50', '2020-03-22 13:57:50'),
+(101, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-22 14:08:40', '2020-03-22 14:08:40'),
+(102, 101, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 09:15:55', '2020-03-24 09:15:55'),
+(104, 103, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 09:33:09', '2020-03-24 09:33:09'),
+(105, 104, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 09:35:37', '2020-03-24 09:35:37'),
+(106, 105, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 09:39:19', '2020-03-24 09:39:19'),
+(107, 106, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 09:41:37', '2020-03-24 09:41:37'),
+(108, 107, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:28:44', '2020-03-24 20:28:44'),
+(109, 108, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:30:32', '2020-03-24 20:30:32'),
+(110, 109, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:31:42', '2020-03-24 20:31:42'),
+(111, 110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:32:51', '2020-03-24 20:32:51'),
+(112, 111, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:38:07', '2020-03-24 20:38:07'),
+(113, 112, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:39:14', '2020-03-24 20:39:14'),
+(114, 113, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:42:52', '2020-03-24 20:42:52'),
+(115, 114, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:44:11', '2020-03-24 20:44:11'),
+(116, 115, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:46:48', '2020-03-24 20:46:48'),
+(117, 116, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:47:48', '2020-03-24 20:47:48'),
+(118, 117, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:48:48', '2020-03-24 20:48:48');
 
 -- --------------------------------------------------------
 
@@ -1585,7 +1484,7 @@ INSERT INTO `product_sections` (`id`, `productId`, `hotDiscount`, `hotDate`, `sp
 --
 CREATE TABLE `product_wise_profit` (
 `date` datetime
-,`productId` int(11) unsigned
+,`productId` int(10) unsigned
 ,`categoryId` mediumtext
 ,`cashProductQty` varchar(191)
 ,`cashPriceAmount` varchar(191)
@@ -1743,9 +1642,9 @@ CREATE TABLE `refund_policies` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1761,11 +1660,11 @@ CREATE TABLE `reviews` (
   `id` int(10) UNSIGNED NOT NULL,
   `customerId` int(11) DEFAULT NULL,
   `productId` int(11) DEFAULT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `summary` text COLLATE utf8mb4_unicode_ci,
-  `review` text COLLATE utf8mb4_unicode_ci,
-  `star` text COLLATE utf8mb4_unicode_ci,
-  `status` int(11) NOT NULL DEFAULT '1',
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `summary` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `star` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1791,7 +1690,7 @@ CREATE TABLE `sales_collection_standings` (
 ,`type` varchar(255)
 ,`date` datetime
 ,`sales` varchar(255)
-,`collection` bigint(11)
+,`collection` int(11)
 );
 
 -- --------------------------------------------------------
@@ -1819,22 +1718,22 @@ CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `siteTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `siteName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `siteLogo` text COLLATE utf8mb4_unicode_ci,
-  `sitefavIcon` text COLLATE utf8mb4_unicode_ci,
+  `siteLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sitefavIcon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `adminTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adminLogo` text COLLATE utf8mb4_unicode_ci,
-  `adminsmalLogo` text COLLATE utf8mb4_unicode_ci,
-  `adminfavIcon` text COLLATE utf8mb4_unicode_ci,
-  `mobile1` text COLLATE utf8mb4_unicode_ci,
-  `mobile2` text COLLATE utf8mb4_unicode_ci,
-  `siteEmail1` text COLLATE utf8mb4_unicode_ci,
-  `siteEmail2` text COLLATE utf8mb4_unicode_ci,
-  `siteAddress1` text COLLATE utf8mb4_unicode_ci,
-  `siteAddress2` text COLLATE utf8mb4_unicode_ci,
+  `adminLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adminsmalLogo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adminfavIcon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `siteEmail1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `siteEmail2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `siteAddress1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `siteAddress2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sitestatus` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1845,7 +1744,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `siteTitle`, `siteName`, `siteLogo`, `sitefavIcon`, `adminTitle`, `adminLogo`, `adminsmalLogo`, `adminfavIcon`, `mobile1`, `mobile2`, `siteEmail1`, `siteEmail2`, `siteAddress1`, `siteAddress2`, `sitestatus`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_another_logo_31030759214.png', 'public/uploads/site_logo/fav_icon/Nijer-Bazar_fav_12219220416.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/Nijer-Bazar_fav_59744208900.png', '+88 09678-669966', NULL, 'nijer.bazar@gmail.com', NULL, 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'nijerbazarcom_ecommerce || Bangladeshi Handicrafts Products', 'Handicrafts, Handicraft in Bangladesh , Nakshi Kantha , Nokshi Kantha , Nokshi Katha Design , Online Shopping BD, Salwar Kameez Bangladesh  , Handmade Jewelry, Online Shopping Bangladesh, Hater Kaj', 'Handicrafts  Item In Bangladesh, We have Nakshi Home Decor,  Nakshi ladies dress, Nakshi Kantha, Handmade item, wall hanging. handmade jewelry many more!', 1, NULL, '2020-03-22 01:16:02');
+(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_logo_49907109594.png', 'public/uploads/site_logo/fav_icon/Nijer-Bazar_fav_99957061677.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/Nijer-Bazar_fav_53909946930.png', '+88 096-78-669966', '019-16-304877', 'nijer.bazar@gmail.com', 'alfattah@gmail.com', 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'Nijer Bazar|| Online Grocery & Super Shop', 'Online Grocery Shop,Sobji Bazar,Kacha Bazar,Frozen Food,Ready Food', 'Bangladeshi Online Grocery and Super Shop.', 1, NULL, '2020-03-22 18:42:17');
 
 -- --------------------------------------------------------
 
@@ -1856,7 +1755,7 @@ INSERT INTO `settings` (`id`, `siteTitle`, `siteName`, `siteLogo`, `sitefavIcon`
 CREATE TABLE `shippings` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` text COLLATE utf8mb4_unicode_ci,
+  `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
@@ -1871,9 +1770,7 @@ CREATE TABLE `shippings` (
 INSERT INTO `shippings` (`id`, `name`, `email`, `mobile`, `address`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '01832967276', 'House #68, Road #11, DIT Project, Merul Badda', 'pending', '2019-11-27 03:39:47', '2019-11-27 03:39:47'),
 (2, 'Hasan Mia', 'hasan@gmail.com', '1232343255', 'Dhakaaa', 'pending', '2019-11-27 03:41:19', '2019-11-27 03:41:19'),
-(3, 'Hasan Mia', 'hasan@gmail.com', '1243243244', 'Dhakaaa', 'pending', '2019-11-27 03:42:29', '2019-11-27 03:42:29'),
-(5, 'Jisan Ahmed', 'jisanahmed06@gmail.com', '0186289588', 'Badda', 'pending', '2020-02-05 01:08:13', '2020-02-05 01:08:13'),
-(6, 'M Hasan', NULL, '01832967276', 'Barisal', 'Complete', '2020-02-05 06:17:37', '2020-02-15 16:39:20');
+(3, 'Hasan Mia', 'hasan@gmail.com', '1243243244', 'Dhakaaa', 'pending', '2019-11-27 03:42:29', '2019-11-27 03:42:29');
 
 -- --------------------------------------------------------
 
@@ -1883,24 +1780,17 @@ INSERT INTO `shippings` (`id`, `name`, `email`, `mobile`, `address`, `status`, `
 
 CREATE TABLE `shipping_charges` (
   `id` int(10) UNSIGNED NOT NULL,
-  `shippingAmount` text COLLATE utf8mb4_unicode_ci,
-  `shippingCharge` text COLLATE utf8mb4_unicode_ci,
-  `shippingLocation` text COLLATE utf8mb4_unicode_ci,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `shippingAmount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shippingCharge` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shippingLocation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `shippingStatus` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `shipping_charges`
---
-
-INSERT INTO `shipping_charges` (`id`, `shippingAmount`, `shippingCharge`, `shippingLocation`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `shippingStatus`, `created_at`, `updated_at`) VALUES
-(1, '500', '20', 'inside', NULL, NULL, NULL, NULL, 1, '2020-03-22 01:58:03', '2020-03-22 02:10:08');
 
 -- --------------------------------------------------------
 
@@ -1910,14 +1800,14 @@ INSERT INTO `shipping_charges` (`id`, `shippingAmount`, `shippingCharge`, `shipp
 
 CREATE TABLE `sliders` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci,
-  `source` text COLLATE utf8mb4_unicode_ci,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `productId` int(11) DEFAULT NULL,
-  `section` text COLLATE utf8mb4_unicode_ci,
+  `section` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1939,15 +1829,15 @@ INSERT INTO `sliders` (`id`, `title`, `source`, `productId`, `section`, `status`
 
 CREATE TABLE `socials` (
   `id` int(10) UNSIGNED NOT NULL,
-  `facebook` text COLLATE utf8mb4_unicode_ci,
-  `twitter` text COLLATE utf8mb4_unicode_ci,
-  `google` text COLLATE utf8mb4_unicode_ci,
-  `linkdin` text COLLATE utf8mb4_unicode_ci,
-  `youtube` text COLLATE utf8mb4_unicode_ci,
+  `facebook` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkdin` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1961,9 +1851,9 @@ CREATE TABLE `socials` (
 
 CREATE TABLE `social_links` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `icon` text COLLATE utf8mb4_unicode_ci,
-  `link` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2005,7 +1895,7 @@ CREATE TABLE `stock_status_report` (
 -- (See below for the actual view)
 --
 CREATE TABLE `stock_valuation_report` (
-`supplierId` bigint(20)
+`supplierId` int(11)
 ,`categoryId` mediumtext
 ,`productId` int(11)
 ,`cashPurchaseQty` varchar(255)
@@ -2016,9 +1906,9 @@ CREATE TABLE `stock_valuation_report` (
 ,`purchaseReturnAmount` varchar(255)
 ,`cashSaleQty` varchar(191)
 ,`cashSaleAmount` varchar(191)
-,`creditSaleQty` bigint(20)
-,`creditSaleAmount` bigint(20)
-,`salesReturnQty` bigint(20)
+,`creditSaleQty` int(1)
+,`creditSaleAmount` int(1)
+,`salesReturnQty` int(1)
 );
 
 -- --------------------------------------------------------
@@ -2031,10 +1921,10 @@ CREATE TABLE `sub_categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `subcategoryName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subcategoryStatus` tinyint(1) NOT NULL DEFAULT '1',
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `subcategoryStatus` tinyint(1) NOT NULL DEFAULT 1,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `orderBy` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2056,7 +1946,7 @@ CREATE TABLE `supplier_payments` (
   `balance` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `money_receipt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remarks` text COLLATE utf8mb4_unicode_ci,
+  `remarks` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2111,15 +2001,15 @@ CREATE TABLE `tbl_account_transactions` (
   `coa_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `coa_head_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `showroom_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `narration` text COLLATE utf8mb4_unicode_ci,
+  `narration` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `debit_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `credit_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `posted` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `approve` tinyint(4) NOT NULL DEFAULT '0',
+  `approve` tinyint(4) NOT NULL DEFAULT 0,
   `approve_by` int(11) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT '1',
-  `delete` tinyint(4) NOT NULL DEFAULT '0',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `active` tinyint(4) NOT NULL DEFAULT 1,
+  `delete` tinyint(4) NOT NULL DEFAULT 0,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -2146,14 +2036,14 @@ CREATE TABLE `tbl_coa` (
   `head_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_head_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `head_level` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT '1',
-  `transaction` tinyint(4) NOT NULL DEFAULT '0',
-  `general_ledger` tinyint(4) NOT NULL DEFAULT '0',
+  `active` tinyint(4) NOT NULL DEFAULT 1,
+  `transaction` tinyint(4) NOT NULL DEFAULT 0,
+  `general_ledger` tinyint(4) NOT NULL DEFAULT 0,
   `head_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `budget` tinyint(4) NOT NULL,
   `depreciation` tinyint(4) NOT NULL,
   `depreciation_rate` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2198,8 +2088,8 @@ CREATE TABLE `tbl_showroom` (
   `vat` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tin` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `trade_license` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2237,9 +2127,9 @@ CREATE TABLE `terms` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `metaTitle` text COLLATE utf8mb4_unicode_ci,
-  `metaKeyword` text COLLATE utf8mb4_unicode_ci,
-  `metaDescription` text COLLATE utf8mb4_unicode_ci,
+  `metaTitle` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaKeyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metaDescription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2262,14 +2152,6 @@ CREATE TABLE `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`id`, `checkout_id`, `total`, `method`, `reference`, `payment`, `status`, `created_at`, `updated_at`) VALUES
-(1, 4, 3860.00, NULL, '4', 0.00, 'pending', '2020-02-05 01:08:13', '2020-02-05 01:08:13'),
-(2, 5, 1450.00, NULL, '5', 0.00, 'Complete', '2020-02-05 06:17:37', '2020-02-15 16:39:20');
 
 -- --------------------------------------------------------
 
@@ -2312,18 +2194,18 @@ CREATE TABLE `user_menus` (
 INSERT INTO `user_menus` (`id`, `parentMenu`, `menuName`, `menuLink`, `menuIcon`, `orderBy`, `menuStatus`, `created_at`, `updated_at`) VALUES
 (1, '13', 'Flash Sell', 'flashSell', 'fa fa-caret', 11, '1', '2019-11-26 23:51:55', '2019-11-26 23:51:55'),
 (3, NULL, 'Dashboard', 'admin.index', 'fa fa-shopping-bag', 1, '1', '2019-08-30 04:08:49', '2019-08-31 01:52:17'),
-(6, NULL, 'Business', 'admin.index', 'fa fa-bars', 2, '1', '2019-08-30 04:47:14', '2019-08-30 04:47:14'),
+(6, NULL, 'Online Order', 'admin.index', 'fa fa-bars', 3, '1', '2019-08-30 04:47:14', '2020-03-24 16:48:57'),
 (7, '6', 'Pending Order', 'order.new', 'fa fa-caret-right', 3, '1', '2019-08-30 04:48:23', '2019-08-30 05:19:18'),
 (8, '6', 'Processing', 'order.processing', 'fa fa-caret-right', 4, '1', '2019-08-30 04:49:49', '2019-08-30 05:19:42'),
 (10, '6', 'Shipping', 'order.shipping', 'fa fa-caret-right', 5, '1', '2019-08-30 05:11:21', '2019-08-30 05:21:29'),
 (11, '6', 'Complete', 'orderlist.complete', 'fa fa-caret-right', 6, '1', '2019-08-30 05:22:21', '2019-08-30 05:22:21'),
-(12, NULL, 'Customers', 'customers.index', 'fa fa-bars', 7, '1', '2019-08-30 05:26:51', '2019-08-30 05:26:51'),
-(13, NULL, 'Business Settings', 'admin.index', 'fa fa-bars', 3, '1', '2019-08-30 05:27:47', '2019-10-30 09:39:18'),
-(14, '13', 'Products', 'products.index', 'fa fa-caret-right', 10, '1', '2019-08-30 05:28:28', '2019-08-30 05:36:20'),
-(15, '13', 'Categories', 'categories.index', 'fa fa-caret-right', 9, '1', '2019-08-30 05:28:59', '2019-08-30 05:43:13'),
-(16, '13', 'Shipping Charge', 'shippingCharges.index', 'fa fa-caret-right', 11, '1', '2019-08-30 05:29:45', '2019-09-03 05:34:58'),
+(12, '52', 'Customers', 'customers.index', 'fa fa-bars', 5, '1', '2019-08-30 05:26:51', '2020-03-24 16:54:53'),
+(13, NULL, 'Business Settings', 'admin.index', 'fa fa-bars', 2, '1', '2019-08-30 05:27:47', '2020-03-24 16:48:39'),
+(14, '13', 'Products', 'products.index', 'fa fa-caret-right', 2, '1', '2019-08-30 05:28:28', '2020-03-24 16:44:27'),
+(15, '13', 'Categories', 'categories.index', 'fa fa-caret-right', 1, '1', '2019-08-30 05:28:59', '2020-03-24 16:44:01'),
+(16, '13', 'Shipping Charge', 'shippingCharges.index', 'fa fa-caret-right', 4, '1', '2019-08-30 05:29:45', '2020-03-24 16:46:03'),
 (17, '13', 'Customer Group', 'customerGroups.index', 'fa fa-caret-right', 12, '1', '2019-08-30 05:34:10', '2019-08-30 05:34:10'),
-(18, NULL, 'Portal Information', 'admin.index', 'fa fa-bars', 2, '1', '2019-08-30 05:47:44', '2019-10-30 09:37:07'),
+(18, NULL, 'Portal Information', 'admin.index', 'fa fa-bars', 100, '1', '2019-08-30 05:47:44', '2020-03-24 16:49:34'),
 (19, '18', 'Site Info', 'site.info', 'fa fa-caret-right', 14, '1', '2019-08-30 05:48:51', '2019-08-30 05:48:51'),
 (20, '18', 'menu', 'menu.index', 'fa fa-caret-right', 15, '1', '2019-08-30 05:49:27', '2019-08-30 05:49:27'),
 (21, '18', 'Sliders', 'sliders.index', 'fa fa-caret-right', 16, '1', '2019-08-30 05:50:07', '2019-08-30 05:50:07'),
@@ -2348,26 +2230,26 @@ INSERT INTO `user_menus` (`id`, `parentMenu`, `menuName`, `menuLink`, `menuIcon`
 (40, '36', 'User', 'users.index', 'fa fa-caret-right', 35, '1', '2019-08-30 06:02:35', '2019-08-30 06:04:03'),
 (41, '13', 'Vendor Setup', 'vendor.index', 'fa fa-caret-right', 36, '1', '2019-08-30 23:56:33', '2019-10-24 12:47:51'),
 (42, '43', 'Cash Purchase', 'cashPurchase.index', 'fa fa-caret-right', 37, '1', '2019-09-02 22:19:01', '2019-09-03 22:19:56'),
-(43, NULL, 'Procurement', 'admin.index', 'fa fa-bars', 5, '1', '2019-09-03 22:16:44', '2019-10-30 09:43:58'),
+(43, '96', 'Procurement', 'admin.index', 'fa fa-bars', 1, '1', '2019-09-03 22:16:44', '2020-03-24 16:51:20'),
 (44, '43', 'Credit Purchase', 'creditPurchase.index', 'fa fa-caret', 38, '1', '2019-09-03 22:23:17', '2019-09-03 22:27:58'),
 (45, '43', 'Purchase Order', 'purchaseOrder.index', 'fa fa-caret', 39, '1', '2019-09-04 03:33:52', '2019-09-04 03:33:52'),
 (46, '43', 'PO Receive', 'purchaseOrderReceive.index', 'fa fa-caret', 40, '1', '2019-09-04 05:42:53', '2019-10-16 03:59:53'),
 (47, '43', 'Supplier Payment', 'supplierPayment.index', 'fa fa-caret', 41, '1', '2019-09-05 02:43:41', '2019-09-05 02:43:41'),
 (48, '43', 'Purchase Return', 'purchaseReturn.index', 'fa fa-caret', 42, '1', '2019-09-06 23:49:00', '2019-09-06 23:49:00'),
-(49, NULL, 'Inventory Report', 'admin.index', 'fa fa-bars', 9, '1', '2019-09-07 22:41:33', '2019-10-30 09:47:36'),
+(49, '96', 'Inventory Report', 'admin.index', 'fa fa-bars', 3, '1', '2019-09-07 22:41:33', '2020-03-24 16:52:55'),
 (50, '49', 'Purchase Log', 'purchaseLog.index', 'fa fa-caret', 43, '1', '2019-09-07 22:46:41', '2019-09-07 22:46:41'),
 (51, '62', 'Supplier Statement', 'supplierStatement.index', 'fa fa-caret', 44, '1', '2019-09-08 03:55:46', '2019-11-03 17:25:25'),
-(52, NULL, 'Sales Management', 'admin.index', 'fa fa-bars', 7, '1', '2019-10-13 01:14:42', '2019-10-30 09:46:24'),
-(53, '52', 'Cash Sale', 'cashSale.index', 'fa fa-caret', 46, '1', '2019-10-13 02:49:58', '2019-10-13 02:51:01'),
-(54, '52', 'Credit Sale', 'creditSale.index', 'fa fa-caret', 47, '1', '2019-10-14 05:39:54', '2019-10-14 05:42:00'),
+(52, NULL, 'Sales Management', 'admin.index', 'fa fa-bars', 5, '1', '2019-10-13 01:14:42', '2020-03-24 16:57:18'),
+(53, '52', 'Cash Sale', 'cashSale.index', 'fa fa-caret', 1, '1', '2019-10-13 02:49:58', '2020-03-24 16:53:36'),
+(54, '52', 'Credit Sale', 'creditSale.index', 'fa fa-caret', 2, '1', '2019-10-14 05:39:54', '2020-03-24 19:03:48'),
 (55, '13', 'Client Entry', 'clientEntry.index', 'fa fa-bars', 48, '1', '2019-10-14 06:30:55', '2019-10-30 09:49:39'),
-(56, '52', 'Credit Collection', 'creditCollection.index', 'fa fa-caret', 49, '1', '2019-10-15 23:47:51', '2019-10-15 23:47:51'),
-(57, NULL, 'Sales Report', 'admin.index', 'fa fa-caret', 8, '1', '2019-10-16 23:50:29', '2019-10-30 09:46:58'),
+(56, '52', 'Credit Collection', 'creditCollection.index', 'fa fa-caret', 3, '1', '2019-10-15 23:47:51', '2020-03-24 19:04:20'),
+(57, '52', 'Sales Report', 'admin.index', 'fa fa-caret', 4, '1', '2019-10-16 23:50:29', '2020-03-24 16:55:37'),
 (58, '57', 'Sales History', 'salesHistory.index', 'fa fa-caret', 51, '1', '2019-10-17 00:07:09', '2019-10-17 00:07:09'),
 (59, '57', 'Product Wise Sales', 'productWiseSales.index', 'fa fa-caret', 52, '1', '2019-10-17 00:15:53', '2019-10-17 00:15:53'),
 (60, '57', 'Client Wise Sales', 'clientWiseSales.index', 'fa fa-caret', 53, '1', '2019-10-17 00:20:05', '2019-10-17 00:20:05'),
 (61, NULL, 'Basic Report', 'admin.index', 'fa fa-bars', 4, '1', '2019-10-30 09:43:26', '2019-10-30 09:43:26'),
-(62, NULL, 'Procurement Report', 'admin.index', 'fa fa-bars', 6, '1', '2019-10-30 09:45:13', '2019-10-30 09:45:13'),
+(62, '96', 'Procurement Report', 'admin.index', 'fa fa-bars', 2, '1', '2019-10-30 09:45:13', '2020-03-24 16:52:19'),
 (63, '62', 'Purchase History', 'purchaseHistory.index', 'fa fa-caret', 1, '1', '2019-10-31 16:31:58', '2019-10-31 16:31:58'),
 (64, '62', 'Purchase Return History', 'purchaseReturnHistory.index', 'fa fa-caret', 2, '1', '2019-11-02 10:26:38', '2019-11-02 10:26:38'),
 (65, '62', 'Payment Log', 'paymentLog.index', 'fa fa-bars', 3, '1', '2019-11-04 13:27:19', '2019-11-04 13:27:19'),
@@ -2382,14 +2264,14 @@ INSERT INTO `user_menus` (`id`, `parentMenu`, `menuName`, `menuLink`, `menuIcon`
 (74, '49', 'Out Of Stock', 'outOfStockReport.index', 'fa fa-caret', 12, '1', '2019-11-17 12:56:24', '2019-11-17 12:56:24'),
 (75, '57', 'Collection History', 'collectionHistory.index', 'fa fa-caret', 13, '1', '2019-11-17 16:29:54', '2019-11-17 16:29:54'),
 (76, '57', 'Product Wise Profit', 'productWiseProfit.index', 'fa fa-caret', 14, '1', '2019-11-19 01:12:46', '2019-11-19 01:12:46'),
-(77, NULL, 'Account Management', 'admin.index', 'fa fa-caret', 15, '1', '2020-02-24 04:50:44', '2020-02-24 04:50:44'),
-(78, '77', 'Chart Of Accounts', 'coaSetup.index', 'fa fa-caret', 16, '1', '2020-02-24 04:51:56', '2020-02-24 04:51:56'),
-(79, '77', 'Journal Entry', 'journalEntry.index', 'fa fa-caret', 18, '1', '2020-02-24 04:52:15', '2020-02-24 04:58:08'),
-(80, '77', 'Debit Entry', 'debitEntry.index', 'fa fa-caret', 19, '1', '2020-02-24 04:53:30', '2020-02-24 04:58:23'),
-(81, '77', 'Credit Entry', 'creditEntry.index', 'fa fa-bars', 20, '1', '2020-02-24 04:53:56', '2020-02-24 04:58:33'),
-(82, '77', 'Voucher Approve', 'voucherApprove.index', 'fa fa-bars', 21, '1', '2020-02-24 04:54:15', '2020-02-24 04:58:52'),
-(83, '77', 'Opening Balance', 'openingBalanceEntry.index', 'fa fa-bars', 17, '1', '2020-02-24 04:54:42', '2020-02-24 04:57:22'),
-(84, NULL, 'Account Reports', 'admin.index', 'fa fa-bars', 18, '1', '2020-02-25 00:53:49', '2020-02-25 00:53:49'),
+(77, NULL, 'General Accounting', 'admin.index', 'fa fa-caret', 6, '1', '2020-02-24 04:50:44', '2020-03-24 16:56:57'),
+(78, '77', 'Chart Of Accounts', 'coaSetup.index', 'fa fa-caret', 2, '1', '2020-02-24 04:51:56', '2020-03-24 17:09:32'),
+(79, '97', 'Journal Entry', 'journalEntry.index', 'fa fa-caret', 2, '1', '2020-02-24 04:52:15', '2020-03-24 17:11:36'),
+(80, '97', 'Debit Entry', 'debitEntry.index', 'fa fa-caret', 19, '1', '2020-02-24 04:53:30', '2020-03-24 17:04:15'),
+(81, '97', 'Credit Entry', 'creditEntry.index', 'fa fa-bars', 20, '1', '2020-02-24 04:53:56', '2020-03-24 17:03:49'),
+(82, '97', 'Voucher Approve', 'voucherApprove.index', 'fa fa-bars', 5, '1', '2020-02-24 04:54:15', '2020-03-24 17:08:05'),
+(83, '97', 'Opening Balance', 'openingBalanceEntry.index', 'fa fa-bars', 1, '1', '2020-02-24 04:54:42', '2020-03-24 17:10:57'),
+(84, '77', 'Account Reports', 'admin.index', 'fa fa-bars', 3, '1', '2020-02-25 00:53:49', '2020-03-24 17:10:10'),
 (85, '84', 'COA List', 'coaList.index', 'fa fa-caret', 19, '1', '2020-02-25 00:54:28', '2020-02-25 00:54:28'),
 (86, '84', 'Voucher List', 'voucherList.index', 'fa fa-caret', 20, '1', '2020-02-25 00:54:59', '2020-02-25 00:54:59'),
 (87, '84', 'General Ledger', 'generalLedger.index', 'fa fa-caret', 21, '1', '2020-02-25 00:55:42', '2020-02-25 00:55:42'),
@@ -2399,7 +2281,10 @@ INSERT INTO `user_menus` (`id`, `parentMenu`, `menuName`, `menuLink`, `menuIcon`
 (91, '84', 'Income Statement', 'incomeStatement.index', 'fa fa-caret', 25, '1', '2020-02-25 00:58:11', '2020-02-25 00:58:11'),
 (92, '84', 'Receive Payment', 'receivePaymentStatement.index', 'fa fa-caret', 26, '1', '2020-02-25 00:58:45', '2020-02-25 00:58:45'),
 (93, '84', 'Trial Balance', 'trialBalance.index', 'fa fa-caret', 27, '1', '2020-02-25 01:02:01', '2020-02-25 01:02:22'),
-(94, '6', 'Item Request', 'customer.itemRequest', 'fa fa-caret-right', 1, '1', '2020-03-22 06:43:46', '2020-03-22 06:43:46');
+(94, '6', 'Sleep Request', 'customer.itemRequest', 'fa fa-caret-right', 1, '1', '2020-03-22 17:11:51', '2020-03-24 16:38:07'),
+(95, '13', 'Quick Update', 'product.quickUpdateList', NULL, 3, '1', '2020-03-24 16:38:46', '2020-03-24 16:45:02'),
+(96, NULL, 'Inventory', 'admin.index', NULL, 4, '1', '2020-03-24 16:50:26', '2020-03-24 16:50:26'),
+(97, '77', 'Transactions', 'admin.index', NULL, 1, '1', '2020-03-24 16:57:51', '2020-03-24 16:57:51');
 
 -- --------------------------------------------------------
 
@@ -2590,8 +2475,8 @@ INSERT INTO `user_menu_actions` (`id`, `parentmenuId`, `menuType`, `actionName`,
 (172, 88, 11, 'Print Transaction Ledger', 'transactionLedger.print', 134, 1, '2020-02-25 01:10:16', '2020-02-25 01:10:16'),
 (173, 93, 11, 'Print Trial Balance', 'trialBalance.print', 135, 1, '2020-02-25 01:11:22', '2020-02-25 01:11:22'),
 (174, 86, 11, 'Print Voucher List', 'voucherList.print', 136, 1, '2020-02-25 01:12:07', '2020-02-25 01:12:07'),
-(175, 94, 8, 'Details', 'customer.itemRequestDetails', 1, 1, '2020-03-22 23:34:48', '2020-03-22 23:34:48'),
-(176, 94, 4, 'Delete', 'customer.itemRequestDelete', 2, 1, '2020-03-22 23:35:04', '2020-03-22 23:35:04');
+(175, 94, 8, 'Details', 'customer.itemRequestDetails', 1, 1, '2020-03-23 09:59:17', '2020-03-23 09:59:17'),
+(176, 94, 4, 'Delete', 'customer.itemRequestDelete', 2, 1, '2020-03-23 10:00:02', '2020-03-23 10:00:02');
 
 -- --------------------------------------------------------
 
@@ -2601,10 +2486,10 @@ INSERT INTO `user_menu_actions` (`id`, `parentmenuId`, `menuType`, `actionName`,
 
 CREATE TABLE `user_roles` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `permission` text COLLATE utf8mb4_unicode_ci,
-  `actionPermission` text COLLATE utf8mb4_unicode_ci,
+  `permission` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actionPermission` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2614,8 +2499,8 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `name`, `status`, `permission`, `actionPermission`, `created_at`, `updated_at`) VALUES
-(2, 'Super User', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,142,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,147,168,174,169,172,167,166,170,171,173,175,176', '2019-04-17 00:50:05', '2020-03-22 23:35:33'),
-(3, 'Admin', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,77,78,79,80,81,82,83', '148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,146,147', '2019-04-17 00:52:54', '2020-02-24 05:10:22');
+(2, 'Super User', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97', '90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,54,106,8,9,14,15,4,7,5,6,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,34,35,40,41,42,43,36,37,38,39,45,46,47,48,49,142,44,50,51,52,53,89,55,56,57,86,58,64,65,66,67,87,59,60,61,62,88,68,69,70,71,10,11,12,72,73,74,75,76,77,79,78,80,81,82,83,84,85,107,108,109,111,110,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,147,168,174,169,172,167,166,170,171,173,175,176', '2019-04-17 00:50:05', '2020-03-24 16:58:40'),
+(3, 'Admin', 1, '3,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,43,49,62,77,78,79,80,81,82,83,94,95,96,97', '148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,143,144,145,147,175,176', '2019-04-17 00:52:54', '2020-03-24 16:58:17');
 
 -- --------------------------------------------------------
 
@@ -2628,7 +2513,7 @@ CREATE TABLE `vendors` (
   `vendor_serial` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendorName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contactPerson` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `vendorAddress` text COLLATE utf8mb4_unicode_ci,
+  `vendorAddress` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendorPhone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendorEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `accountCode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -2655,9 +2540,9 @@ CREATE TABLE `verify_customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile` text COLLATE utf8mb4_unicode_ci,
-  `address` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
+  `mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `confirmPassword` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `verifyCode` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2689,7 +2574,7 @@ CREATE TABLE `view_account` (
 --
 CREATE TABLE `view_voucher_approve` (
 `showroomId` varchar(191)
-,`id` int(11) unsigned
+,`id` int(10) unsigned
 ,`showroomName` varchar(191)
 ,`voucherNo` varchar(191)
 ,`voucherType` varchar(191)
@@ -2716,7 +2601,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `product_wise_profit`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `product_wise_profit`  AS  select `cash_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_quantity` AS `cashProductQty`,`cash_sale_items`.`item_price` AS `cashPriceAmount`,((`cash_sale_items`.`item_price` * 4.5) / 100) AS `cashVatAmount`,((`cash_sale_items`.`item_price` * `cash_sales`.`discount_as`) / 100) AS `cashDiscountAmount`,0 AS `creditProductQty`,0 AS `creditPriceAmount`,0 AS `creditVatAmount`,0 AS `creditDiscountAmount` from ((`cash_sales` join `cash_sale_items` on((`cash_sale_items`.`cash_sale_id` = `cash_sales`.`id`))) join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) union all select `credit_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,0 AS `cashProductQty`,0 AS `cashPriceAmount`,0 AS `cashVatAmount`,0 AS `cashDiscountAmount`,`credit_sale_items`.`item_quantity` AS `creditProductQty`,`credit_sale_items`.`item_price` AS `creditPriceAmount`,((`credit_sale_items`.`item_price` * 4.5) / 100) AS `creditVatAmount`,((`credit_sale_items`.`item_price` * `credit_sales`.`discount_as`) / 100) AS `creditDiscountAmount` from ((`credit_sales` join `credit_sale_items` on((`credit_sale_items`.`credit_sale_id` = `credit_sales`.`id`))) join `products` on((`products`.`id` = `credit_sale_items`.`item_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `product_wise_profit`  AS  select `cash_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_quantity` AS `cashProductQty`,`cash_sale_items`.`item_price` AS `cashPriceAmount`,`cash_sale_items`.`item_price` * 4.5 / 100 AS `cashVatAmount`,`cash_sale_items`.`item_price` * `cash_sales`.`discount_as` / 100 AS `cashDiscountAmount`,0 AS `creditProductQty`,0 AS `creditPriceAmount`,0 AS `creditVatAmount`,0 AS `creditDiscountAmount` from ((`cash_sales` join `cash_sale_items` on(`cash_sale_items`.`cash_sale_id` = `cash_sales`.`id`)) join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) union all select `credit_sales`.`invoice_date` AS `date`,`products`.`id` AS `productId`,`products`.`category_id` AS `categoryId`,0 AS `cashProductQty`,0 AS `cashPriceAmount`,0 AS `cashVatAmount`,0 AS `cashDiscountAmount`,`credit_sale_items`.`item_quantity` AS `creditProductQty`,`credit_sale_items`.`item_price` AS `creditPriceAmount`,`credit_sale_items`.`item_price` * 4.5 / 100 AS `creditVatAmount`,`credit_sale_items`.`item_price` * `credit_sales`.`discount_as` / 100 AS `creditDiscountAmount` from ((`credit_sales` join `credit_sale_items` on(`credit_sale_items`.`credit_sale_id` = `credit_sales`.`id`)) join `products` on(`products`.`id` = `credit_sale_items`.`item_id`)) ;
 
 -- --------------------------------------------------------
 
@@ -2725,7 +2610,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `purchase_order_status`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `purchase_order_status`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_items`.`product_id` AS `productId`,`purchase_order_items`.`qty` AS `orderQty`,0 AS `receiveQty` from (`purchase_orders` join `purchase_order_items` on((`purchase_order_items`.`purchase_order_id` = `purchase_orders`.`id`))) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_receive_items`.`product_id` AS `productId`,0 AS `orderQty`,`purchase_order_receive_items`.`qty` AS `receiveQty` from ((`purchase_order_receives` join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `purchase_orders` on((`purchase_orders`.`id` = `purchase_order_receives`.`purchaseOrderNo`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `purchase_order_status`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_items`.`product_id` AS `productId`,`purchase_order_items`.`qty` AS `orderQty`,0 AS `receiveQty` from (`purchase_orders` join `purchase_order_items` on(`purchase_order_items`.`purchase_order_id` = `purchase_orders`.`id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_orders`.`order_no` AS `orderNo`,`purchase_orders`.`order_date` AS `date`,`purchase_order_receive_items`.`product_id` AS `productId`,0 AS `orderQty`,`purchase_order_receive_items`.`qty` AS `receiveQty` from ((`purchase_order_receives` join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `purchase_orders` on(`purchase_orders`.`id` = `purchase_order_receives`.`purchaseOrderNo`)) ;
 
 -- --------------------------------------------------------
 
@@ -2743,7 +2628,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `sales_contribution`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `sales_contribution`  AS  select `products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,sum(`cash_sale_items`.`item_quantity`) AS `cashSaleQty`,sum(`cash_sale_items`.`item_price`) AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount` from (`cash_sale_items` join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) group by `cash_sale_items`.`item_id` union all select `products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,sum(`credit_sale_items`.`item_quantity`) AS `creditSaleQty`,sum(`credit_sale_items`.`item_price`) AS `creditSaleAmount` from (`credit_sale_items` join `products` on((`products`.`id` = `credit_sale_items`.`item_id`))) group by `credit_sale_items`.`item_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `sales_contribution`  AS  select `products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,sum(`cash_sale_items`.`item_quantity`) AS `cashSaleQty`,sum(`cash_sale_items`.`item_price`) AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount` from (`cash_sale_items` join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) group by `cash_sale_items`.`item_id` union all select `products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,sum(`credit_sale_items`.`item_quantity`) AS `creditSaleQty`,sum(`credit_sale_items`.`item_price`) AS `creditSaleAmount` from (`credit_sale_items` join `products` on(`products`.`id` = `credit_sale_items`.`item_id`)) group by `credit_sale_items`.`item_id` ;
 
 -- --------------------------------------------------------
 
@@ -2752,7 +2637,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `stock_status_report`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) join `cash_sale_items` on((`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`))) join `cash_sales` on((`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`))) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) join `purchase_order_receive_items` on((`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`))) join `products` on((`products`.`id` = `purchase_order_receive_items`.`product_id`))) join `credit_sale_items` on((`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`))) join `credit_sales` on((`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`))) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `cash_sale_items` on(`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `cash_sales` on(`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`)) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `credit_sale_items` on(`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `credit_sales` on(`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`)) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` ;
 
 -- --------------------------------------------------------
 
@@ -2761,7 +2646,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `stock_valuation_report`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_valuation_report`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_purchase_item`.`product_id` AS `productId`,`cash_purchase_item`.`qty` AS `cashPurchaseQty`,`cash_purchase_item`.`amount` AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`cash_purchase_item` join `cash_purchase` on((`cash_purchase`.`id` = `cash_purchase_item`.`cash_puchase_id`))) join `products` on((`products`.`id` = `cash_purchase_item`.`product_id`))) union all select `credit_purchases`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`credit_purchase_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,`credit_purchase_items`.`qty` AS `creditPurchaseQty`,`credit_purchase_items`.`amount` AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`credit_purchase_items` join `credit_purchases` on((`credit_purchases`.`id` = `credit_purchase_items`.`credit_puchase_id`))) join `products` on((`products`.`id` = `credit_purchase_items`.`product_id`))) union all select `purchase_returns`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`purchase_return_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,`purchase_return_items`.`qty` AS `purchaseReturnQty`,`purchase_return_items`.`amount` AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`purchase_return_items` join `purchase_returns` on((`purchase_returns`.`id` = `purchase_return_items`.`purchase_return_id`))) join `products` on((`products`.`id` = `purchase_return_items`.`product_id`))) union all select 0 AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,`cash_sale_items`.`item_price` AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from (`cash_sale_items` join `products` on((`products`.`id` = `cash_sale_items`.`item_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_valuation_report`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_purchase_item`.`product_id` AS `productId`,`cash_purchase_item`.`qty` AS `cashPurchaseQty`,`cash_purchase_item`.`amount` AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`cash_purchase_item` join `cash_purchase` on(`cash_purchase`.`id` = `cash_purchase_item`.`cash_puchase_id`)) join `products` on(`products`.`id` = `cash_purchase_item`.`product_id`)) union all select `credit_purchases`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`credit_purchase_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,`credit_purchase_items`.`qty` AS `creditPurchaseQty`,`credit_purchase_items`.`amount` AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`credit_purchase_items` join `credit_purchases` on(`credit_purchases`.`id` = `credit_purchase_items`.`credit_puchase_id`)) join `products` on(`products`.`id` = `credit_purchase_items`.`product_id`)) union all select `purchase_returns`.`supplier_id` AS `supplierId`,`products`.`category_id` AS `categoryId`,`purchase_return_items`.`product_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,`purchase_return_items`.`qty` AS `purchaseReturnQty`,`purchase_return_items`.`amount` AS `purchaseReturnAmount`,0 AS `cashSaleQty`,0 AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from ((`purchase_return_items` join `purchase_returns` on(`purchase_returns`.`id` = `purchase_return_items`.`purchase_return_id`)) join `products` on(`products`.`id` = `purchase_return_items`.`product_id`)) union all select 0 AS `supplierId`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `cashPurchaseQty`,0 AS `cashPurchaseAmount`,0 AS `creditPurchaseQty`,0 AS `creditPurchaseAmount`,0 AS `purchaseReturnQty`,0 AS `purchaseReturnAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,`cash_sale_items`.`item_price` AS `cashSaleAmount`,0 AS `creditSaleQty`,0 AS `creditSaleAmount`,0 AS `salesReturnQty` from (`cash_sale_items` join `products` on(`products`.`id` = `cash_sale_items`.`item_id`)) ;
 
 -- --------------------------------------------------------
 
@@ -2779,7 +2664,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `supply_payment_summery`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `supply_payment_summery`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`cash_purchase`.`type` AS `type`,`cash_purchase`.`voucher_date` AS `date`,`cash_purchase`.`total_amount` AS `purchase`,`cash_purchase`.`total_amount` AS `payment` from `cash_purchase` union all select `credit_purchases`.`supplier_id` AS `supplierId`,`credit_purchases`.`type` AS `type`,`credit_purchases`.`voucher_date` AS `date`,`credit_purchases`.`total_amount` AS `purchase`,0 AS `payment` from `credit_purchases` union all select `purchase_orders`.`supplier_id` AS `supplierId`,'Order Receive' AS `type`,`purchase_order_receives`.`receive_date` AS `date`,`purchase_order_receives`.`total_amount` AS `purchase`,0 AS `payment` from (`purchase_orders` join `purchase_order_receives` on((`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`))) union all select `supplier_payments`.`supplier_id` AS `supplierId`,'Payment' AS `type`,`supplier_payments`.`payment_date` AS `date`,0 AS `purchase`,`supplier_payments`.`payment_now` AS `payment` from `supplier_payments` order by `type`,`supplierId` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `supply_payment_summery`  AS  select `cash_purchase`.`supplier_id` AS `supplierId`,`cash_purchase`.`type` AS `type`,`cash_purchase`.`voucher_date` AS `date`,`cash_purchase`.`total_amount` AS `purchase`,`cash_purchase`.`total_amount` AS `payment` from `cash_purchase` union all select `credit_purchases`.`supplier_id` AS `supplierId`,`credit_purchases`.`type` AS `type`,`credit_purchases`.`voucher_date` AS `date`,`credit_purchases`.`total_amount` AS `purchase`,0 AS `payment` from `credit_purchases` union all select `purchase_orders`.`supplier_id` AS `supplierId`,'Order Receive' AS `type`,`purchase_order_receives`.`receive_date` AS `date`,`purchase_order_receives`.`total_amount` AS `purchase`,0 AS `payment` from (`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) union all select `supplier_payments`.`supplier_id` AS `supplierId`,'Payment' AS `type`,`supplier_payments`.`payment_date` AS `date`,0 AS `purchase`,`supplier_payments`.`payment_now` AS `payment` from `supplier_payments` order by `type`,`supplierId` ;
 
 -- --------------------------------------------------------
 
@@ -2788,7 +2673,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `view_account`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_account`  AS  select `tab1`.`showroom_id` AS `showroomId`,`tab1`.`voucher_no` AS `voucherNo`,`tab1`.`voucher_type` AS `voucherType`,`tab1`.`coa_head_code` AS `debitHeadCode`,`debitcoa`.`head_name` AS `debitHeadname`,`tab2`.`coa_head_code` AS `creditHeadcode`,`creditcoa`.`head_name` AS `creditHeadName` from (((`tbl_account_transactions` `tab1` join `tbl_account_transactions` `tab2` on((`tab2`.`voucher_no` = `tab1`.`voucher_no`))) join `tbl_coa` `debitcoa` on((`debitcoa`.`head_code` = `tab1`.`coa_head_code`))) join `tbl_coa` `creditcoa` on((`creditcoa`.`head_code` = `tab2`.`coa_head_code`))) where ((`tab1`.`debit_amount` <> 0) and (`tab2`.`credit_amount` <> 0)) order by `tab1`.`voucher_no` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_account`  AS  select `tab1`.`showroom_id` AS `showroomId`,`tab1`.`voucher_no` AS `voucherNo`,`tab1`.`voucher_type` AS `voucherType`,`tab1`.`coa_head_code` AS `debitHeadCode`,`debitcoa`.`head_name` AS `debitHeadname`,`tab2`.`coa_head_code` AS `creditHeadcode`,`creditcoa`.`head_name` AS `creditHeadName` from (((`tbl_account_transactions` `tab1` join `tbl_account_transactions` `tab2` on(`tab2`.`voucher_no` = `tab1`.`voucher_no`)) join `tbl_coa` `debitcoa` on(`debitcoa`.`head_code` = `tab1`.`coa_head_code`)) join `tbl_coa` `creditcoa` on(`creditcoa`.`head_code` = `tab2`.`coa_head_code`)) where `tab1`.`debit_amount` <> 0 and `tab2`.`credit_amount` <> 0 order by `tab1`.`voucher_no` ;
 
 -- --------------------------------------------------------
 
@@ -2797,7 +2682,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `view_voucher_approve`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_voucher_approve`  AS  select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`credit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where ((`tbl_account_transactions`.`voucher_type` = 'DV') and (`tbl_account_transactions`.`debit_amount` = 0)) union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`debit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where ((`tbl_account_transactions`.`voucher_type` = 'CV') and (`tbl_account_transactions`.`credit_amount` = 0)) union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where (`tbl_account_transactions`.`voucher_type` = 'JV') group by `tbl_account_transactions`.`voucher_no` union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on((`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`))) where (`tbl_account_transactions`.`voucher_type` = 'OB') group by `tbl_account_transactions`.`voucher_no` order by `voucherNo` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `view_voucher_approve`  AS  select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`credit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'DV' and `tbl_account_transactions`.`debit_amount` = 0 union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,`tbl_account_transactions`.`debit_amount` AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'CV' and `tbl_account_transactions`.`credit_amount` = 0 union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'JV' group by `tbl_account_transactions`.`voucher_no` union all select `tbl_account_transactions`.`showroom_id` AS `showroomId`,`tbl_account_transactions`.`id` AS `id`,`tbl_showroom`.`name` AS `showroomName`,`tbl_account_transactions`.`voucher_no` AS `voucherNo`,`tbl_account_transactions`.`voucher_type` AS `voucherType`,`tbl_account_transactions`.`narration` AS `narration`,`tbl_account_transactions`.`voucher_date` AS `date`,sum(`tbl_account_transactions`.`debit_amount`) AS `amount`,`tbl_account_transactions`.`approve` AS `approve`,`tbl_account_transactions`.`approve_by` AS `approveBy` from (`tbl_account_transactions` left join `tbl_showroom` on(`tbl_showroom`.`id` = `tbl_account_transactions`.`showroom_id`)) where `tbl_account_transactions`.`voucher_type` = 'OB' group by `tbl_account_transactions`.`voucher_no` order by `voucherNo` ;
 
 --
 -- Indexes for dumped tables
@@ -3263,7 +3148,7 @@ ALTER TABLE `cash_sale_items`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `checkouts`
@@ -3335,13 +3220,13 @@ ALTER TABLE `customer_groups`
 -- AUTO_INCREMENT for table `customer_group_sections`
 --
 ALTER TABLE `customer_group_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `customer_request_item_list`
 --
 ALTER TABLE `customer_request_item_list`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `delivery_policies`
@@ -3419,19 +3304,19 @@ ALTER TABLE `policies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `product_sections`
 --
 ALTER TABLE `product_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `purchase_orders`
@@ -3497,7 +3382,7 @@ ALTER TABLE `shippings`
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sliders`
@@ -3533,7 +3418,7 @@ ALTER TABLE `supplier_payments`
 -- AUTO_INCREMENT for table `tbl_account_transactions`
 --
 ALTER TABLE `tbl_account_transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `tbl_coa`
@@ -3545,7 +3430,7 @@ ALTER TABLE `tbl_coa`
 -- AUTO_INCREMENT for table `tbl_showroom`
 --
 ALTER TABLE `tbl_showroom`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -3575,7 +3460,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_menus`
 --
 ALTER TABLE `user_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `user_menu_actions`

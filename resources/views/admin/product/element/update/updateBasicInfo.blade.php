@@ -77,7 +77,7 @@
                         </div>
 
                          <div class="col-md-6">
-			                <label for="product-discount">Product Discount Price</label>
+			                <label for="product-discount">Discount Price</label>
 			                    <div class="form-group {{ $errors->has('discount') ? ' has-danger' : '' }}">
 			                        <input type="text" class="form-control form-control-danger" placeholder="Product discount" name="discount" value="{{ $product->discount }}">
 			                        @if ($errors->has('discount'))
@@ -93,7 +93,7 @@
                  <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="product-deal-code">Product Deal Code</label>
+                            <label for="product-deal-code">Deal Code</label>
 		                    <div class="form-group {{ $errors->has('deal_code') ? ' has-danger' : '' }}">
 		                        <input type="text" class="form-control form-control-danger" placeholder="Write new product code" name="deal_code" value="{{ $product->deal_code }}" required>
 		                        @if ($errors->has('deal_code'))
@@ -146,7 +146,7 @@
                         </div>
 
                          <div class="col-md-6">
-                            <label for="publication-status">Publication status</label>
+                            <label for="publication-status">Status</label>
                             <div class="form-group {{ $errors->has('status') ? ' has-danger' : '' }}" style="height: 40px; line-height: 40px;">
                                 <div class="form-check-inline">
                                     <label class="form-check-label">

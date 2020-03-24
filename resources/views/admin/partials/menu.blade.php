@@ -7,12 +7,19 @@
     use App\UserMenuActions;
     $routeName = \Request::route()->getName();
     $userMenuAction = UserMenuActions::where('actionLink',$routeName)->first();
-    $childMenuRoute = UserMenu::where('id',@$userMenuAction->parentmenuId)->first();
-    $parentMenuRoute = UserMenu::where('id',@$childMenuRoute->parentMenu)->first();
-   
-
+    if(@$userMenuAction){
+        $childMenuRoute = UserMenu::where('id',@$userMenuAction->parentmenuId)->first();
+        $parentMenuRoute = UserMenu::where('id',@$childMenuRoute->parentMenu)->first();
+        $rootMenuRoute = UserMenu::where('id',@$parentMenuRoute->parentMenu)->first();
+    }else{
+        $childMenuRoute = UserMenu::where('menuLink',@$routeName)->first();
+        $parentMenuRoute = UserMenu::where('id',@$childMenuRoute->parentMenu)->first();
+        $rootMenuRoute = UserMenu::where('id',@$parentMenuRoute->parentMenu)->first();
+    }
+    
 ?>
 <aside class="left-sidebar">
+    
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar" style="height: 97%">
         <!-- Sidebar navigation-->
@@ -26,7 +33,7 @@
                 $parentMenuLink = $menu->menuLink;
                 $childMenu = UserMenu::orderBy('orderBy','ASC')->where('parentMenu',$menu->id)->where('menuStatus',1)->get();
                 $countChildMenu = count(@$childMenu);
-                if (@$parentMenuRoute->id == $menu->id) {
+                if (@$parentMenuRoute->id == $menu->id || @$rootMenuRoute->id == $menu->id) {
                     $parentMenuActive = 'active';
                     $expandParent = 'in';
                 }else{
@@ -56,14 +63,49 @@
 
                              if (@$childMenuRoute->menuLink == $menuChild->menuLink) {
                                $activeChildMenu = 'active';
+                               $expandSubMenuParent = 'in';
                             }else{
                                  $activeChildMenu = '';
+                                 $expandSubMenuParent = '';
                             }
+
+                            $secondChildMenuList = UserMenu::orderBy('orderBy','ASC')->where('parentMenu',$menuChild->id)->where('menuStatus',1)->get();
                     ?>
                      <li class="{{$activeChildMenu}}">
-                        <a href="{{ route($childMenuLink) }}" class="{{$activeChildMenu}}"><i class="fa fa-caret-right"></i>
-                           {{$menuChild->menuName}}
+                        <?php
+                            if (count($secondChildMenuList) > 0 ) {
+                        ?>
+                           <a href="javascript:void(0)" class="{{$activeChildMenu}}">
+                            <i class="fa fa-plus-circle"></i>
+                            {{$menuChild->menuName}}
                         </a>
+                        <?php }else{ ?>
+                            <a href="{{ route($childMenuLink) }}" class="{{$activeChildMenu}}">
+                                <i class="fa fa-caret-right"></i>
+                               {{$menuChild->menuName}}
+                            </a>
+                        <?php } ?>
+
+                        <ul aria-expanded="false" class="collapse {{$expandSubMenuParent}}">
+                            <?php
+                                foreach ($secondChildMenuList as $secondChildMenu) {
+                                    $rolePermission = explode(',', $userRoles->permission);
+                                    if (in_array($secondChildMenu->id, $rolePermission)) {
+                                    $childMenuLink = $secondChildMenu->menuLink;
+
+                                     if (@$childMenuRoute->menuLink == $secondChildMenu->menuLink) {
+                                       $activeChildMenu = 'active';
+                                    }else{
+                                         $activeChildMenu = '';
+                                    }
+                            ?>
+                             <li class="{{$activeChildMenu}}">
+                                <a href="{{ route($childMenuLink) }}" class="{{$activeChildMenu}}"><i class="fa fa-caret-right"></i>
+                                   {{$secondChildMenu->menuName}}
+                                </a>
+                            </li>
+                        <?php } } ?>
+                        </ul>
                     </li>
                 <?php } } ?>
                 </ul>

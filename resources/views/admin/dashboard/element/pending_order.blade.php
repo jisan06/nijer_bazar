@@ -1,17 +1,17 @@
 <div class="col-lg-8 col-md-8">
     <div class="card ordertable" style="overflow:scroll; height:441px;">
-        <div class="card-body">
+        <div>
             <h4 class="card-title" style="float: left;">Pending Orders</h4>
             <h4 class="card-title" style="float: right;">Order Amount: {{$pendingAmount}} BDT</h4>
             <div class="table-responsive">
                 <table id="pendingOrderTable" class="table table-bordered table-striped"  name="pendingOrderTable">
                     <thead class="thead">
                         <tr>
-                            <th>Name</th>
+                            <th>Client Name</th>
                             <th>Mobile</th>
-                            <th>Amount</th>
+                            <th style="text-align: right;">Amount</th>
                             <th width="21%">Order status</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
@@ -24,9 +24,9 @@
                                   
                                     <td>{{$pendingOrder->name}}</td>
                                     <td>{{$pendingOrder->mobile}}</td>
-                                    <td>{{$pendingOrder->total}}</td>
+                                    <td style="text-align: right;">{{$pendingOrder->total}}</td>
                                     <td><span class='badge badge-pill badge-info'>{{$pendingOrder->status}}</span></td>
-                                    <td class="text-nowrap action">
+                                    <td class="text-nowrap action text-center">
                                         <a href="javascript:void(0)" title="Order status" data-id="{{ $pendingOrder->id }}"> 
                                             <i class="fa fa-shopping-bag text-danger m-r-10"></i> 
                                         </a>

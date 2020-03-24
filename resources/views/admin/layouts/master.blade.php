@@ -114,7 +114,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer">
-            © 2019 Developed by <a target="_blank" href="http://www.technoparkbd.com/">Techno Park</a>
+            © @php echo Date('Y') @endphp Developed by <a target="_blank" href="http://www.technoparkbd.com/">Techno Park Bangladesh</a>
            
         </footer>
         <!-- ============================================================== -->

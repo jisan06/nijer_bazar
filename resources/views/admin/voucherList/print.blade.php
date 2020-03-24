@@ -81,7 +81,7 @@
             <tr>
                 <td style="text-align: left; padding: 10px" colspan="7">                    
                     @php
-                        $inWords = \App\HelperClass::numberToWords($totalAmount);
+                        $inWords = \App\helperClass::numberToWords($totalAmount);
                     @endphp
                     In Words : {{ $inWords }} Taka Only.
                     <b></b>
