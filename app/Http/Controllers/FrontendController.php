@@ -35,19 +35,13 @@ class FrontendController extends Controller
          $categories = Category::where('categoryStatus',1)->orderBy('orderBy','ASC')->orderBy('categoryName','ASC')->get();
 
          $homeCategories = DB::table('categories')
-            ->select('categories.id as categoryId','categories.categoryName as categoryName','categories.orderBy','products.root_category')
+            ->select('categories.id as categoryId','categories.categoryName as categoryName','categories.orderBy','categories.showInHomepage','products.root_category')
             ->join('products','products.root_category','=','categories.id')
             ->groupBy('products.root_category','categories.id','categories.categoryName','categories.orderBy')
             ->orderBy('categories.orderBy','ASC')
+            ->where('categories.showInHomepage','yes')
            /* ->take('2')*/
            ->get();
-
-         Category::where('categoryStatus',1)
-             ->where('showInHomepage','yes')
-             ->where('parent',null)
-             ->orderBy('orderBy','ASC')
-             ->orderBy('categoryName','ASC')
-             ->get();
 
          $banners = Banner::where('bannerStatus','1')->orderBy('orderBy','ASC')->get();
          $policies = Policy::where('policiesStatus','1')->orderBy('orderBy','ASC')->get();

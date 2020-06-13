@@ -186,7 +186,7 @@
 	                                        <td>{{ $stockOutReport->productName }}</td>
 	                                        <td style="text-align: right;">{{ $stockOutReport->remainingQty }}</td>
 	                                    </tr>
-                                    @endif                                  
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

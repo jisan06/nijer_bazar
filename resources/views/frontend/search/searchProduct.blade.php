@@ -5,6 +5,7 @@
   use App\ProductImage;
   use App\Product;
   use App\Category;
+  use App\Review;
 ?>
 
   <nav data-depth="3" class="breadcrumb hidden-sm-down">
@@ -58,6 +59,25 @@
                 $name =str_replace(' ', '-', $product->name);
                 $percentChange = (($product->price - $product->discount) / $product->price) * 100;
                 $discount_percent = round(abs($percentChange));
+
+                $totalReview = Review::where('productId',$product->id)->count();
+                $totalRating = Review::where('productId',$product->id)->sum('star');
+
+                @$finalRating = round(@$totalRating/$totalReview);
+                if(@$totalRating < 1){
+                 @$rating = 5; 
+                }else{
+                  @$rating = $finalRating;
+                }
+                @$remainRating = 5 - $rating;
+
+                  $stockCheck = \App\Helper\StockStatus::StockCheck($product->id);
+                  if($stockCheck->id != NULL && $stockCheck->remainingQty == 0 || $stockCheck->remainingQty < 0){
+                    $disabled = "disabled";
+                  }else{
+                    $disabled = "";
+                  }
+
                 ?>
                 <article class="product-miniature js-product-miniature col-xs-12 col-sm-6 col-lg-4 col-xl-3" data-id-product="1" data-id-product-attribute="46" itemscope="" itemtype="">
                   <div class="thumbnail-container">
@@ -67,7 +87,7 @@
                       </a>
                     </div>
                     <div class="product-description">
-                      <h2 class="h3 product-title" itemprop="name"><a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }} </a></h2>
+                      <h2 class="h3 product-title" itemprop="name"><a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }}</a></h2>
                       <div class="product-price-and-shipping">
                         <h5>Code: {{@$product->deal_code}}</h5>
                         <span class="sr-only">Price</span>
@@ -85,18 +105,16 @@
                       <div class="comments_note" itemprop="aggregateRating" itemscope="" itemtype=""> 
 
                         <div class="star_content"> 
-                          <div class="star star_on"></div>
-                          <div class="star star_on"></div>
-                          <div class="star star_on"></div>
-                          <div class="star star_on"></div>
-                          <div class="star star_on"></div>
-                          <meta itemprop="worstRating" content="0">
-                          <meta itemprop="ratingValue" content="4.7">
-                          <meta itemprop="bestRating" content="5">
+                          @for($i = 0;$i < $rating;$i++)
+                            <div class="star star_on"></div>
+                          @endfor
+                          @for($i = 0;$i < $remainRating;$i++)
+                            <div class="star star_of"></div>
+                          @endfor
                         </div>
 
                         <div class="nb-comments">
-                          (<span itemprop="reviewCount">3</span>)
+                          (<span itemprop="reviewCount">{{@$totalReview}}</span>)
                         </div>
                       </div>
 
@@ -104,7 +122,7 @@
 
                         <form action="" method="post" class="product-qty-cart">
                           <input type="hidden" name="id_product" value="1">
-                          <button class="btn btn-primary" data-button-action="add-to-cart" type="button" onclick="addCart('{{ $product->id}}')">
+                          <button class="btn btn-primary" data-button-action="add-to-cart" type="button" onclick="addCart('{{ $product->id}}')" {{$disabled}}>
                             <i class="material-icons shopping-cart"></i>Add to cart
                           </button>
                         </form>

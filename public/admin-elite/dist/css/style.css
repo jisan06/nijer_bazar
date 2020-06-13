@@ -3130,7 +3130,7 @@ tbody.collapse.show {
   display: none; }
 
 .tab-content > .active {
-  display: block; }
+  display: inline; }
 
 .navbar {
   position: relative;
@@ -11205,6 +11205,10 @@ Table-Data Table
 .dataTables_wrapper {
   padding-top: 10px; }
 
+  .dataTables_filter input, .dataTables_filter input:focus, .dataTables_length select, .dataTables_length select:focus {
+    background-image: none !important;
+  }
+
 .dt-buttons {
   display: inline-block;
   padding-top: 5px;
@@ -11244,7 +11248,7 @@ Table-Data Table
   float: right;
   margin-top: 10px; }
   .dataTables_filter input {
-    border: 0;
+   /* border: 0;
     background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
     background-size: 0 2px, 100% 1px;
     background-repeat: no-repeat;
@@ -11254,7 +11258,11 @@ Table-Data Table
     float: none;
     box-shadow: none;
     border-radius: 0;
-    margin-left: 10px; }
+    margin-left: 10px; */
+
+    border: 1px solid #7b7777;
+    margin-left: 5px;
+  }
     .dataTables_filter input:focus {
       outline: none;
       background-image: linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);
@@ -13046,6 +13054,10 @@ File: scss
 
 .chosen-container{
   width: 100% !important;
+}
+
+.chosen-choices .search-field{
+  display: contents !important;
 }
 
 .bootstrap-tagsinput{

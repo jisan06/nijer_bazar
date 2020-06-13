@@ -60,7 +60,7 @@
     @endphp
 
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist" style="width: 98%;margin-left: 9px;background-color: #5d5d5b;">
+    <ul class="nav nav-tabs" role="tablist" style="width: 100%;background-color: #5d5d5b;">
         <li class="nav-item">
             <a class="nav-link {{@$productBasicList}}" data-toggle="tab" href="#basic_info" style="font-weight: bold;border-radius: 0px;">{{ $tab1 }}</a>
         </li>

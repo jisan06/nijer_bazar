@@ -1,13 +1,5 @@
 @extends('admin.layouts.master')
 
-@section('custom-css')
-<meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
-
-@section('page-name')
-    Edit Category
-@endsection
-
 @section('content')
 
     <!-- ============================================================== -->
@@ -110,8 +102,11 @@
 
                                         <span style="color: red;">/* Height : 200px, Witdht: 1180px */</span>
                                         <br><br>
-
-                                        <img src="{{ asset('/').$categories->categoryCoverImage }}" style="height: 85px" alt="You Have No Image">
+                                        @if(file_exists($categories->categoryCoverImage))
+                                            <img src="{{ asset('/').$categories->categoryCoverImage }}" style="height: 85px">
+                                        @else
+                                          <img src="{{ $noImage }}" style="height: 85px">  
+                                        @endif
                                     </div>
 
                                 </div>
@@ -125,8 +120,11 @@
                                                 <div class="form-control-feedback">{{ $error }}</div>
                                             @endforeach
                                         @endif
-
-                                        <img src="{{ asset('/').$categories->categoryImage }}" style="height: 85px" alt="You Have No Image">
+                                        @if(file_exists($categories->categoryImage))
+                                            <img src="{{ asset('/').$categories->categoryImage }}" style="height: 85px">
+                                        @else
+                                            <img src="{{ $noImage }}" style="height: 85px">
+                                        @endif
                                     </div>
 
                                 </div>

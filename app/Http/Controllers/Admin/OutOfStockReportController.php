@@ -11,7 +11,6 @@ use App\Product;
 
 use DB;
 use PDF;
-use MPDF;
 
 class OutOfStockReportController extends Controller
 {
@@ -45,9 +44,8 @@ class OutOfStockReportController extends Controller
         }
 
         $stockOutReports = array();
-
-        // $data = $request->all();
-        // dd($data)
+        
+        // dd($request->all());
 
         $stockOutReports = DB::table('stock_valuation_report')
             ->select('stock_valuation_report.categoryId','categories.categoryName as categoryName','stock_valuation_report.productId as productId','products.name as productName','products.reorder_qty as reorderQty', DB::raw('(((SUM(stock_valuation_report.cashPurchaseQty) + SUM(stock_valuation_report.creditPurchaseQty)) - SUM(stock_valuation_report.purchaseReturnQty)) - ((SUM(stock_valuation_report.cashSaleQty) + SUM(stock_valuation_report.creditSaleQty)) - SUM(stock_valuation_report.salesReturnQty))) as remainingQty'))

@@ -146,6 +146,7 @@ class ProductController extends Controller
             'description2' => $request->description2,                     
             'orderBy' => $request->orderBy,          
             'status' => $request->status,
+            'stockUnit' => $request->stockUnit,
             'youtubeLink' => $request->youtubeLink,  
             'tag' => $request->tag                            
         ]);
@@ -198,6 +199,7 @@ class ProductController extends Controller
             'description2' => $request->description2,                     
             'orderBy' => $request->orderBy,          
             'status' => $request->status,
+            'stockUnit' => $request->stockUnit,
             'youtubeLink' => $request->youtubeLink,  
             'tag' => $request->tag                            
         ]);
@@ -436,27 +438,27 @@ class ProductController extends Controller
      public function ProductQuickUpdateList()
     {
         $title = "Quick Product Update";
-        $categories = Category::where('categoryStatus',1)
+        $categoryList = Category::where('categoryStatus',1)
             ->orderBy('categoryName','asc')
             ->get();
+        $categoryParam = @$_GET['category'];
         $products = Product::select('products.*','categories.id as catId','categories.categoryName as catName',DB::raw('(select images from product_images where product_images.productId = products.id order by id asc limit 1) as images'))
             ->leftjoin('categories','categories.id','=','products.category_id')
             ->leftjoin('product_images','product_images.productId','=','products.id')
+            ->where('categories.id',$categoryParam)
+            ->where('products.status','1')
             ->orderBy('categories.categoryName','asc')
             ->orderBy('products.name','asc')
-            ->where('products.status','1')
             ->get();
 
-        return view('admin.product.product_quick_update_list')->with(compact('title','products','categories'));
+        return view('admin.product.product_quick_update_list')->with(compact('title','products','categoryList','categoryParam'));
     }
 
     public function ProductQuickUpdate(Request $request){
         $this->validate(request(), [
             'category_id' => 'required',
             'name' => 'required|string',
-            'deal_code' => 'required',                              
-            'price' => 'required',            
-            'discount' => 'nullable|numeric',         
+            'price' => 'required'         
         ]);
       
         $productId = $request->productId;
@@ -469,14 +471,19 @@ class ProductController extends Controller
        if ($allCategory->parent) {
            $root_category = $allCategory->parent;
        }else{
-            $root_category =  @$category_id;
+            $root_category =  @$request->category_id;
+       }
+
+       if($request->discount >= 1){
+        $request->discount = $request->discount;
+       }else{
+        $request->discount = NULL;
        }
 
         $product->update( [
             'root_category' => @$root_category,
             'category_id' => @$request->category_id,
             'name' => $request->name,
-            'deal_code' => $request->deal_code,
             'price' => $request->price,
             'discount' => $request->discount,                    
             'orderBy' => $request->orderBy,                             

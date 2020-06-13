@@ -30,6 +30,13 @@
         $name =str_replace(' ', '-', $product->name);
         $percentChange = (($product->price - $product->discount) / $product->price) * 100;
         $discount_percent = round(abs($percentChange));
+
+        $stockCheck = \App\Helper\StockStatus::StockCheck($product->id);
+        if($stockCheck->id != NULL && $stockCheck->remainingQty == 0 || $stockCheck->remainingQty < 0){
+          $disabled = "disabled";
+        }else{
+          $disabled = "";
+        }
       @endphp       
         <article class="product-miniature js-product-miniature col-xs-12 col-sm-6 col-lg-4 col-xl-3" data-id-product="1" data-id-product-attribute="46" itemscope itemtype="">
           <div class="thumbnail-container">
@@ -41,7 +48,7 @@
             </div>
             <div class="product-description">
               <h3 class="h3 product-title" itemprop="name">
-                <a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }} </a>
+                <a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }}</a>
               </h3>
               <div class="product-price-and-shipping">
                 <p style="font-size: 10px; margin-top: 5px; margin-bottom: 5px;">Code: {{@$product->deal_code}}</p>
@@ -58,7 +65,7 @@
               </div>
 
               <div class="product-list-actions">
-                <button class="btn btn-primary" type="button" onclick="addCart('{{ $product->id}}')">
+                <button class="btn btn-primary" type="button" onclick="addCart('{{ $product->id}}')" {{$disabled }}>
                   <i class="material-icons shopping-cart">&#xE547;</i>Add to cart
                 </button>
               </div>

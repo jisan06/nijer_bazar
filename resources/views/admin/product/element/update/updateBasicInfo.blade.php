@@ -120,19 +120,20 @@
             </div>
 
 	        <div class="row">
-	        	<div class="col-md-6">
-	                <label for="tag-line">Tag Line</label>
-	                <div class="form-group {{ $errors->has('tag') ? ' has-danger' : '' }}">
-	                    <input type="text" class="form-control form-control-danger" data-role="tagsinput" name="tag" value="{{ $product->tag }}">
-	                    @if ($errors->has('tag'))
-	                        @foreach($errors->get('tag') as $error)
-	                            <div class="form-control-feedback">{{ $error }}</div>
-	                        @endforeach
-	                    @endif
-	                </div>
-	            </div>
                 <div class="col-md-6">
                     <div class="row">
+                        <div class="col-md-6">
+                            <label for="tag-line">Tag Line</label>
+                            <div class="form-group {{ $errors->has('tag') ? ' has-danger' : '' }}">
+                                <input type="text" class="form-control form-control-danger" data-role="tagsinput" name="tag" value="{{ $product->tag }}">
+                                @if ($errors->has('tag'))
+                                    @foreach($errors->get('tag') as $error)
+                                        <div class="form-control-feedback">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="col-md-6">
                             <label for="youtube-link">Youtube Link</label>
                             <div class="form-group {{ $errors->has('youtubeLink') ? ' has-danger' : '' }}">
@@ -144,8 +145,29 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                </div>
+	        	
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="stock-status">Stock Status Check</label>
+                            <div class="form-group {{ $errors->has('stockUnit') ? ' has-danger' : '' }}" style="height: 40px; line-height: 40px;">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" value="1" name="stockUnit" id="stockstatusActive"> Yes
+                                    </label>
+                                </div>
 
-                         <div class="col-md-6">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" value="0" name="stockUnit" id="stockstatusInactive"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
                             <label for="publication-status">Status</label>
                             <div class="form-group {{ $errors->has('status') ? ' has-danger' : '' }}" style="height: 40px; line-height: 40px;">
                                 <div class="form-check-inline">
@@ -203,4 +225,5 @@
 
 <script type="text/javascript">
     document.forms['basicInfo'].elements['status'].value ="{{$product->status}}";
+    document.forms['basicInfo'].elements['stockUnit'].value ="{{$product->stockUnit}}";
 </script>

@@ -122,3 +122,15 @@
 	} );
 </script>
 
+<script type="text/javascript">
+	$('[data-fancybox="gallery"]').fancybox({
+	  buttons : [
+	    'download',
+	    'zoom',
+	    'slideShow',
+	    'thumbs',
+	    'close'
+	  ]
+	});
+</script>
+

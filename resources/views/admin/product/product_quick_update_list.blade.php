@@ -16,6 +16,19 @@
             vertical-align: middle;
             width: 100%;
         }
+
+        .dataTables_length{
+            float: left !important;
+        }
+
+        .dataTables_filter {
+            float: left !important;
+            margin-left: 30px !important;
+        }
+
+        .chosen-single{
+            width: 250px;
+        }
     </style>
 @endsection
 
@@ -37,7 +50,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="overflow-x: hidden;display: contents;">
                         @php
                             $message = Session::get('msg');
                             if (isset($message))
@@ -48,7 +61,24 @@
                             Session::forget('msg');
                             $sl = 0;
                         @endphp
-
+                        <div class="row" style="float: right;margin-top: 13px;">
+                            <div class="col-md-12">
+                                <select class="form-control chosen-select category">
+                                    <option value="">Select Category</option>
+                                    @php
+                                        foreach ($categoryList as $category) {  
+                                        if($category->id == $categoryParam){
+                                            $selected = 'selected';
+                                        }else{
+                                            $selected = '';
+                                        }
+                                    @endphp
+                                        <option {{$selected}} value="{{$category->id}}">{{$category->categoryName}}</option>
+                                    @php } @endphp
+                                </select>
+                            </div>
+                            
+                        </div>
                         <table id="productTable" class="table table-bordered table-striped"  name="productTable">
                             <thead>
                                 <tr>
@@ -65,69 +95,71 @@
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                            	@foreach($products as $product)                        
-                                	<tr>
-                                        @php
-                                            $sl++;
-                                            if($product->discount){
-                                                $discount = $product->discount;
-                                            }else{
-                                                $discount = '0.00';
-                                            }
-                                        @endphp
-                                        <td>{{ $sl }}</td>
-                                        <td>
-                                            <textarea name="name" class="name_{{$product->id}}">{{ @$product->name }}</textarea>
-                                        </td>
-                                        <td>
-                                           {{ @$product->deal_code }}
-                                        </td>
-                                        <td>
-                                            <select class="chosen-select category_id_{{$product->id}}" name="category_id">
-                                                <option>Select Category</option>
-                                                @php
-                                                    foreach ($categories as $category) {
-                                                        if($category->id == $product->category_id){
-                                                            $selected = "selected";
-                                                        }else{
-                                                            $selected = "";
-                                                        }                                   
-                                                    @endphp
-                                                <option {{@$selected}} value="{{$category->id}}">{{$category->categoryName}}</option>
-                                                @php } @endphp
-                                            </select>
-                                        </td>
-                                        <td>
-                                           {{ @$product->price }}
-                                        </td>
-                                        <td>
-                                            <input type="number" name="price" value="{{ @$product->price }}" class="form-control price_{{$product->id}}">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="discount" value="{{ @$discount}}" class="form-control discount_{{$product->id}}">
-                                        </td>
-                                        {{-- <td>
+                                @if(count(@$products) > 0)
+                                	@foreach($products as $product)                        
+                                    	<tr>
                                             @php
-                                                if(file_exists($product->images)){
-                                                    $image = asset('/').@$product->images;
+                                                $sl++;
+                                                if($product->discount){
+                                                    $discount = $product->discount;
                                                 }else{
-                                                    $image = $noImage;
+                                                    $discount = '0.00';
                                                 }
                                             @endphp
-                                            <a data-fancybox="gallery" href="{{ asset(@$image) }}">
-                                                <img src="{{ @$image }}" style="width: 75px; height: 75px; margin: 0px;">
-                                            </a>
-                                        </td> --}}
-                                        <td>
-                                            <input type="number" name="orderBy" value="{{ @$product->orderBy}}" class="form-control orderBy_{{$product->id}}">
-                                        </td>        
-                                        <td class="text-nowrap">
-                                            <button class="btn btn-success btn-md" onclick="UpdateProduct({{ $product->id }})" style="font-size: 12px;">
-                                                <i class="fa fa-save"></i> UPDATE
-                                            </button>
-                                        </td>
-                                    </tr>
-                            	@endforeach
+                                            <td>{{ $sl }}</td>
+                                            <td>
+                                                <textarea name="name" class="name_{{$product->id}}">{{ @$product->name }}</textarea>
+                                            </td>
+                                            <td>
+                                               {{ @$product->deal_code }}
+                                            </td>
+                                            <td>
+                                                <select class="chosen-select category_id_{{$product->id}}" name="category_id">
+                                                    <option>Select Category</option>
+                                                    @php
+                                                        foreach ($categoryList as $category) {
+                                                            if($category->id == $product->category_id){
+                                                                $selected = "selected";
+                                                            }else{
+                                                                $selected = "";
+                                                            }                                   
+                                                        @endphp
+                                                    <option {{@$selected}} value="{{$category->id}}">{{$category->categoryName}}</option>
+                                                    @php } @endphp
+                                                </select>
+                                            </td>
+                                            <td>
+                                               {{ @$product->price }}
+                                            </td>
+                                            <td>
+                                                <input type="number" name="price" value="{{ @$product->price }}" class="form-control price_{{$product->id}}">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="discount" value="{{ @$discount}}" class="form-control discount_{{$product->id}}">
+                                            </td>
+                                            {{-- <td>
+                                                @php
+                                                    if(file_exists($product->images)){
+                                                        $image = asset('/').@$product->images;
+                                                    }else{
+                                                        $image = $noImage;
+                                                    }
+                                                @endphp
+                                                <a data-fancybox="gallery" href="{{ asset(@$image) }}">
+                                                    <img src="{{ @$image }}" style="width: 75px; height: 75px; margin: 0px;">
+                                                </a>
+                                            </td> --}}
+                                            <td>
+                                                <input type="number" name="orderBy" value="{{ @$product->orderBy}}" class="form-control orderBy_{{$product->id}}">
+                                            </td>        
+                                            <td class="text-nowrap">
+                                                <button class="btn btn-success btn-md" onclick="UpdateProduct({{ $product->id }})" style="font-size: 12px;">
+                                                    <i class="fa fa-save"></i> UPDATE
+                                                </button>
+                                            </td>
+                                        </tr>
+                                	@endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -202,4 +234,12 @@
             }
                 
     </script>
+
+    <script type="text/javascript">
+        $('.category').on('change', function(){
+          var category = $('.category').val();
+          window.location.href = "{{route('product.quickUpdateList')}}"+"?category="+category;
+        }); 
+    </script>
+
 @endsection

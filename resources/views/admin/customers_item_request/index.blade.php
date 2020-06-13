@@ -43,8 +43,15 @@
                                     <td>{{ @$customerItemRequest->email }}</td>
                                     <td>{{ @$customerItemRequest->mobile }}</td>
                                     <td>
-                                        <a data-fancybox="gallery" href="{{ asset(@$customerItemRequest->itemList) }}">
-                                            <img src="{{ asset(@$customerItemRequest->itemList) }}" style="height: 40px;width: 60px;">
+                                        @php
+                                            if(file_exists(@$customerItemRequest->itemList)){
+                                                $image = asset($customerItemRequest->itemList);
+                                            }else{
+                                                $image = $noImage;
+                                            }
+                                        @endphp
+                                        <a data-fancybox="gallery" href="{{ $image }}">
+                                            <img src="{{ $image }}" style="height: 40px;width: 60px;">
                                         </a>
                                         
                                     </td>

@@ -34,6 +34,17 @@
     if(!@$setReview){
       $active = 'active';
     }
+
+    $stockCheck = \App\Helper\StockStatus::StockCheck($products->id);
+    if($stockCheck->id != NULL && $stockCheck->remainingQty == 0 || $stockCheck->remainingQty < 0){
+          $disabled = "disabled";
+          $availability = "Out of Stock";
+          $availabilityColor = "red";
+        }else{
+          $disabled = "";
+          $availability = "In Stock";
+          $availabilityColor = "green";
+        }
  ?>
     <div class="product-row clearfix">
       <div class="col-lg-6">
@@ -85,6 +96,7 @@
       <div class="col-lg-6">
         <h1 class="h1" itemprop="name">{{$products->name}}</h1>
         <h4 class="h4" itemprop="name">Code: {{$products->deal_code}}</h4>
+        <h4 class="h4" itemprop="name">Availability: <span style="color:{{$availabilityColor}}">{{$availability}}</span></h4>
         <div id="product-description-short-3" class="product-description-short" >
           <?php echo $products->description1 ?>
         </div>
@@ -118,7 +130,7 @@
                 </div>
               </div>
               <div class="add">
-                <button class="btn btn-primary add-to-cart" onclick="addCartFromSingleProduct('{{ $products->id}}')" <?php if ($products->stockUnit == 2){ echo "disabled";} ?> {{-- data-button-action="add-to-cart" type="submit" --}}>
+                <button class="btn btn-primary add-to-cart" onclick="addCartFromSingleProduct('{{ $products->id}}')" {{$disabled}}>
                   <i class="material-icons shopping-cart"></i>
                   Add to cart 
                 </button>

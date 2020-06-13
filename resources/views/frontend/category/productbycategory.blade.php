@@ -52,7 +52,7 @@
 
   <div id="content-wrapper" class="left-column">
     <section id="products">
-      <h1 id="js-product-list-header" class="h1">{{$category->categoryName}}</h1>
+      
       <div id="">
         <div id="js-product-list-top" class="row products-selection">
           <div class="col-md-4 col-xl-5 hidden-sm-down total-products">
@@ -86,6 +86,14 @@
                   @$rating = $finalRating;
                 }
                 @$remainRating = 5 - $rating;
+
+                $stockCheck = \App\Helper\StockStatus::StockCheck($product->id);
+                $stockCheck = \App\Helper\StockStatus::StockCheck($product->id);
+                if($stockCheck->id != NULL && $stockCheck->remainingQty == 0 || $stockCheck->remainingQty < 0){
+                  $disabled = "disabled";
+                }else{
+                  $disabled = "";
+                }
               @endphp
               <article class="product-miniature js-product-miniature col-xs-12 col-sm-6 col-lg-4 col-xl-3" data-id-product="1" data-id-product-attribute="46" itemscope="" itemtype="">
                 <div class="thumbnail-container">
@@ -95,7 +103,7 @@
                     </a>
                   </div>
                   <div class="product-description">
-                    <h2 class="h3 product-title" itemprop="name"><a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }} </a></h2>
+                    <h2 class="h3 product-title" itemprop="name"><a href="{{url('product/'.@$product->id.'/'.@$name)}}" target="_self">{{ str_limit($product->name, 25) }}</a></h2>
                     <div class="product-price-and-shipping">
                       <h5>Code: {{@$product->deal_code}}</h5>
                       <span class="sr-only">Price</span>
@@ -130,7 +138,7 @@
 
                       <form action="" method="post" class="product-qty-cart">
                         <input type="hidden" name="id_product" value="1">
-                        <button class="btn btn-primary" data-button-action="add-to-cart" type="button" onclick="addCart('{{ $product->id}}')">
+                        <button class="btn btn-primary" data-button-action="add-to-cart" type="button" onclick="addCart('{{ $product->id}}')" {{$disabled}}>
                           <i class="material-icons shopping-cart"></i>Add to cart
                         </button>
                       </form>

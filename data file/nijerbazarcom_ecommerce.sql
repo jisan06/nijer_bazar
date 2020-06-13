@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 24, 2020 at 01:48 PM
--- Server version: 10.3.22-MariaDB-log-cll-lve
--- PHP Version: 7.2.7
+-- Generation Time: Jun 13, 2020 at 05:19 AM
+-- Server version: 10.3.23-MariaDB-log-cll-lve
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -155,8 +155,7 @@ CREATE TABLE `cash_purchase` (
 --
 
 INSERT INTO `cash_purchase` (`id`, `type`, `cash_serial`, `voucher_no`, `supplier_id`, `voucher_date`, `total_qty`, `total_amount`, `orderBy`, `voucherStatus`, `created_at`, `updated_at`) VALUES
-(1, 'cash', '1000001', '45654654', 0, '2020-01-22 00:00:00', '15.00', '4250.00', NULL, NULL, '2020-01-22 17:39:58', '2020-01-22 17:39:58'),
-(2, 'cash', '1000002', '000001', 0, '2020-02-15 00:00:00', '10.00', '7800.00', NULL, NULL, '2020-02-15 16:53:35', '2020-02-15 16:53:35');
+(3, 'cash', '1000003', '22222', 1, '2020-03-29 00:00:00', '32.00', '572.00', NULL, NULL, '2020-03-29 08:18:27', '2020-03-29 08:18:27');
 
 -- --------------------------------------------------------
 
@@ -180,9 +179,8 @@ CREATE TABLE `cash_purchase_item` (
 --
 
 INSERT INTO `cash_purchase_item` (`id`, `cash_puchase_id`, `product_id`, `qty`, `rate`, `amount`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '5', '350', '1750.00', '2020-01-22 17:39:58', '2020-01-22 17:39:58'),
-(2, 1, 18, '10', '250', '2500.00', '2020-01-22 17:39:58', '2020-01-22 17:39:58'),
-(3, 2, 9, '10', '780', '7800.00', '2020-02-15 16:53:35', '2020-02-15 16:53:35');
+(4, 3, 61, '11', '10', '110.00', '2020-03-29 08:18:27', '2020-03-29 08:18:27'),
+(5, 3, 64, '21', '22', '462.00', '2020-03-29 08:18:27', '2020-03-29 08:18:27');
 
 -- --------------------------------------------------------
 
@@ -206,6 +204,13 @@ CREATE TABLE `cash_sales` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `cash_sales`
+--
+
+INSERT INTO `cash_sales` (`id`, `invoice_no`, `invoice_date`, `invoice_amount`, `discount_as`, `discount_amount`, `vat_amount`, `net_amount`, `customer_paid`, `change_amount`, `payment_type`, `created_at`, `updated_at`) VALUES
+(1, '0000-0000-0001', '2020-03-29 00:00:00', '30.00', NULL, NULL, '1.35', '31.35', '30', '-1.35', 'Cash', '2020-03-29 13:18:25', '2020-03-29 13:18:25');
+
 -- --------------------------------------------------------
 
 --
@@ -223,6 +228,13 @@ CREATE TABLE `cash_sale_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cash_sale_items`
+--
+
+INSERT INTO `cash_sale_items` (`id`, `cash_sale_id`, `invoice_no`, `item_id`, `item_quantity`, `item_rate`, `item_price`, `created_at`, `updated_at`) VALUES
+(1, 1, '0000-0000-0001', 61, '3', '10', '30.00', '2020-03-29 13:18:25', '2020-03-29 13:18:25');
 
 -- --------------------------------------------------------
 
@@ -254,7 +266,8 @@ INSERT INTO `categories` (`id`, `categoryName`, `categoryCoverImage`, `categoryI
 (18, 'Frozen Food', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-02-05 03:16:17', '2020-03-22 18:26:00'),
 (38, 'Vagetable', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-03-18 13:48:03', '2020-03-18 13:48:03'),
 (39, 'Fish and Meet', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 2, '2020-03-21 10:10:24', '2020-03-21 13:17:40'),
-(41, 'Grocery', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-03-22 13:30:17', '2020-03-22 13:30:17');
+(41, 'Grocery', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 1, '2020-03-22 13:30:17', '2020-03-22 13:30:17'),
+(42, 'Fruits', NULL, NULL, 1, NULL, 'yes', NULL, NULL, NULL, 4, '2020-03-25 22:31:56', '2020-03-25 22:31:56');
 
 -- --------------------------------------------------------
 
@@ -683,7 +696,14 @@ INSERT INTO `contacts` (`id`, `contactName`, `contactPhone`, `contactEmail`, `co
 (339, 'Dating fоr seх with exреriеnсеd girls from 20 yeаrs: http://freeurlredirect.com/adultdating736336', '89853171918', 'kirsty8701@hotmail.co.uk', NULL, 'Beautiful girls fоr sеx in уоur city UК: https://1borsa.com/adultdating832503', 'Dаting site for sех with girls in уour сity: https://onlineuniversalwork.com/datingsexygirlsinyourcity42414', '2020-01-29 22:31:30', '2020-01-29 22:31:30'),
 (340, 'Dating fоr seх with exреriеnсеd girls from 20 yeаrs: http://freeurlredirect.com/adultdating736336', '89745625962', 'christov@totallysucks.co.uk', NULL, 'Beautiful girls fоr sеx in уоur city UК: https://1borsa.com/adultdating832503', 'Dаting site for sех with girls in уour сity: https://onlineuniversalwork.com/datingsexygirlsinyourcity42414', '2020-01-29 22:31:32', '2020-01-29 22:31:32'),
 (341, 'Dating fоr seх with exреriеnсеd girls from 20 yeаrs: http://freeurlredirect.com/adultdating736336', '81855353984', 'ilovetegen@hotmail.co.uk', NULL, 'Beautiful girls fоr sеx in уоur city UК: https://1borsa.com/adultdating832503', 'Dаting site for sех with girls in уour сity: https://onlineuniversalwork.com/datingsexygirlsinyourcity42414', '2020-01-29 22:31:34', '2020-01-29 22:31:34'),
-(342, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Cool website!', 'Cool website!\r\n\r\nMy name’s Eric, and I just found your site - nijerbazar.com.bd - while surfing the net. You showed up at the top of the search results, so I checked you out. Looks like what you’re doing is pretty cool.\r\n \r\nBut if you don’t mind me asking – after someone like me stumbles across nijerbazar.com.bd, what usually happens?\r\n\r\nIs your site generating leads for your business? \r\n \r\nI’m guessing some, but I also bet you’d like more… studies show that 7 out 10 who land on a site wind up leaving without a trace.\r\n\r\nNot good.\r\n\r\nHere’s a thought – what if there was an easy way for every visitor to “raise their hand” to get a phone call from you INSTANTLY… the second they hit your site and said, “call me now.”\r\n\r\nYou can –\r\n  \r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It lets you know IMMEDIATELY – so that you can talk to that lead while they’re literally looking over your site.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nTime is money when it comes to connecting with leads – the difference between contacting someone within 5 minutes versus 30 minutes later can be huge – like 100 times better!\r\n\r\nThat’s why we built out our new SMS Text With Lead feature… because once you’ve captured the visitor’s phone number, you can automatically start a text message (SMS) conversation.\r\n  \r\nThink about the possibilities – even if you don’t close a deal then and there, you can follow up with text messages for new offers, content links, even just “how you doing?” notes to build a relationship.\r\n\r\nWouldn’t that be cool?\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nYou could be converting up to 100X more leads today!\r\nEric\r\n\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-03-16 00:08:51', '2020-03-16 00:08:51');
+(342, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Cool website!', 'Cool website!\r\n\r\nMy name’s Eric, and I just found your site - nijerbazar.com.bd - while surfing the net. You showed up at the top of the search results, so I checked you out. Looks like what you’re doing is pretty cool.\r\n \r\nBut if you don’t mind me asking – after someone like me stumbles across nijerbazar.com.bd, what usually happens?\r\n\r\nIs your site generating leads for your business? \r\n \r\nI’m guessing some, but I also bet you’d like more… studies show that 7 out 10 who land on a site wind up leaving without a trace.\r\n\r\nNot good.\r\n\r\nHere’s a thought – what if there was an easy way for every visitor to “raise their hand” to get a phone call from you INSTANTLY… the second they hit your site and said, “call me now.”\r\n\r\nYou can –\r\n  \r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It lets you know IMMEDIATELY – so that you can talk to that lead while they’re literally looking over your site.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nTime is money when it comes to connecting with leads – the difference between contacting someone within 5 minutes versus 30 minutes later can be huge – like 100 times better!\r\n\r\nThat’s why we built out our new SMS Text With Lead feature… because once you’ve captured the visitor’s phone number, you can automatically start a text message (SMS) conversation.\r\n  \r\nThink about the possibilities – even if you don’t close a deal then and there, you can follow up with text messages for new offers, content links, even just “how you doing?” notes to build a relationship.\r\n\r\nWouldn’t that be cool?\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nYou could be converting up to 100X more leads today!\r\nEric\r\n\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-03-16 00:08:51', '2020-03-16 00:08:51'),
+(343, 'Tracy Mein', 'expiry@nijerbazar.com.bd', 'expiry@nijerbazar.com.bd', NULL, 'nijerbazar.com.bd NOTICE.', 'ATTN: nijerbazar.com.bd / Nijer Bazar Nakshighor || Contact Us  WEB SITE SERVICES\r\nThis  notification  RUNS OUT ON: Apr 04, 2020\r\n\r\nWe have not  obtained a  repayment from you.\r\nWe  have actually  attempted to  call you but were  not able to reach you.\r\n\r\nPlease  See: https://cutt.ly/etxPKaw‬‪ ASAP.\r\n\r\nFor  details  and also to make a  optional  settlement for services.\r\n\r\n\r\n04042020163601.', '2020-04-05 00:36:05', '2020-04-05 00:36:05'),
+(344, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Who needs eyeballs, you need BUSINESS', 'My name’s Eric and I just came across your website - nijerbazar.com.bd - in the search results.\r\n\r\nHere’s what that means to me…\r\n\r\nYour SEO’s working.\r\n\r\nYou’re getting eyeballs – mine at least.\r\n\r\nYour content’s pretty good, wouldn’t change a thing.\r\n\r\nBUT…\r\n\r\nEyeballs don’t pay the bills.\r\n\r\nCUSTOMERS do.\r\n\r\nAnd studies show that 7 out of 10 visitors to a site like nijerbazar.com.bd will drop by, take a gander, and then head for the hills without doing anything else.\r\n\r\nIt’s like they never were even there.\r\n\r\nYou can fix this.\r\n\r\nYou can make it super-simple for them to raise their hand, say, “okay, let’s talk” without requiring them to even pull their cell phone from their pocket… thanks to Talk With Web Visitor.\r\n\r\nTalk With Web Visitor is a software widget that sits on your site, ready and waiting to capture any visitor’s Name, Email address and Phone Number.  It lets you know immediately – so you can talk to that lead immediately… without delay… BEFORE they head for those hills.\r\n  \r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nNow it’s also true that when reaching out to hot leads, you MUST act fast – the difference between contacting someone within 5 minutes versus 30 minutes later is huge – like 100 times better!\r\n\r\nThat’s what makes our new SMS Text With Lead feature so powerful… you’ve got their phone number, so now you can start a text message (SMS) conversation with them… so even if they don’t take you up on your offer right away, you continue to text them new offers, new content, and new reasons to do business with you.\r\n\r\nThis could change everything for you and your business.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to learn more about everything Talk With Web Visitor can do and start turing eyeballs into money.\r\n\r\nEric\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – you could be converting up to 100x more leads immediately!   \r\nIt even includes International Long Distance Calling. \r\nPaying customers are out there waiting. \r\nStarting connecting today by CLICKING HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-04-20 11:57:33', '2020-04-20 11:57:33'),
+(345, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Try this, get more leads', 'Hi, my name is Eric and I’m betting you’d like your website nijerbazar.com.bd to generate more leads.\r\n\r\nHere’s how:\r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It signals you as soon as they say they’re interested – so that you can talk to that lead while they’re still there at nijerbazar.com.bd.\r\n\r\nTalk With Web Visitor – CLICK HERE http://www.talkwithwebvisitor.com for a live demo now.\r\n\r\nAnd now that you’ve got their phone number, our new SMS Text With Lead feature enables you to start a text (SMS) conversation – answer questions, provide more info, and close a deal that way.\r\n\r\nIf they don’t take you up on your offer then, just follow up with text messages for new offers, content links, even just “how you doing?” notes to build a relationship.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nThe difference between contacting someone within 5 minutes versus a half-hour means you could be converting up to 100X more leads today!\r\n\r\nTry Talk With Web Visitor and get more leads now.\r\n\r\nEric\r\nPS: The studies show 7 out of 10 visitors don’t hang around – you can’t afford to lose them!\r\nTalk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-05-14 02:26:06', '2020-05-14 02:26:06'),
+(346, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Cool website!', 'Cool website!\r\n\r\nMy name’s Eric, and I just found your site - nijerbazar.com.bd - while surfing the net. You showed up at the top of the search results, so I checked you out. Looks like what you’re doing is pretty cool.\r\n \r\nBut if you don’t mind me asking – after someone like me stumbles across nijerbazar.com.bd, what usually happens?\r\n\r\nIs your site generating leads for your business? \r\n \r\nI’m guessing some, but I also bet you’d like more… studies show that 7 out 10 who land on a site wind up leaving without a trace.\r\n\r\nNot good.\r\n\r\nHere’s a thought – what if there was an easy way for every visitor to “raise their hand” to get a phone call from you INSTANTLY… the second they hit your site and said, “call me now.”\r\n\r\nYou can –\r\n  \r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It lets you know IMMEDIATELY – so that you can talk to that lead while they’re literally looking over your site.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nTime is money when it comes to connecting with leads – the difference between contacting someone within 5 minutes versus 30 minutes later can be huge – like 100 times better!\r\n\r\nThat’s why we built out our new SMS Text With Lead feature… because once you’ve captured the visitor’s phone number, you can automatically start a text message (SMS) conversation.\r\n  \r\nThink about the possibilities – even if you don’t close a deal then and there, you can follow up with text messages for new offers, content links, even just “how you doing?” notes to build a relationship.\r\n\r\nWouldn’t that be cool?\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nYou could be converting up to 100X more leads today!\r\nEric\r\n\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-05-26 14:32:21', '2020-05-26 14:32:21'),
+(347, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'Who needs eyeballs, you need BUSINESS', 'My name’s Eric and I just came across your website - nijerbazar.com.bd - in the search results.\r\n\r\nHere’s what that means to me…\r\n\r\nYour SEO’s working.\r\n\r\nYou’re getting eyeballs – mine at least.\r\n\r\nYour content’s pretty good, wouldn’t change a thing.\r\n\r\nBUT…\r\n\r\nEyeballs don’t pay the bills.\r\n\r\nCUSTOMERS do.\r\n\r\nAnd studies show that 7 out of 10 visitors to a site like nijerbazar.com.bd will drop by, take a gander, and then head for the hills without doing anything else.\r\n\r\nIt’s like they never were even there.\r\n\r\nYou can fix this.\r\n\r\nYou can make it super-simple for them to raise their hand, say, “okay, let’s talk” without requiring them to even pull their cell phone from their pocket… thanks to Talk With Web Visitor.\r\n\r\nTalk With Web Visitor is a software widget that sits on your site, ready and waiting to capture any visitor’s Name, Email address and Phone Number.  It lets you know immediately – so you can talk to that lead immediately… without delay… BEFORE they head for those hills.\r\n  \r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nNow it’s also true that when reaching out to hot leads, you MUST act fast – the difference between contacting someone within 5 minutes versus 30 minutes later is huge – like 100 times better!\r\n\r\nThat’s what makes our new SMS Text With Lead feature so powerful… you’ve got their phone number, so now you can start a text message (SMS) conversation with them… so even if they don’t take you up on your offer right away, you continue to text them new offers, new content, and new reasons to do business with you.\r\n\r\nThis could change everything for you and your business.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to learn more about everything Talk With Web Visitor can do and start turing eyeballs into money.\r\n\r\nEric\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – you could be converting up to 100x more leads immediately!   \r\nIt even includes International Long Distance Calling. \r\nPaying customers are out there waiting. \r\nStarting connecting today by CLICKING HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-06-06 17:06:46', '2020-06-06 17:06:46'),
+(348, 'Cynthia La Trobe', 'hacker@his03.top', 'hacker@his03.top', NULL, 'Your Site Has Been Hacked', 'PLEASE FORWARD THIS EMAIL TO SOMEONE IN YOUR COMPANY WHO IS ALLOWED TO MAKE IMPORTANT DECISIONS!\r\n\r\nWe have hacked your website http://www.nijerbazar.com.bd and extracted your databases.\r\n\r\nHow did this happen?\r\nOur team has found a vulnerability within your site that we were able to exploit. After finding the vulnerability we were able to get your database credentials and extract your entire database and move the information to an offshore server.\r\n\r\nWhat does this mean?\r\n\r\nWe will systematically go through a series of steps of totally damaging your reputation. First your database will be leaked or sold to the highest bidder which they will use with whatever their intentions are. Next if there are e-mails found they will be e-mailed that their information has been sold or leaked and your site http://www.nijerbazar.com.bd was at fault thusly damaging your reputation and having angry customers/associates with whatever angry customers/associates do. Lastly any links that you have indexed in the search engines will be de-indexed based off of blackhat techniques that we used in the past to de-index our targets.\r\n\r\nHow do I stop this?\r\n\r\nWe are willing to refrain from destroying your site\'s reputation for a small fee. The current fee is $2000 USD in bitcoins (BTC). \r\n\r\nSend the bitcoin to the following Bitcoin address (Copy and paste as it is case sensitive):\r\n\r\n14S9qL8jxxFYyAT58vqnpFtkjg3vrF17g7\r\n\r\nOnce you have paid we will automatically get informed that it was your payment. Please note that you have to make payment within 5 days after receiving this notice or the database leak, e-mails dispatched, and de-index of your site WILL start!\r\n\r\nHow do I get Bitcoins?\r\n\r\nYou can easily buy bitcoins via several websites or even offline from a Bitcoin-ATM. We suggest you https://cex.io/ for buying bitcoins.\r\n\r\nWhat if I don’t pay?\r\n\r\nIf you decide not to pay, we will start the attack at the indicated date and uphold it until you do, there’s no counter measure to this, you will only end up wasting more money trying to find a solution. We will completely destroy your reputation amongst google and your customers.\r\n\r\nThis is not a hoax, do not reply to this email, don’t try to reason or negotiate, we will not read any replies. Once you have paid we will stop what we were doing and you will never hear from us again!\r\n\r\nPlease note that Bitcoin is anonymous and no one will find out that you have complied.', '2020-06-07 07:59:34', '2020-06-07 07:59:34'),
+(349, 'Eric Jones', 'eric@talkwithwebvisitor.com', 'eric@talkwithwebvisitor.com', NULL, 'There they go…', 'Hey, my name’s Eric and for just a second, imagine this…\r\n\r\n- Someone does a search and winds up at nijerbazar.com.bd.\r\n\r\n- They hang out for a minute to check it out.  “I’m interested… but… maybe…”\r\n\r\n- And then they hit the back button and check out the other search results instead. \r\n\r\n- Bottom line – you got an eyeball, but nothing else to show for it.\r\n\r\n- There they go.\r\n\r\nThis isn’t really your fault – it happens a LOT – studies show 7 out of 10 visitors to any site disappear without leaving a trace.\r\n\r\nBut you CAN fix that.\r\n\r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It lets you know right then and there – enabling you to call that lead while they’re literally looking over your site.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nTime is money when it comes to connecting with leads – the difference between contacting someone within 5 minutes versus 30 minutes later can be huge – like 100 times better!\r\n\r\nPlus, now that you have their phone number, with our new SMS Text With Lead feature you can automatically start a text (SMS) conversation… so even if you don’t close a deal then, you can follow up with text messages for new offers, content links, even just “how you doing?” notes to build a relationship.\r\n\r\nStrong stuff.\r\n\r\nCLICK HERE http://www.talkwithwebvisitor.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nYou could be converting up to 100X more leads today!\r\n\r\nEric\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE http://www.talkwithwebvisitor.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitor.com/unsubscribe.aspx?d=nijerbazar.com.bd', '2020-06-12 12:52:29', '2020-06-12 12:52:29');
 
 -- --------------------------------------------------------
 
@@ -803,6 +823,13 @@ CREATE TABLE `credit_sales` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `credit_sales`
+--
+
+INSERT INTO `credit_sales` (`id`, `customer_id`, `invoice_no`, `invoice_date`, `invoice_amount`, `discount_as`, `discount_amount`, `vat_amount`, `net_amount`, `payment_type`, `created_at`, `updated_at`) VALUES
+(1, '6', '0000-0000-0001', '2020-03-29 00:00:00', '20.00', NULL, NULL, '0.90', '20.90', 'Credit', '2020-03-29 14:16:23', '2020-03-29 14:16:23');
+
 -- --------------------------------------------------------
 
 --
@@ -820,6 +847,13 @@ CREATE TABLE `credit_sale_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `credit_sale_items`
+--
+
+INSERT INTO `credit_sale_items` (`id`, `credit_sale_id`, `invoice_no`, `item_id`, `item_quantity`, `item_rate`, `item_price`, `created_at`, `updated_at`) VALUES
+(1, 1, '0000-0000-0001', '61', '2', '10', '20.00', '2020-03-29 14:16:23', '2020-03-29 14:16:23');
 
 -- --------------------------------------------------------
 
@@ -842,6 +876,13 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `mobile`, `dob`, `address`, `gender`, `password`, `confirmPassword`, `clientGroup`, `remember_token`, `created_at`, `updated_at`) VALUES
+(6, 'Jisan ahmed', 'jisanahmed06@gmail.com', '0192392483432', '2020-03-29', 'fbfgcbfb fb', 'Male', 'e10adc3949ba59abbe56e057f20f883e', NULL, '1', NULL, '2020-03-29 14:15:32', '2020-06-12 20:14:44');
 
 -- --------------------------------------------------------
 
@@ -902,7 +943,10 @@ INSERT INTO `customer_group_sections` (`id`, `productId`, `customerGroupId`, `cu
 (39, 86, NULL, NULL, NULL, NULL),
 (40, 90, NULL, NULL, NULL, NULL),
 (41, 92, NULL, NULL, NULL, NULL),
-(47, 82, NULL, NULL, NULL, NULL);
+(47, 82, NULL, NULL, NULL, NULL),
+(48, 99, NULL, NULL, NULL, NULL),
+(50, 130, NULL, NULL, NULL, NULL),
+(51, 131, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1264,60 +1308,74 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `root_category`, `name`, `description1`, `description2`, `deal_code`, `phone_no`, `qty`, `reorder_qty`, `stockUnit`, `weight`, `price`, `discount`, `status`, `youtubeLink`, `productSection`, `tag`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(61, '38', 38, 'করলা(Bitter Gourd)', NULL, NULL, 'V001', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 1, '2020-03-18 14:41:54', '2020-03-21 09:22:09'),
-(62, '38', 38, 'টমেটো(Tomato)', NULL, NULL, 'v002', NULL, NULL, 5, NULL, NULL, 60, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 2, '2020-03-18 14:47:58', '2020-03-21 09:36:44'),
-(63, '38', 38, 'বেগুন(Brinjal Round)', NULL, NULL, 'v003', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-18 14:50:54', '2020-03-21 09:35:58'),
-(64, '38', 38, 'মূলা(DAIKON)', NULL, NULL, 'v004', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-03-18 14:52:45', '2020-03-21 09:31:46'),
-(65, '38', 38, 'ধনে পাতা(CORIANDER)', NULL, NULL, 'v005', NULL, NULL, 5, NULL, NULL, 10, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 5, '2020-03-18 14:54:10', '2020-03-21 09:55:45'),
-(66, '38', 38, 'কাঁচা মরিচ(Chilli)', NULL, NULL, 'v006', NULL, NULL, 5, NULL, NULL, 80, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 6, '2020-03-18 15:09:16', '2020-03-21 09:57:17'),
-(67, '38', 38, 'বাঁধা কপি(cabbage)', NULL, NULL, 'v007', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-19 08:22:51', '2020-03-21 09:39:09'),
-(68, '38', 38, 'গাজর(Carrot)', NULL, NULL, 'v008', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-19 08:27:33', '2020-03-21 09:34:31'),
-(69, '38', 38, 'ফুলকপি(Cauliflower)', NULL, NULL, 'v009', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-19 10:49:33', '2020-03-21 09:37:53'),
-(70, '38', 38, 'বিট(Beet)', NULL, NULL, 'v010', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-03-19 10:51:36', '2020-03-21 09:42:10'),
-(71, '38', 38, 'পেঁয়াজ(onion)', NULL, NULL, 'v011', NULL, NULL, 5, NULL, NULL, 60, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 11, '2020-03-19 10:54:30', '2020-03-21 09:58:40'),
-(72, '38', 38, 'লালশাক(Red Spinach)', NULL, NULL, 'v012', NULL, NULL, 5, NULL, NULL, 15, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 12, '2020-03-19 10:56:47', '2020-03-21 09:49:25'),
-(73, '38', 38, 'লেটুস পাতা(letus)', NULL, NULL, 'v013', NULL, NULL, 5, NULL, NULL, 30, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 13, '2020-03-19 10:59:00', '2020-03-21 09:52:52'),
-(74, '38', 38, 'মিষ্টি কুমড়া(pampkin)', NULL, NULL, 'v014', NULL, NULL, 5, NULL, NULL, 100, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 14, '2020-03-19 11:01:17', '2020-03-21 09:27:13'),
-(75, '38', 38, 'মটরশুঁটি(pea)', NULL, NULL, 'v015', NULL, NULL, 5, NULL, NULL, 100, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 15, '2020-03-19 11:02:47', '2020-03-21 09:32:49'),
-(76, '38', 38, 'লাউ(gourd)', NULL, NULL, 'v016', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-19 11:04:56', '2020-03-21 09:25:06'),
-(77, '38', 38, 'শিম(Bean)', NULL, NULL, 'v017', NULL, NULL, 5, NULL, NULL, 40, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 17, '2020-03-19 11:06:19', '2020-03-21 09:16:34'),
-(78, '38', 38, 'পালন শাক(palon sak)', NULL, NULL, 'v018', NULL, NULL, 5, NULL, NULL, 15, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-19 11:08:19', '2020-03-21 10:07:41'),
-(79, '38', 38, 'পুঁই শাক(Pui Sakh)', NULL, NULL, 'v019', NULL, NULL, 5, NULL, NULL, 20, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-19 11:09:39', '2020-03-21 10:08:48'),
-(80, '38', 38, 'কাকরোল(Cockroach)', NULL, NULL, 'v020', NULL, NULL, 5, NULL, NULL, 60, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 20, '2020-03-19 11:11:38', '2020-03-21 09:21:10'),
-(81, '38', 38, 'ঢেঁড়স(ladies\' fingers)', NULL, NULL, 'v021', NULL, NULL, 5, NULL, NULL, 60, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 21, '2020-03-19 11:13:10', '2020-03-21 09:28:29'),
-(82, '39', 39, 'মাগুর  মাছ', NULL, NULL, 'F001', NULL, NULL, 5, NULL, NULL, 600, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 1, '2020-03-21 11:20:57', '2020-03-21 13:41:05'),
-(84, '39', 39, 'রুই মাছ', NULL, NULL, 'F002', NULL, NULL, 5, NULL, NULL, 250, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-21 13:48:15', '2020-03-21 13:48:15'),
-(85, '39', 39, 'কাতলা', NULL, NULL, 'F003', NULL, NULL, 5, NULL, NULL, 280, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-21 14:18:42', '2020-03-21 14:18:42'),
-(86, '39', 39, 'গলদা চিংড়ি', NULL, NULL, 'F006', NULL, NULL, 5, NULL, NULL, 600, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 6, '2020-03-21 14:29:41', '2020-03-21 14:34:38'),
-(87, '39', 39, 'চিংড়ি', NULL, NULL, 'F007', NULL, NULL, 5, NULL, NULL, 400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-21 14:32:00', '2020-03-21 14:32:00'),
-(88, '39', 39, 'মলা মাছ', NULL, NULL, 'F008', NULL, NULL, 5, NULL, NULL, 320, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-21 14:45:52', '2020-03-21 14:45:52'),
-(89, '39', 39, 'মৃগেল মাছ', NULL, NULL, 'F009', NULL, NULL, 5, NULL, NULL, 330, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-21 15:03:16', '2020-03-21 15:03:16'),
-(90, '39', 39, 'গরুর মাংস', NULL, NULL, 'M001', NULL, NULL, 5, NULL, NULL, 570, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 10, '2020-03-21 15:18:32', '2020-03-21 15:22:57'),
-(91, '39', 39, 'খাসির মাংস', NULL, NULL, 'M002', NULL, NULL, 5, NULL, NULL, 750, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-21 16:02:12', '2020-03-21 16:02:12'),
-(92, '39', 39, 'ব্রয়লার মুরগি', NULL, NULL, 'M003', NULL, NULL, 5, NULL, NULL, 130, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 14, '2020-03-21 16:16:36', '2020-03-21 16:18:15'),
-(94, '39', 39, 'খাসীর মগজ', NULL, NULL, 'k001', NULL, NULL, 5, NULL, NULL, 500, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:46:43', '2020-03-22 08:46:43'),
-(95, '39', 39, 'গরুর মগজ', NULL, NULL, 'g001', NULL, NULL, 5, NULL, NULL, 400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:50:41', '2020-03-22 08:50:41'),
-(96, '39', 39, 'পাবদা মাছ (Pabda Fish )', NULL, NULL, 'F016', NULL, NULL, 5, NULL, NULL, 380, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-22 12:14:19', '2020-03-22 12:14:19'),
-(97, '39', 39, 'তেলাপিয়া মাছ', NULL, NULL, 'F018', NULL, NULL, 5, NULL, NULL, 150, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-22 12:33:15', '2020-03-22 12:33:15'),
-(98, '39', 39, 'শিং মাছ', NULL, NULL, 'F019', NULL, NULL, 5, NULL, NULL, 400, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 13:22:28', '2020-03-22 13:22:28'),
-(99, '39', 0, 'কই মাছ', NULL, NULL, 'F020', NULL, NULL, 5, NULL, NULL, 180, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 20, '2020-03-22 13:57:50', '2020-03-24 19:02:05'),
-(100, '39', 39, 'বোয়াল মাছ', NULL, NULL, 'F021', NULL, NULL, 5, NULL, NULL, 350, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 14:08:40', '2020-03-22 14:08:40'),
-(101, '18', 18, 'Mini Shingara Liver', NULL, NULL, 'DFF001', NULL, NULL, 5, NULL, NULL, 115, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-24 09:15:55', '2020-03-24 09:15:55'),
-(103, '18', 18, 'Chickpeas Curry (Chola)', NULL, NULL, 'DFF003', NULL, NULL, 5, NULL, NULL, 180, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-24 09:33:09', '2020-03-24 09:33:09'),
-(104, '18', 18, 'Mini Singara - Vegetable', NULL, NULL, 'DFF002', NULL, NULL, 5, NULL, NULL, 85, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-24 09:35:37', '2020-03-24 09:37:12'),
-(105, '18', 18, 'Mini Samosa Beef', NULL, NULL, 'DFF004', NULL, NULL, 5, NULL, NULL, 185, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-24 09:39:19', '2020-03-24 09:39:19'),
-(106, '18', 18, 'Mini Samosa Chicken', NULL, NULL, 'DFF005', NULL, NULL, 5, NULL, NULL, 115, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-03-24 09:41:37', '2020-03-24 09:41:37'),
-(107, '18', 18, 'Mini Samosa Vegetable', NULL, NULL, 'DFF006', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 6, '2020-03-24 20:28:44', '2020-03-24 20:28:44'),
-(108, '18', 18, 'Mini Spring Roll Beef', NULL, NULL, 'DFF007', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-24 20:30:32', '2020-03-24 20:30:32'),
-(109, '18', 18, 'Mini Spring Roll Chicken', NULL, NULL, 'DFF008', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-24 20:31:42', '2020-03-24 20:31:42'),
-(110, '18', 18, 'Mini Spring Roll Vegetable', NULL, NULL, 'DFF009', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-24 20:32:51', '2020-03-24 20:32:51'),
-(111, '18', 18, 'Momo Dumpling Beef', NULL, NULL, 'DFF010', NULL, NULL, 5, NULL, NULL, 122, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-03-24 20:38:07', '2020-03-24 20:38:07'),
-(112, '18', 18, 'Momo Dumpling Chicken', NULL, NULL, 'DFF011', NULL, NULL, 5, NULL, NULL, 111, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 11, '2020-03-24 20:39:14', '2020-03-24 20:39:14'),
-(113, '18', 18, 'Momo Dumpling Chocolate', NULL, NULL, 'DFF012', NULL, NULL, 5, NULL, NULL, 22, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-24 20:42:52', '2020-03-24 20:42:52'),
-(114, '18', 18, 'Momo Dumpling Vegetable', NULL, NULL, 'DFF013', NULL, NULL, 5, NULL, NULL, 232, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 13, '2020-03-24 20:44:11', '2020-03-24 20:44:11'),
-(115, '18', 18, 'Puri Aloo', NULL, NULL, 'DFF014', NULL, NULL, 5, NULL, NULL, 121, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 14, '2020-03-24 20:46:48', '2020-03-24 20:46:48'),
-(116, '18', 18, 'Puri Daal', NULL, NULL, 'DFF015', NULL, NULL, 5, NULL, NULL, 222, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 15, '2020-03-24 20:47:48', '2020-03-24 20:47:48'),
-(117, '18', 18, 'Puri Kima', NULL, NULL, 'DFF016', NULL, NULL, 5, NULL, NULL, 113, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-24 20:48:48', '2020-03-24 20:48:48');
+(61, '38', 38, 'করলা(Bitter Gourd)', NULL, NULL, 'V001', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 1, '2020-03-18 14:41:54', '2020-05-23 00:09:47'),
+(62, '38', 38, 'টমেটো(Tomato)', NULL, NULL, 'v002', NULL, NULL, 5, NULL, NULL, 60, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 2, '2020-03-18 14:47:58', '2020-05-23 00:09:34'),
+(63, '38', 38, 'বেগুন(Brinjal Round)', NULL, NULL, 'v003', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-18 14:50:54', '2020-05-23 00:10:07'),
+(64, '38', 38, 'মূলা(DAIKON)', NULL, NULL, 'v004', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-03-18 14:52:45', '2020-05-23 00:10:51'),
+(65, '38', 38, 'ধনে পাতা(CORIANDER)', NULL, NULL, 'v005', NULL, NULL, 5, NULL, NULL, 10, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 5, '2020-03-18 14:54:10', '2020-05-23 00:10:27'),
+(66, '38', 38, 'কাঁচা মরিচ(Chilli)', NULL, NULL, 'v006', NULL, NULL, 5, NULL, NULL, 80, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 6, '2020-03-18 15:09:16', '2020-05-23 00:09:39'),
+(67, '38', 38, 'বাঁধা কপি(cabbage)', NULL, NULL, 'v007', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-19 08:22:51', '2020-05-23 00:10:12'),
+(68, '38', 38, 'গাজর(Carrot)', NULL, NULL, 'v008', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-19 08:27:33', '2020-05-23 00:09:37'),
+(69, '38', 38, 'ফুলকপি(Cauliflower)', NULL, NULL, 'v009', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-19 10:49:33', '2020-05-23 00:10:15'),
+(70, '38', 38, 'বিট(Beet)', NULL, NULL, 'v010', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-03-19 10:51:36', '2020-05-23 00:10:09'),
+(71, '38', 38, 'পেঁয়াজ(onion)', NULL, NULL, 'v011', NULL, NULL, 5, NULL, NULL, 60, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 11, '2020-03-19 10:54:30', '2020-05-23 00:10:19'),
+(72, '38', 38, 'লালশাক(Red Spinach)', NULL, NULL, 'v012', NULL, NULL, 5, NULL, NULL, 15, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 12, '2020-03-19 10:56:47', '2020-05-23 00:10:44'),
+(73, '38', 38, 'লেটুস পাতা(letus)', NULL, NULL, 'v013', NULL, NULL, 5, NULL, NULL, 30, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 13, '2020-03-19 10:59:00', '2020-05-23 00:10:41'),
+(74, '38', 38, 'মিষ্টি কুমড়া(pampkin)', NULL, NULL, 'v014', NULL, NULL, 5, NULL, NULL, 100, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 14, '2020-03-19 11:01:17', '2020-05-23 00:10:53'),
+(75, '38', 38, 'মটরশুঁটি(pea)', NULL, NULL, 'v015', NULL, NULL, 5, NULL, NULL, 100, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 15, '2020-03-19 11:02:47', '2020-05-23 00:10:05'),
+(76, '38', 38, 'লাউ(gourd)', NULL, NULL, 'v016', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-19 11:04:56', '2020-05-23 00:10:47'),
+(77, '38', 38, 'শিম(Bean)', NULL, NULL, 'v017', NULL, NULL, 5, NULL, NULL, 40, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 17, '2020-03-19 11:06:19', '2020-05-23 00:10:39'),
+(78, '38', 38, 'পালন শাক(palon sak)', NULL, NULL, 'v018', NULL, NULL, 5, NULL, NULL, 15, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-19 11:08:19', '2020-05-23 00:10:25'),
+(79, '38', 38, 'পুঁই শাক(Pui Sakh)', NULL, NULL, 'v019', NULL, NULL, 5, NULL, NULL, 20, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-19 11:09:39', '2020-05-23 00:10:23'),
+(80, '38', 38, 'কাকরোল(Cockroach)', NULL, NULL, 'v020', NULL, NULL, 5, NULL, NULL, 60, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 20, '2020-03-19 11:11:38', '2020-05-23 00:09:42'),
+(81, '38', 38, 'ঢেঁড়স(ladies\' fingers)', NULL, NULL, 'v021', NULL, NULL, 5, NULL, NULL, 60, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 21, '2020-03-19 11:13:10', '2020-05-23 00:10:31'),
+(82, '39', 39, 'মাগুর  মাছ', NULL, NULL, 'F001', NULL, NULL, 5, NULL, NULL, 600, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 1, '2020-03-21 11:20:57', '2020-05-23 00:08:16'),
+(84, '39', 39, 'রুই মাছ', NULL, NULL, 'F002', NULL, NULL, 5, NULL, NULL, 250, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-21 13:48:15', '2020-05-23 00:08:09'),
+(85, '39', 39, 'কাতলা', NULL, NULL, 'F003', NULL, NULL, 5, NULL, NULL, 280, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-21 14:18:42', '2020-06-08 14:18:54'),
+(86, '39', 39, 'গলদা চিংড়ি', NULL, NULL, 'F006', NULL, NULL, 5, NULL, NULL, 600, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 6, '2020-03-21 14:29:41', '2020-05-23 00:07:35'),
+(87, '39', 39, 'চিংড়ি', NULL, NULL, 'F007', NULL, NULL, 5, NULL, NULL, 400, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-21 14:32:00', '2020-05-23 00:07:38'),
+(88, '39', 39, 'মলা মাছ', NULL, NULL, 'F008', NULL, NULL, 5, NULL, NULL, 320, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-21 14:45:52', '2020-05-23 00:08:19'),
+(89, '39', 39, 'মৃগেল মাছ', NULL, NULL, 'F009', NULL, NULL, 5, NULL, NULL, 330, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-21 15:03:16', '2020-05-23 00:08:12'),
+(90, '39', 39, 'গরুর মাংস', NULL, NULL, 'M001', NULL, NULL, 5, NULL, NULL, 570, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 10, '2020-03-21 15:18:32', '2020-05-23 00:07:32'),
+(91, '39', 39, 'খাসির মাংস', NULL, NULL, 'M002', NULL, NULL, 5, NULL, NULL, 750, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-21 16:02:12', '2020-05-23 00:07:23'),
+(92, '39', 39, 'ব্রয়লার মুরগি', NULL, NULL, 'M003', NULL, NULL, 5, NULL, NULL, 130, NULL, 0, NULL, '1', NULL, NULL, NULL, NULL, 14, '2020-03-21 16:16:36', '2020-06-08 14:33:41'),
+(94, '39', 39, 'খাসীর মগজ', NULL, NULL, 'k001', NULL, NULL, 5, NULL, NULL, 500, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:46:43', '2020-05-23 00:07:26'),
+(95, '39', 39, 'গরুর মগজ', NULL, NULL, 'g001', NULL, NULL, 5, NULL, NULL, 400, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-22 08:50:41', '2020-05-23 00:07:29'),
+(96, '39', 39, 'পাবদা মাছ (Pabda Fish )', NULL, NULL, 'F016', NULL, NULL, 5, NULL, NULL, 380, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-22 12:14:19', '2020-05-23 00:07:43'),
+(97, '39', 39, 'তেলাপিয়া মাছ', NULL, NULL, 'F018', NULL, NULL, 5, NULL, NULL, 150, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-22 12:33:15', '2020-05-23 00:07:40'),
+(98, '39', 39, 'শিং মাছ', NULL, NULL, 'F019', NULL, NULL, 5, NULL, NULL, 400, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 13:22:28', '2020-05-23 00:08:07'),
+(99, '39', 39, 'কই মাছ', NULL, NULL, 'F020', NULL, NULL, 5, NULL, NULL, 180, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, 20, '2020-03-22 13:57:50', '2020-06-08 14:18:58'),
+(100, '39', 39, 'বোয়াল মাছ', NULL, NULL, 'F021', NULL, NULL, 5, NULL, NULL, 350, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-22 14:08:40', '2020-05-25 17:03:34'),
+(101, '18', 18, 'Mini Shingara Liver', NULL, NULL, 'DFF001', NULL, NULL, 5, NULL, NULL, 115, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2020-03-24 09:15:55', '2020-06-08 14:42:06'),
+(103, '18', 18, 'Chickpeas Curry (Chola)', NULL, NULL, 'DFF003', NULL, NULL, 5, NULL, NULL, 180, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2020-03-24 09:33:09', '2020-06-08 14:42:23'),
+(104, '18', 18, 'Mini Singara - Vegetable', NULL, NULL, 'DFF002', NULL, NULL, 5, NULL, NULL, 85, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2020-03-24 09:35:37', '2020-06-08 14:43:00'),
+(105, '18', 18, 'Mini Samosa Beef', NULL, NULL, 'DFF004', NULL, NULL, 5, NULL, NULL, 185, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2020-03-24 09:39:19', '2020-06-08 14:42:00'),
+(106, '18', 18, 'Mini Samosa Chicken', NULL, NULL, 'DFF005', NULL, NULL, 5, NULL, NULL, 115, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 5, '2020-03-24 09:41:37', '2020-06-08 14:42:02'),
+(107, '18', 18, 'Mini Samosa Vegetable', NULL, NULL, 'DFF006', NULL, NULL, 5, NULL, NULL, 115, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 6, '2020-03-24 20:28:44', '2020-06-08 14:42:04'),
+(108, '18', 18, 'Mini Spring Roll Beef', NULL, NULL, 'DFF007', NULL, NULL, 5, NULL, NULL, 195, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2020-03-24 20:30:32', '2020-06-08 14:42:54'),
+(109, '18', 18, 'Mini Spring Roll Chicken', NULL, NULL, 'DFF008', NULL, NULL, 5, NULL, NULL, 175, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2020-03-24 20:31:42', '2020-06-08 14:42:50'),
+(110, '18', 18, 'Mini Spring Roll Vegetable', NULL, NULL, 'DFF009', NULL, NULL, 5, NULL, NULL, 120, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 9, '2020-03-24 20:32:51', '2020-06-08 14:42:48'),
+(111, '18', 18, 'Momo Dumpling Beef', NULL, NULL, 'DFF010', NULL, NULL, 5, NULL, NULL, 200, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 10, '2020-03-24 20:38:07', '2020-06-08 14:42:46'),
+(112, '18', 18, 'Momo Dumpling Chicken', NULL, NULL, 'DFF011', NULL, NULL, 5, NULL, NULL, 180, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 11, '2020-03-24 20:39:14', '2020-06-08 14:42:43'),
+(113, '18', 18, 'Momo Dumpling Chocolate', NULL, NULL, 'DFF012', NULL, NULL, 5, NULL, NULL, 200, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 12, '2020-03-24 20:42:52', '2020-06-08 14:42:40'),
+(114, '18', 18, 'Momo Dumpling Vegetable', NULL, NULL, 'DFF013', NULL, NULL, 5, NULL, NULL, 160, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 13, '2020-03-24 20:44:11', '2020-06-08 14:42:37'),
+(115, '18', 18, 'Puri Aloo', NULL, NULL, 'DFF014', NULL, NULL, 5, NULL, NULL, 90, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 14, '2020-03-24 20:46:48', '2020-06-08 14:42:33'),
+(116, '18', 18, 'Puri Daal', NULL, NULL, 'DFF015', NULL, NULL, 5, NULL, NULL, 90, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 15, '2020-03-24 20:47:48', '2020-06-08 14:43:22'),
+(117, '18', 18, 'Puri Kima', NULL, NULL, 'DFF016', NULL, NULL, 5, NULL, NULL, 110, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 16, '2020-03-24 20:48:48', '2020-06-08 14:43:16'),
+(118, '18', 18, 'Fish Finger', NULL, NULL, 'NFF001', NULL, NULL, 5, NULL, NULL, 20, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 17, '2020-03-25 21:38:43', '2020-06-08 14:42:18'),
+(119, '18', 18, 'Fire Crakar', NULL, NULL, 'NFF002', NULL, NULL, 5, NULL, NULL, 20, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 18, '2020-03-25 21:41:50', '2020-06-08 14:42:21'),
+(120, '18', 18, 'Box Patice', NULL, NULL, 'NFF003', NULL, NULL, 5, NULL, NULL, 30, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 19, '2020-03-25 22:05:18', '2020-06-08 14:41:48'),
+(121, '18', 18, 'Ros goja', NULL, NULL, 'NFF004', NULL, NULL, 5, NULL, NULL, 15, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 20, '2020-03-25 22:07:30', '2020-06-08 14:43:13'),
+(122, '18', 18, 'Bread Picking', NULL, NULL, 'NFF005', NULL, NULL, 5, NULL, NULL, 15, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 21, '2020-03-25 22:11:09', '2020-06-08 14:41:45'),
+(123, '18', 18, 'Kima Puri', NULL, NULL, 'NFF006', NULL, NULL, 5, NULL, NULL, 15, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 22, '2020-03-25 22:13:06', '2020-06-08 14:42:09'),
+(124, '18', 18, 'Shami Kabab', NULL, NULL, 'NFF007', NULL, NULL, 5, NULL, NULL, 25, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 23, '2020-03-25 22:14:16', '2020-06-08 14:43:10'),
+(125, '18', 18, 'Patisapta pitha', NULL, NULL, 'NFF008', NULL, NULL, 5, NULL, NULL, 25, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 24, '2020-03-25 22:15:36', '2020-06-08 14:42:30'),
+(126, '18', 18, 'Fulljhuri pitha', NULL, NULL, 'NFF009', NULL, NULL, 5, NULL, NULL, 15, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 25, '2020-03-25 22:16:50', '2020-06-08 14:42:16'),
+(127, '18', 18, 'Vegetable cutlet', NULL, NULL, 'NFF010', NULL, NULL, 5, NULL, NULL, 10, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 26, '2020-03-25 22:18:11', '2020-06-08 14:43:07'),
+(128, '18', 18, 'Chicken vegetable Roll', NULL, NULL, 'NFF011', NULL, NULL, 5, NULL, NULL, 20, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 27, '2020-03-25 22:19:53', '2020-06-08 14:41:50'),
+(129, '18', 18, 'Gajorer laddu', NULL, NULL, 'NFF012', NULL, NULL, 5, NULL, NULL, 15, 0.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, 28, '2020-03-25 22:21:08', '2020-06-08 14:42:11'),
+(130, '42', 42, 'আম - আম্রপালি', NULL, NULL, 'F-001', NULL, NULL, 5, NULL, NULL, 90, NULL, 1, NULL, '1,3', NULL, NULL, NULL, NULL, 1, '2020-06-08 14:23:43', '2020-06-08 14:33:09'),
+(131, '42', 42, 'আম - হিমসাগর', NULL, NULL, 'F-00২', NULL, NULL, 5, NULL, NULL, 90, NULL, 1, NULL, '1', NULL, NULL, NULL, NULL, 2, '2020-06-08 14:26:40', '2020-06-08 14:41:45');
 
 -- --------------------------------------------------------
 
@@ -1391,7 +1449,21 @@ INSERT INTO `product_images` (`id`, `productId`, `images`, `created_at`, `update
 (181, 114, 'public/uploads/product_image/Momo_Dumpling_Vegetable copy_54574213139.png', '2020-03-24 20:44:45', '2020-03-24 20:44:45'),
 (182, 115, 'public/uploads/product_image/Puri_Aloo copy_58080728799.png', '2020-03-24 20:46:59', '2020-03-24 20:46:59'),
 (183, 116, 'public/uploads/product_image/Puri_Daal copy_16662867671.png', '2020-03-24 20:48:01', '2020-03-24 20:48:01'),
-(184, 117, 'public/uploads/product_image/Puri_Kima copy_69816673975.png', '2020-03-24 20:49:00', '2020-03-24 20:49:00');
+(184, 117, 'public/uploads/product_image/Puri_Kima copy_69816673975.png', '2020-03-24 20:49:00', '2020-03-24 20:49:00'),
+(185, 118, 'public/uploads/product_image/Fish-Fingers-500x500_36668312390.jpg', '2020-03-25 21:38:55', '2020-03-25 21:38:55'),
+(186, 119, 'public/uploads/product_image/90724646_208131223803150_7448453351261339648_n_33901980041.jpg', '2020-03-25 21:42:02', '2020-03-25 21:42:02'),
+(187, 120, 'public/uploads/product_image/90614916_1125491624456459_4827493225809838080_n_16336299949.jpg', '2020-03-25 22:05:43', '2020-03-25 22:05:43'),
+(188, 121, 'public/uploads/product_image/90518022_2788954651153619_6093045235527450624_n_9306567974.jpg', '2020-03-25 22:08:05', '2020-03-25 22:08:05'),
+(189, 122, 'public/uploads/product_image/90715223_140405160742355_7087067200883785728_n_81536149172.jpg', '2020-03-25 22:11:19', '2020-03-25 22:11:19'),
+(190, 123, 'public/uploads/product_image/90528257_681615995916365_7212504203254562816_n_42676030796.jpg', '2020-03-25 22:13:17', '2020-03-25 22:13:17'),
+(191, 124, 'public/uploads/product_image/89731565_139651114103296_5748282373816975360_n_78321730199.jpg', '2020-03-25 22:14:29', '2020-03-25 22:14:29'),
+(192, 126, 'public/uploads/product_image/89941266_539285396719701_2976926353519017984_n_38747952631.jpg', '2020-03-25 22:17:04', '2020-03-25 22:17:04'),
+(193, 127, 'public/uploads/product_image/83040420_2946723612005608_8111124443771699200_n_86576791755.jpg', '2020-03-25 22:18:40', '2020-03-25 22:18:40'),
+(194, 128, 'public/uploads/product_image/90551476_509717559672351_2459093798886572032_n_76289664224.jpg', '2020-03-25 22:20:11', '2020-03-25 22:20:11'),
+(195, 129, 'public/uploads/product_image/90593909_869512093547467_8728846233923223552_n_68818902639.jpg', '2020-03-25 22:21:30', '2020-03-25 22:21:30'),
+(196, 125, 'public/uploads/product_image/87775502_873184809788690_2284809953069760512_n_51099247810.jpg', '2020-03-25 22:29:35', '2020-03-25 22:29:35'),
+(197, 130, 'public/uploads/product_image/102714620_185345439488639_4919304868155579431_n_1762845954.jpg', '2020-06-08 14:24:22', '2020-06-08 14:24:22'),
+(199, 131, 'public/uploads/product_image/84346930_1449653471883348_368796205913735168_n_56891124134.jpg', '2020-06-08 14:27:06', '2020-06-08 14:27:06');
 
 -- --------------------------------------------------------
 
@@ -1474,7 +1546,21 @@ INSERT INTO `product_sections` (`id`, `productId`, `hotDiscount`, `hotDate`, `sp
 (115, 114, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:44:11', '2020-03-24 20:44:11'),
 (116, 115, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:46:48', '2020-03-24 20:46:48'),
 (117, 116, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:47:48', '2020-03-24 20:47:48'),
-(118, 117, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:48:48', '2020-03-24 20:48:48');
+(118, 117, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 20:48:48', '2020-03-24 20:48:48'),
+(119, 118, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 21:38:43', '2020-03-25 21:38:43'),
+(120, 119, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 21:41:50', '2020-03-25 21:41:50'),
+(121, 120, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:05:18', '2020-03-25 22:05:18'),
+(122, 121, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:07:30', '2020-03-25 22:07:30'),
+(123, 122, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:11:09', '2020-03-25 22:11:09'),
+(124, 123, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:13:06', '2020-03-25 22:13:06'),
+(125, 124, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:14:16', '2020-03-25 22:14:16'),
+(126, 125, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:15:36', '2020-03-25 22:15:36'),
+(127, 126, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:16:50', '2020-03-25 22:16:50'),
+(128, 127, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:18:11', '2020-03-25 22:18:11'),
+(129, 128, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:19:53', '2020-03-25 22:19:53'),
+(130, 129, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 22:21:08', '2020-03-25 22:21:08'),
+(131, 130, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 14:23:43', '2020-06-08 14:23:43'),
+(132, 131, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-06-08 14:26:40', '2020-06-08 14:26:40');
 
 -- --------------------------------------------------------
 
@@ -1521,7 +1607,8 @@ CREATE TABLE `purchase_orders` (
 --
 
 INSERT INTO `purchase_orders` (`id`, `type`, `supplier_id`, `order_no`, `delivery_date`, `order_date`, `voucher_date`, `total_qty`, `total_amount`, `created_at`, `updated_at`) VALUES
-(1, 'purchase_order', 0, '1000001', '2020-01-22 00:00:00', '2020-01-22 00:00:00', NULL, '17.00', '4800.00', '2020-01-22 17:44:09', '2020-01-22 17:44:09');
+(1, 'purchase_order', 1, '1000001', '2020-01-22 00:00:00', '2020-01-22 00:00:00', NULL, '17.00', '4800.00', '2020-01-22 17:44:09', '2020-01-22 17:44:09'),
+(2, 'purchase_order', 1, '1000002', '2020-03-29 00:00:00', '2020-03-29 00:00:00', NULL, '5.00', '50.00', '2020-03-29 14:21:02', '2020-03-29 14:21:02');
 
 -- --------------------------------------------------------
 
@@ -1546,7 +1633,8 @@ CREATE TABLE `purchase_order_items` (
 
 INSERT INTO `purchase_order_items` (`id`, `purchase_order_id`, `product_id`, `qty`, `rate`, `amount`, `created_at`, `updated_at`) VALUES
 (1, 1, 58, '10', '200', '2000.00', NULL, NULL),
-(2, 1, 46, '7', '400', '2800.00', NULL, NULL);
+(2, 1, 46, '7', '400', '2800.00', NULL, NULL),
+(3, 2, 61, '5', '10', '50.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1563,6 +1651,13 @@ CREATE TABLE `purchase_order_receives` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `purchase_order_receives`
+--
+
+INSERT INTO `purchase_order_receives` (`id`, `purchaseOrderNo`, `receive_date`, `total_qty`, `total_amount`, `created_at`, `updated_at`) VALUES
+(1, 2, '2020-03-29 00:00:00', '5.00', '50.00', '2020-03-29 14:21:48', '2020-03-29 14:21:48');
 
 -- --------------------------------------------------------
 
@@ -1581,6 +1676,13 @@ CREATE TABLE `purchase_order_receive_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `purchase_order_receive_items`
+--
+
+INSERT INTO `purchase_order_receive_items` (`id`, `purchase_order_receive_id`, `product_id`, `product_name`, `qty`, `rate`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 1, '61', 'করলা(Bitter Gourd)', '5.00', '10', '50.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1677,7 +1779,8 @@ INSERT INTO `reviews` (`id`, `customerId`, `productId`, `name`, `summary`, `revi
 (1, 21, 5, 'Anwar Zahed', 'Best Phone', 'Support Digital Network', '5', 1, '2020-01-09 15:12:09', '2020-01-09 15:14:07'),
 (2, 21, 5, 'Anwar Zahed', 'New Featured Phone', 'সাম্প্রতিক বাংলা সাহিত্যের গৌরবময় একটি নাম হাসান আজিজুল হক। ১৯৩৯ সালের ২ ফেব্রুয়ারি বর্ধমান জেলার যবগ্রামে তার জন্ম । নিজের গ্রাম থেকে স্কুলের পড়া সাঙ্গ করে ওপার-বাংলায় চলে যান। তিনি, দর্শনশাস্ত্রের পড়াশোনার পর অধ্যাপনা করেন সেখানকার কয়েকটি কলেজে। ১৯৭৩ সাল থেকে রাজশাহী বিশ্ববিদ্যালয়ে দর্শনের অধ্যাপক, এখন অবসরপ্রাপ্ত। অধ্যাপনার সঙ্গে সঙ্গে দীর্ঘকাল অনেক গল্পের স্ৰষ্টা তিনি। গল্প অনেক লিখেছেন, কিন্তু, রহস্যময় কোনো কারণে, উপন্যাস-লেখায় বিশেষ আগ্ৰহ দেখান নি প্ৰতিভাবান এই কথাসাহিত্যিক । এ-বইটি প্ৰকাশিত হবার সঙ্গে সঙ্গে পাঠকসমাজের উৎসুক প্রতীক্ষার যেন অবসান হলো, আমাদের হাতে এসে পৌঁছল হাসান আজিজুল হকের হৃদয়স্পশী এই উপন্যাস : ’আগুনপাখি’ ।', '5', 1, '2020-01-09 17:04:12', '2020-01-09 17:04:51'),
 (3, 21, 59, 'Anwar Zahed', NULL, 'Late Delivery', '1', 1, '2020-01-09 17:07:52', '2020-01-09 17:08:02'),
-(4, 4, 5, 'M Hasan', 'New Test', 'best one', '1', 0, '2020-02-06 05:35:44', '2020-02-06 05:35:44');
+(4, 4, 5, 'M Hasan', 'New Test', 'best one', '1', 0, '2020-02-06 05:35:44', '2020-02-06 05:35:44'),
+(5, 6, 101, 'MD Mostafizur Rahman', 'test review', 'summary for test', '3', 1, '2020-06-12 20:15:28', '2020-06-12 20:15:28');
 
 -- --------------------------------------------------------
 
@@ -1744,7 +1847,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `siteTitle`, `siteName`, `siteLogo`, `sitefavIcon`, `adminTitle`, `adminLogo`, `adminsmalLogo`, `adminfavIcon`, `mobile1`, `mobile2`, `siteEmail1`, `siteEmail2`, `siteAddress1`, `siteAddress2`, `sitestatus`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_logo_49907109594.png', 'public/uploads/site_logo/fav_icon/Nijer-Bazar_fav_99957061677.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/Nijer-Bazar_fav_53909946930.png', '+88 096-78-669966', '019-16-304877', 'nijer.bazar@gmail.com', 'alfattah@gmail.com', 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'Nijer Bazar|| Online Grocery & Super Shop', 'Online Grocery Shop,Sobji Bazar,Kacha Bazar,Frozen Food,Ready Food', 'Bangladeshi Online Grocery and Super Shop.', 1, NULL, '2020-03-22 18:42:17');
+(1, 'Online Shopping Store', 'Nijer Bazar', 'public/uploads/site_logo/logo/nijr_bazar_logo_49907109594.png', 'public/uploads/site_logo/fav_icon/Nijer-Bazar_fav_99957061677.png', 'Admin', 'public/uploads/admin_logo/main_logo/nijr_bazar_logo_60319429281.png', 'public/uploads/admin_logo/small_logo/nijr_bazar_favicon_53125488755.png', 'public/uploads/admin_logo/fav_icon/Nijer-Bazar_fav_53909946930.png', '+88 096-78-669966', '019-16-304877', 'nijer.bazar@gmail.com', 'alfattah@gmail.com', 'Flat# 6A, House# 23, Road# 9', 'DIT Project, Merul Badda, Dhaka', NULL, 'Nijer Bazar|| Online Grocery & Super Shop', 'Online Grocery Shop,Sobji Bazar,Kacha Bazar,Frozen Food,Ready Food,Fresh Fruits', 'Bangladeshi Online Grocery and Super Shop.', 1, NULL, '2020-05-15 23:09:43');
 
 -- --------------------------------------------------------
 
@@ -1818,8 +1921,10 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `source`, `productId`, `section`, `status`, `metaTitle`, `metaKeyword`, `metaDescription`, `orderBy`, `created_at`, `updated_at`) VALUES
-(1, 'Rodela', 'public/uploads/slider_image/fish...png', NULL, NULL, 1, NULL, NULL, NULL, 1, '2019-12-01 11:11:39', '2020-03-18 16:54:49'),
-(4, NULL, 'public/uploads/slider_image/Untitled-2.png', NULL, NULL, 1, NULL, NULL, NULL, 1, '2019-12-01 12:01:47', '2020-03-18 13:40:00');
+(1, 'Rodela', 'public/uploads/slider_image/fish...png', NULL, NULL, 0, NULL, NULL, NULL, 1, '2019-12-01 11:11:39', '2020-05-17 19:43:12'),
+(4, NULL, 'public/uploads/slider_image/Untitled-2.png', NULL, NULL, 0, NULL, NULL, NULL, 1, '2019-12-01 12:01:47', '2020-05-17 19:43:09'),
+(9, NULL, 'public/uploads/slider_image/nijer-bazar-f.png', NULL, NULL, 1, NULL, NULL, NULL, 1, '2020-05-17 19:40:01', '2020-05-17 19:40:39'),
+(10, NULL, 'public/uploads/slider_image/slider.png', NULL, NULL, 1, NULL, NULL, NULL, 2, '2020-05-18 22:31:03', '2020-05-18 22:31:22');
 
 -- --------------------------------------------------------
 
@@ -2550,6 +2655,15 @@ CREATE TABLE `verify_customers` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `verify_customers`
+--
+
+INSERT INTO `verify_customers` (`id`, `name`, `email`, `mobile`, `address`, `gender`, `password`, `confirmPassword`, `verifyCode`, `created_at`, `updated_at`) VALUES
+(1, 'A F M Mamunur Rashid', 'alfattah@gmail.com', '01916304877', 'Marul Badda', NULL, '49fb399b65d6b9d0bdeb014278b6e74b', '49fb399b65d6b9d0bdeb014278b6e74b', '446342', '2020-03-29 08:04:20', '2020-03-29 08:04:20'),
+(2, 'NaClory', 'test13th@gmail.com', '81578271129', NULL, NULL, '1d3520f942260bea8678582ccb46beda', '1d3520f942260bea8678582ccb46beda', '209298', '2020-05-27 14:36:43', '2020-05-27 14:36:43'),
+(3, 'NaClory', 'test13th@gmail.com', '89852128167', NULL, NULL, '1d3520f942260bea8678582ccb46beda', '1d3520f942260bea8678582ccb46beda', '789180', '2020-05-27 14:36:46', '2020-05-27 14:36:46');
+
 -- --------------------------------------------------------
 
 --
@@ -2637,7 +2751,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFI
 --
 DROP TABLE IF EXISTS `stock_status_report`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `cash_sale_items` on(`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `cash_sales` on(`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`)) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) join `credit_sale_items` on(`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) join `credit_sales` on(`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`)) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`nijerbazarcom`@`localhost` SQL SECURITY DEFINER VIEW `stock_status_report`  AS  select `purchase_orders`.`supplier_id` AS `supplierId`,`purchase_order_receives`.`receive_date` AS `date`,`products`.`category_id` AS `categoryId`,`purchase_order_receive_items`.`product_id` AS `productId`,`purchase_order_receive_items`.`qty` AS `receiveQty`,`purchase_order_receive_items`.`amount` AS `receiveAmount`,0 AS `cashSaleQty`,0 AS `creditSaleQty` from (((`purchase_orders` left join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) left join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) left join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) union all select `purchase_orders`.`supplier_id` AS `supplierId`,`cash_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`cash_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,`cash_sale_items`.`item_quantity` AS `cashSaleQty`,0 AS `creditSaleQty` from (((((`purchase_orders` left join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) left join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) left join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) left join `cash_sale_items` on(`cash_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) left join `cash_sales` on(`cash_sales`.`id` = `cash_sale_items`.`cash_sale_id`)) group by `purchase_orders`.`supplier_id`,`cash_sales`.`invoice_date`,`products`.`category_id`,`cash_sale_items`.`item_id` union all select `purchase_orders`.`supplier_id` AS `supplierId`,`credit_sales`.`invoice_date` AS `date`,`products`.`category_id` AS `categoryId`,`credit_sale_items`.`item_id` AS `productId`,0 AS `receiveQty`,0 AS `receiveAmount`,0 AS `cashSaleQty`,`credit_sale_items`.`item_quantity` AS `creditSaleQty` from (((((`purchase_orders` left join `purchase_order_receives` on(`purchase_order_receives`.`purchaseOrderNo` = `purchase_orders`.`id`)) left join `purchase_order_receive_items` on(`purchase_order_receive_items`.`purchase_order_receive_id` = `purchase_order_receives`.`id`)) left join `products` on(`products`.`id` = `purchase_order_receive_items`.`product_id`)) left join `credit_sale_items` on(`credit_sale_items`.`item_id` = `purchase_order_receive_items`.`product_id`)) left join `credit_sales` on(`credit_sales`.`id` = `credit_sale_items`.`credit_sale_id`)) group by `purchase_orders`.`supplier_id`,`credit_sales`.`invoice_date`,`products`.`category_id`,`credit_sale_items`.`item_id` order by `supplierId`,`productId` ;
 
 -- --------------------------------------------------------
 
@@ -3124,31 +3238,31 @@ ALTER TABLE `careers`
 -- AUTO_INCREMENT for table `cash_purchase`
 --
 ALTER TABLE `cash_purchase`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cash_purchase_item`
 --
 ALTER TABLE `cash_purchase_item`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cash_sales`
 --
 ALTER TABLE `cash_sales`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cash_sale_items`
 --
 ALTER TABLE `cash_sale_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `checkouts`
@@ -3166,7 +3280,7 @@ ALTER TABLE `client_entries`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `contactuses`
@@ -3196,19 +3310,19 @@ ALTER TABLE `credit_purchase_items`
 -- AUTO_INCREMENT for table `credit_sales`
 --
 ALTER TABLE `credit_sales`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `credit_sale_items`
 --
 ALTER TABLE `credit_sale_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `customer_groups`
@@ -3220,7 +3334,7 @@ ALTER TABLE `customer_groups`
 -- AUTO_INCREMENT for table `customer_group_sections`
 --
 ALTER TABLE `customer_group_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `customer_request_item_list`
@@ -3304,43 +3418,43 @@ ALTER TABLE `policies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT for table `product_sections`
 --
 ALTER TABLE `product_sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `purchase_orders`
 --
 ALTER TABLE `purchase_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `purchase_order_items`
 --
 ALTER TABLE `purchase_order_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `purchase_order_receives`
 --
 ALTER TABLE `purchase_order_receives`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_order_receive_items`
 --
 ALTER TABLE `purchase_order_receive_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_returns`
@@ -3364,7 +3478,7 @@ ALTER TABLE `refund_policies`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -3388,7 +3502,7 @@ ALTER TABLE `shipping_charges`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `socials`
@@ -3484,7 +3598,7 @@ ALTER TABLE `vendors`
 -- AUTO_INCREMENT for table `verify_customers`
 --
 ALTER TABLE `verify_customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

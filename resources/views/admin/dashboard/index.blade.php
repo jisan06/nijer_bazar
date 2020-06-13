@@ -114,6 +114,7 @@
     table thead th{
         font-weight: bold !important;
         text-transform: uppercase;
+        font-size: 12px;
     }
 
     .card{
